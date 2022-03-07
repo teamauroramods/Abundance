@@ -1,0 +1,1 @@
+{"parent": "block/orientable_with_bottom", "textures": {"particle": "abundance:block/jacaranda_beehive_side", "bottom": "abundance:block/jacaranda_beehive_end", "top": "abundance:block/jacaranda_beehive_end", "front": "abundance:block/jacaranda_beehive_front_honey", "side": "abundance:block/jacaranda_beehive_side"}}

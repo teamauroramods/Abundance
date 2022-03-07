@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "top": "abundance:block/lavender_basket_top",
+    "bottom": "abundance:block/lavender_basket_bottom",
+    "side": "abundance:block/lavender_basket"
+  }
+}

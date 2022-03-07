@@ -15,8 +15,8 @@ loom {
         mixinConfig "${project.mod_id}-common.mixins.json"
         mixinConfig "${project.mod_id}.mixins.json"
 
-//        convertAccessWideners.set(true)
-//        extraAccessWideners.add("${project.mod_id}.accesswidener")
+        convertAccessWideners.set(true)
+        extraAccessWideners.add("${project.mod_id}.accesswidener")
 
         dataGen {
             mod project.mod_id

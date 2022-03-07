@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "top": "abundance:block/sunflower_seed_sack_top",
+    "bottom": "abundance:block/sunflower_seed_sack_bottom",
+    "side": "abundance:block/sunflower_seed_sack"
+  }
+}

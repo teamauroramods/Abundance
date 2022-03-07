@@ -1,0 +1,6 @@
+{
+  "parent": "abnormals_core:block/post",
+  "textures": {
+    "texture": "abundance:block/stripped_redbud_log"
+  }
+}

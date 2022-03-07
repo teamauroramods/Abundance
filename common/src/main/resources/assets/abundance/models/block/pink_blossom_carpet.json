@@ -1,0 +1,6 @@
+{
+  "parent": "abnormals_core:block/leaf_carpet",
+  "textures": {
+    "all": "abundance:block/pink_blossom_carpet"
+  }
+}

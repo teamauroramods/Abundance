@@ -1,0 +1,7 @@
+{
+  "parent": "abnormals_core:block/hedge_post",
+  "textures": {
+    "log": "abundance:block/jacaranda_log",
+    "leaf": "abundance:block/jacaranda_leaves"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "screecher_hurt": {
+    "subtitle": "sound_event.abundance.entity.screecher.hurt",
+    "sounds": [
+      "abundance:entity/screecher/hurt1",
+      "abundance:entity/screecher/hurt2"
+    ]
+  },
+  "screecher_screech": {
+    "subtitle": "sound_event.abundance.entity.screecher.screech",
+    "sounds": [
+      "abundance:entity/screecher/screech1",
+      "abundance:entity/screecher/screech2"
+    ]
+  },
+  "screecher_death": {
+    "subtitle": "sound_event.abundance.entity.screecher.death",
+    "sounds": [
+      "abundance:entity/screecher/death"
+    ]
+  }
+}

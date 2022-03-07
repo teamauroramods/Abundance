@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "abundance:block/heliconia_bottom"
+    },
+    "half=upper": {
+      "model": "abundance:block/heliconia_top"
+    }
+  }
+}
