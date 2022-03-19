@@ -17,6 +17,6 @@
 </p>
 <p align="center">
   <img src="https://img.shields.io/badge/-Downloads-orange?style=for-the-badge&color=e04e14">
-  <a href="https://www.curseforge.com/minecraft/mc-mods/better-badlands"><img src="http://cf.way2muchnoise.eu/395502.svg?badge_style=for_the_badge"></a>
-  <a href="https://www.curseforge.com/minecraft/mc-mods/better-badlands"><img src="http://cf.way2muchnoise.eu/versions/395502.svg?badge_style=for_the_badge"></a>
+  <a href="https://www.curseforge.com/minecraft/mc-mods/abundance"><img src="http://cf.way2muchnoise.eu/452345.svg?badge_style=for_the_badge"></a>
+  <a href="https://www.curseforge.com/minecraft/mc-mods/abundance"><img src="http://cf.way2muchnoise.eu/versions/452345.svg?badge_style=for_the_badge"></a>
 </p>
