@@ -13,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
 
@@ -40,6 +41,11 @@ public class AbundanceBlocks {
     public static final Supplier<Block> JACARANDA_DOOR = registerWoodsetBlock("jacaranda_door", JACARANDA::door, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_DOOR);
     public static final Supplier<Block> JACARANDA_TRAPDOOR = registerWoodsetBlock("jacaranda_trapdoor", JACARANDA::trapdoor, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_TRAPDOOR);
 
+    public static final Supplier<Block> JACARANDA_LEAVES = registerBlock("jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BUDDING_JACARANDA_LEAVES = registerBlock("budding_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FLOWERING_JACARANDA_LEAVES = registerBlock("flowering_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+
+
     /* Redbud Woodset */
 
     private static final Woodset REDBUD = new Woodset(MaterialColor.COLOR_LIGHT_GRAY, MaterialColor.COLOR_PURPLE);
@@ -47,9 +53,9 @@ public class AbundanceBlocks {
     public static final Supplier<Block> STRIPPED_REDBUD_LOG = registerWoodsetBlock("stripped_redbud_log", REDBUD::stripped_log, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.STRIPPED_OAK_LOG);
     public static final Supplier<Block> STRIPPED_REDBUD_WOOD = registerWoodsetBlock("stripped_redbud_wood", REDBUD::stripped_wood, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.STRIPPED_OAK_WOOD);
     public static final Supplier<Block> REDBUD_LOG = registerWoodsetBlock("redbud_log", REDBUD::log, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_LOG);
-    public static final Supplier<Block> FLOWERING_REDBUD_LOG = registerWoodsetBlock("flowering_redbud_log", REDBUD::log, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_LOG);
+    public static final Supplier<Block> FLOWERING_REDBUD_LOG = registerWoodsetBlock("flowering_redbud_log", REDBUD::flowering_log, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_LOG);
     public static final Supplier<Block> REDBUD_WOOD = registerWoodsetBlock("redbud_wood", REDBUD::wood, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_WOOD);
-    public static final Supplier<Block> FLOWERING_REDBUD_WOOD = registerWoodsetBlock("flowering_redbud_wood", REDBUD::wood, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_WOOD);
+    public static final Supplier<Block> FLOWERING_REDBUD_WOOD = registerWoodsetBlock("flowering_redbud_wood", REDBUD::flowering_wood, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_WOOD);
     public static final Supplier<Block> REDBUD_PLANKS = registerWoodsetBlock("redbud_planks", REDBUD::planks, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_PLANKS);
     public static final Supplier<Block> REDBUD_SLAB = registerWoodsetBlock("redbud_slab", REDBUD::slab, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_SLAB);
     public static final Supplier<Block> REDBUD_STAIRS = registerWoodsetBlock("redbud_stairs", () -> REDBUD.stairs(REDBUD_PLANKS), CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_STAIRS);
@@ -60,8 +66,11 @@ public class AbundanceBlocks {
     public static final Supplier<Block> REDBUD_DOOR = registerWoodsetBlock("redbud_door", REDBUD::door, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_DOOR);
     public static final Supplier<Block> REDBUD_TRAPDOOR = registerWoodsetBlock("redbud_trapdoor", REDBUD::trapdoor, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_TRAPDOOR);
 
-    /* Daisies */
+    public static final Supplier<Block> REDBUD_LEAVES = registerBlock("redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BUDDING_REDBUD_LEAVES = registerBlock("budding_redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FLOWERING_REDBUD_LEAVES = registerBlock("flowering_redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
+    /* Daisies */
 
     private static Supplier<Block> registerBlock(String id, Supplier<Block> block, Item.Properties properties) {
         Supplier<Block> register = BLOCKS.register(id, block);
@@ -80,5 +89,11 @@ public class AbundanceBlocks {
         return register;
     }
 
+    public static final class Properties {
+        public static final BlockBehaviour.Properties JACARANDA_LEAVES = BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).color(MaterialColor.COLOR_PURPLE);
+
+        public static final BlockBehaviour.Properties REDBUD_LEAVES = BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).color(MaterialColor.COLOR_RED);
+
+    }
 
 }

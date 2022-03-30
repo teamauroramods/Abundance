@@ -8,8 +8,8 @@
   "contributors": [ "" ],
   "contact": {
     "homepage": "https://discord.gg/VzXSCFp",
-	"issues": "https://github.com/teamauroramods/${repo}/issues",
-    "sources": "https://github.com/teamauroramods/${repo}/"
+	"issues": "https://github.com/teamauroramods/Abundance/issues",
+    "sources": "https://github.com/teamauroramods/Abundance/"
   },
   "license": "GPLv3",
   "environment": "*",
@@ -24,6 +24,6 @@
   "depends": {
     "fabric": "*",
     "minecraft": "1.18.x",
-    "pollen": "1.1.1"
+    "pollen": ">=1.2.0 <2.0.0"
   }
 }

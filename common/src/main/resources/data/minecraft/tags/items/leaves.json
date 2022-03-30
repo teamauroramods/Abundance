@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "abundance:jacaranda_leaves",
+    "abundance:budding_jacaranda_leaves",
+    "abundance:flowering_jacaranda_leaves",
+    "abundance:redbud_leaves",
+    "abundance:budding_redbud_leaves",
+    "abundance:flowering_redbud_leaves"
+  ]
+}

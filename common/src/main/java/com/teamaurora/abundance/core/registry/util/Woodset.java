@@ -1,5 +1,7 @@
 package com.teamaurora.abundance.core.registry.util;
 
+import com.teamaurora.abundance.common.block.FloweringWoodBlock;
+import com.teamaurora.abundance.core.registry.AbundanceBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.EntityType;
@@ -25,12 +27,28 @@ public record Woodset(MaterialColor logColor, MaterialColor woodColor) {
         return new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, arg).strength(2.0F).sound(SoundType.WOOD));
     }
 
+    private FloweringWoodBlock template_flowering_log(MaterialColor arg, MaterialColor arg2) {
+        return new FloweringWoodBlock(BlockBehaviour.Properties.of(Material.WOOD, (arg3) -> arg3.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? arg : arg2).strength(2.0F).sound(SoundType.WOOD), AbundanceBlocks.REDBUD_LOG);
+    }
+
+    private FloweringWoodBlock template_flowering_wood(MaterialColor arg) {
+        return new FloweringWoodBlock(BlockBehaviour.Properties.of(Material.WOOD, arg).strength(2.0F).sound(SoundType.WOOD), AbundanceBlocks.REDBUD_WOOD);
+    }
+
     public RotatedPillarBlock log() {
         return template_log(woodColor, logColor);
     }
 
     public RotatedPillarBlock wood() {
         return template_wood(logColor);
+    }
+
+    public FloweringWoodBlock flowering_log() {
+        return template_flowering_log(woodColor, logColor);
+    }
+
+    public FloweringWoodBlock flowering_wood() {
+        return template_flowering_wood(woodColor);
     }
 
     public RotatedPillarBlock stripped_log() {
