@@ -1,5 +1,6 @@
 package com.teamaurora.abundance.core.registry;
 
+import com.teamaurora.abundance.common.block.trees.JacarandaTreeGrower;
 import com.teamaurora.abundance.common.item.FollowItemLike;
 import com.teamaurora.abundance.core.Abundance;
 import com.teamaurora.abundance.core.registry.util.Woodset;
@@ -10,10 +11,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FlowerBlock;
-import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
 
@@ -44,6 +42,9 @@ public class AbundanceBlocks {
     public static final Supplier<Block> JACARANDA_LEAVES = registerBlock("jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> BUDDING_JACARANDA_LEAVES = registerBlock("budding_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> FLOWERING_JACARANDA_LEAVES = registerBlock("flowering_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> JACARANDA_SAPLING = registerBlock("jacaranda_sapling", () -> new SaplingBlock(new JacarandaTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+
+    public static final Supplier<Block> POTTED_JACARANDA_SAPLING = registerPotted("potted_jacaranda_sapling", JACARANDA_SAPLING);
 
 
     /* Redbud Woodset */
@@ -89,11 +90,16 @@ public class AbundanceBlocks {
         return register;
     }
 
+    private static Supplier<Block> registerPotted(String id, Supplier<Block> block) {
+        Supplier<Block> register = BLOCKS.register(id, () -> new FlowerPotBlock(block.get(), Properties.POTTED_PLANT));
+        return register;
+    }
+
     public static final class Properties {
         public static final BlockBehaviour.Properties JACARANDA_LEAVES = BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).color(MaterialColor.COLOR_PURPLE);
-
         public static final BlockBehaviour.Properties REDBUD_LEAVES = BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).color(MaterialColor.COLOR_RED);
-
+        public static final BlockBehaviour.Properties SAPLING = BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING);
+        public static final BlockBehaviour.Properties POTTED_PLANT = BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM);
     }
 
 }

@@ -1,12 +1,15 @@
 package com.teamaurora.abundance.core;
 
 import com.teamaurora.abundance.core.registry.AbundanceBlocks;
+import com.teamaurora.abundance.core.registry.AbundanceFeatures;
 import com.teamaurora.abundance.core.registry.AbundanceMobEffects;
 import com.teamaurora.abundance.core.registry.AbundanceItems;
+import gg.moonflower.pollen.api.datagen.provider.model.PollinatedModelProvider;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.StrippingRegistry;
 import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.data.DataGenerator;
 
 public class Abundance {
     public static final String MOD_ID = "abundance";
@@ -28,6 +31,10 @@ public class Abundance {
 
             RenderTypeRegistry.register(AbundanceBlocks.REDBUD_DOOR.get(), RenderType.cutoutMipped());
             RenderTypeRegistry.register(AbundanceBlocks.REDBUD_TRAPDOOR.get(), RenderType.cutoutMipped());
+
+            RenderTypeRegistry.register(AbundanceBlocks.JACARANDA_SAPLING.get(), RenderType.cutout());
+
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_JACARANDA_SAPLING.get(), RenderType.cutout());
         });
     }
 
@@ -35,6 +42,9 @@ public class Abundance {
         AbundanceBlocks.BLOCKS.register(Abundance.PLATFORM);
         AbundanceItems.ITEMS.register(Abundance.PLATFORM);
         AbundanceMobEffects.MOB_EFFECTS.register(Abundance.PLATFORM);
+        AbundanceFeatures.FEATURES.register(Abundance.PLATFORM);
+        AbundanceFeatures.CONFIGURED_FEATURES.register(Abundance.PLATFORM);
+        AbundanceFeatures.TREE_DECORATOR_TYPES.register(Abundance.PLATFORM);
     }
 
     public static void onCommonPostInit(Platform.ModSetupContext ctx) {
@@ -46,6 +56,8 @@ public class Abundance {
             StrippingRegistry.register(AbundanceBlocks.FLOWERING_REDBUD_LOG.get(), AbundanceBlocks.STRIPPED_REDBUD_LOG.get());
             StrippingRegistry.register(AbundanceBlocks.REDBUD_WOOD.get(), AbundanceBlocks.STRIPPED_REDBUD_WOOD.get());
             StrippingRegistry.register(AbundanceBlocks.FLOWERING_REDBUD_WOOD.get(), AbundanceBlocks.STRIPPED_REDBUD_WOOD.get());
+
+            AbundanceFeatures.Configured.registerConfiguredFeatures();
         });
     }
 
