@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "abundance:potted_jacaranda_sapling"
+    "abundance:potted_jacaranda_sapling",
+    "abundance:potted_blue_jacaranda_sapling"
   ]
 }

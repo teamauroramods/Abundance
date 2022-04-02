@@ -37,7 +37,10 @@ public class AbundanceFeatures {
         public static final BlockState JACARANDA_LOG = AbundanceBlocks.JACARANDA_LOG.get().defaultBlockState();
         public static final BlockState JACARANDA_LEAVES = AbundanceBlocks.JACARANDA_LEAVES.get().defaultBlockState();
         public static final BlockState BUDDING_JACARANDA_LEAVES = AbundanceBlocks.BUDDING_JACARANDA_LEAVES.get().defaultBlockState();
-        public static final BlockState FLOWERING_JACARANDA_LEAVES = AbundanceBlocks.JACARANDA_LEAVES.get().defaultBlockState();
+        public static final BlockState FLOWERING_JACARANDA_LEAVES = AbundanceBlocks.FLOWERING_JACARANDA_LEAVES.get().defaultBlockState();
+        public static final BlockState BLUE_JACARANDA_LEAVES = AbundanceBlocks.BLUE_JACARANDA_LEAVES.get().defaultBlockState();
+        public static final BlockState BUDDING_BLUE_JACARANDA_LEAVES = AbundanceBlocks.BUDDING_BLUE_JACARANDA_LEAVES.get().defaultBlockState();
+        public static final BlockState FLOWERING_BLUE_JACARANDA_LEAVES = AbundanceBlocks.FLOWERING_BLUE_JACARANDA_LEAVES.get().defaultBlockState();
     }
 
     public static final class Configs {
@@ -83,6 +86,48 @@ public class AbundanceFeatures {
                 new BlobFoliagePlacer(UniformInt.of(0, 0), UniformInt.of(0, 0), 0),
                 new TwoLayersFeatureSize(0, 0, 0)
         )).ignoreVines().decorators(ImmutableList.of(ABUNDANCE_BEEHIVE_0002)).build();
+        public static final TreeConfiguration BLUE_JACARANDA_TREE_CONFIG = (new TreeConfiguration.TreeConfigurationBuilder(
+                new SimpleStateProvider(BlockStates.JACARANDA_LOG),
+                new StraightTrunkPlacer(0, 0, 0),
+                new WeightedStateProvider(new SimpleWeightedRandomList.Builder().add(BlockStates.BLUE_JACARANDA_LEAVES, 3).add(BlockStates.BUDDING_BLUE_JACARANDA_LEAVES, 1).build()),
+                new BlobFoliagePlacer(UniformInt.of(0, 0), UniformInt.of(0, 0), 0),
+                new TwoLayersFeatureSize(0, 0, 0)
+        )).ignoreVines().build();
+        public static final TreeConfiguration FLOWERING_BLUE_JACARANDA_TREE_CONFIG = (new TreeConfiguration.TreeConfigurationBuilder(
+                new SimpleStateProvider(BlockStates.JACARANDA_LOG),
+                new StraightTrunkPlacer(0, 0, 0),
+                new WeightedStateProvider(new SimpleWeightedRandomList.Builder().add(BlockStates.BUDDING_BLUE_JACARANDA_LEAVES, 3).add(BlockStates.FLOWERING_BLUE_JACARANDA_LEAVES, 2).build()),
+                new BlobFoliagePlacer(UniformInt.of(0, 0), UniformInt.of(0, 0), 0),
+                new TwoLayersFeatureSize(0, 0, 0)
+        )).ignoreVines().build();
+        public static final TreeConfiguration BLUE_JACARANDA_TREE_BEES_005_CONFIG = (new TreeConfiguration.TreeConfigurationBuilder(
+                new SimpleStateProvider(BlockStates.JACARANDA_LOG),
+                new StraightTrunkPlacer(0, 0, 0),
+                new WeightedStateProvider(new SimpleWeightedRandomList.Builder().add(BlockStates.BLUE_JACARANDA_LEAVES, 3).add(BlockStates.BUDDING_BLUE_JACARANDA_LEAVES, 1).build()),
+                new BlobFoliagePlacer(UniformInt.of(0, 0), UniformInt.of(0, 0), 0),
+                new TwoLayersFeatureSize(0, 0, 0)
+        )).ignoreVines().decorators(ImmutableList.of(ABUNDANCE_BEEHIVE_005)).build();
+        public static final TreeConfiguration FLOWERING_BLUE_JACARANDA_TREE_BEES_005_CONFIG = (new TreeConfiguration.TreeConfigurationBuilder(
+                new SimpleStateProvider(BlockStates.JACARANDA_LOG),
+                new StraightTrunkPlacer(0, 0, 0),
+                new WeightedStateProvider(new SimpleWeightedRandomList.Builder().add(BlockStates.BUDDING_BLUE_JACARANDA_LEAVES, 3).add(BlockStates.FLOWERING_BLUE_JACARANDA_LEAVES, 2).build()),
+                new BlobFoliagePlacer(UniformInt.of(0, 0), UniformInt.of(0, 0), 0),
+                new TwoLayersFeatureSize(0, 0, 0)
+        )).ignoreVines().decorators(ImmutableList.of(ABUNDANCE_BEEHIVE_005)).build();
+        public static final TreeConfiguration BLUE_JACARANDA_TREE_BEES_0002_CONFIG = (new TreeConfiguration.TreeConfigurationBuilder(
+                new SimpleStateProvider(BlockStates.JACARANDA_LOG),
+                new StraightTrunkPlacer(0, 0, 0),
+                new WeightedStateProvider(new SimpleWeightedRandomList.Builder().add(BlockStates.BLUE_JACARANDA_LEAVES, 3).add(BlockStates.BUDDING_BLUE_JACARANDA_LEAVES, 1).build()),
+                new BlobFoliagePlacer(UniformInt.of(0, 0), UniformInt.of(0, 0), 0),
+                new TwoLayersFeatureSize(0, 0, 0)
+        )).ignoreVines().decorators(ImmutableList.of(ABUNDANCE_BEEHIVE_0002)).build();
+        public static final TreeConfiguration FLOWERING_BLUE_JACARANDA_TREE_BEES_0002_CONFIG = (new TreeConfiguration.TreeConfigurationBuilder(
+                new SimpleStateProvider(BlockStates.JACARANDA_LOG),
+                new StraightTrunkPlacer(0, 0, 0),
+                new WeightedStateProvider(new SimpleWeightedRandomList.Builder().add(BlockStates.BUDDING_BLUE_JACARANDA_LEAVES, 3).add(BlockStates.FLOWERING_BLUE_JACARANDA_LEAVES, 2).build()),
+                new BlobFoliagePlacer(UniformInt.of(0, 0), UniformInt.of(0, 0), 0),
+                new TwoLayersFeatureSize(0, 0, 0)
+        )).ignoreVines().decorators(ImmutableList.of(ABUNDANCE_BEEHIVE_0002)).build();
     }
 
     public static final class Configured {
@@ -93,14 +138,27 @@ public class AbundanceFeatures {
         public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> JACARANDA_BEES_0002 = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(Configs.JACARANDA_TREE_BEES_0002_CONFIG);
         public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> FLOWERING_JACARANDA_BEES_0002 = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(Configs.FLOWERING_JACARANDA_TREE_BEES_0002_CONFIG);
 
+        public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> BLUE_JACARANDA = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(Configs.BLUE_JACARANDA_TREE_CONFIG);
+        public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> FLOWERING_BLUE_JACARANDA = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(Configs.FLOWERING_BLUE_JACARANDA_TREE_CONFIG);
+        public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> BLUE_JACARANDA_BEES_005 = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(Configs.BLUE_JACARANDA_TREE_BEES_005_CONFIG);
+        public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> FLOWERING_BLUE_JACARANDA_BEES_005 = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(Configs.FLOWERING_BLUE_JACARANDA_TREE_BEES_005_CONFIG);
+        public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> BLUE_JACARANDA_BEES_0002 = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(Configs.BLUE_JACARANDA_TREE_BEES_0002_CONFIG);
+        public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> FLOWERING_BLUE_JACARANDA_BEES_0002 = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(Configs.FLOWERING_BLUE_JACARANDA_TREE_BEES_0002_CONFIG);
+
 
         public static void registerConfiguredFeatures() {
             CONFIGURED_FEATURES.register("jacaranda", Configured.JACARANDA);
             CONFIGURED_FEATURES.register("flowering_jacaranda", Configured.FLOWERING_JACARANDA);
             CONFIGURED_FEATURES.register("jacaranda_bees_005", Configured.JACARANDA_BEES_005);
             CONFIGURED_FEATURES.register("flowering_jacaranda_bees_005", Configured.FLOWERING_JACARANDA_BEES_005);
-            CONFIGURED_FEATURES.register("jacaranda_bees_0002", Configured.FLOWERING_JACARANDA_BEES_0002);
+            CONFIGURED_FEATURES.register("jacaranda_bees_0002", Configured.JACARANDA_BEES_0002);
             CONFIGURED_FEATURES.register("flowering_jacaranda_bees_0002", Configured.FLOWERING_JACARANDA_BEES_0002);
+            CONFIGURED_FEATURES.register("blue_jacaranda", Configured.BLUE_JACARANDA);
+            CONFIGURED_FEATURES.register("flowering_blue_jacaranda", Configured.FLOWERING_BLUE_JACARANDA);
+            CONFIGURED_FEATURES.register("blue_jacaranda_bees_005", Configured.BLUE_JACARANDA_BEES_005);
+            CONFIGURED_FEATURES.register("flowering_blue_jacaranda_bees_005", Configured.FLOWERING_BLUE_JACARANDA_BEES_005);
+            CONFIGURED_FEATURES.register("blue_jacaranda_bees_0002", Configured.BLUE_JACARANDA_BEES_0002);
+            CONFIGURED_FEATURES.register("flowering_blue_jacaranda_bees_0002", Configured.FLOWERING_BLUE_JACARANDA_BEES_0002);
         }
     }
 }

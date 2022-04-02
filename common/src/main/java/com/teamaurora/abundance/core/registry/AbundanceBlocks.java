@@ -1,5 +1,6 @@
 package com.teamaurora.abundance.core.registry;
 
+import com.teamaurora.abundance.common.block.trees.BlueJacarandaTreeGrower;
 import com.teamaurora.abundance.common.block.trees.JacarandaTreeGrower;
 import com.teamaurora.abundance.common.item.FollowItemLike;
 import com.teamaurora.abundance.core.Abundance;
@@ -44,7 +45,13 @@ public class AbundanceBlocks {
     public static final Supplier<Block> FLOWERING_JACARANDA_LEAVES = registerBlock("flowering_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> JACARANDA_SAPLING = registerBlock("jacaranda_sapling", () -> new SaplingBlock(new JacarandaTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
+    public static final Supplier<Block> BLUE_JACARANDA_LEAVES = registerBlock("blue_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BUDDING_BLUE_JACARANDA_LEAVES = registerBlock("budding_blue_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FLOWERING_BLUE_JACARANDA_LEAVES = registerBlock("flowering_blue_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BLUE_JACARANDA_SAPLING = registerBlock("blue_jacaranda_sapling", () -> new SaplingBlock(new BlueJacarandaTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+
     public static final Supplier<Block> POTTED_JACARANDA_SAPLING = registerPotted("potted_jacaranda_sapling", JACARANDA_SAPLING);
+    public static final Supplier<Block> POTTED_BLUE_JACARANDA_SAPLING = registerPotted("potted_blue_jacaranda_sapling", BLUE_JACARANDA_SAPLING);
 
 
     /* Redbud Woodset */
