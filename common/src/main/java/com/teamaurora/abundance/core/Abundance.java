@@ -7,9 +7,13 @@ import com.teamaurora.abundance.core.registry.AbundanceItems;
 import gg.moonflower.pollen.api.datagen.provider.model.PollinatedModelProvider;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.StrippingRegistry;
+import gg.moonflower.pollen.api.registry.client.ColorRegistry;
 import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
+import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.level.FoliageColor;
 
 public class Abundance {
     public static final String MOD_ID = "abundance";
@@ -22,6 +26,8 @@ public class Abundance {
             .build();
 
     public static void onClientInit() {
+        ColorRegistry.register((state, level, pos, tintIndex) -> {return level != null && pos != null ? BiomeColors.getAverageFoliageColor(level, pos) : FoliageColor.getDefaultColor();}, AbundanceBlocks.TUNBERGIA_VINE, AbundanceBlocks.TUNBERGIA_JUNGLE_LEAVES);
+        ColorRegistry.register((stack, tintIndex) -> {return FoliageColor.getDefaultColor();}, AbundanceBlocks.TUNBERGIA_VINE, AbundanceBlocks.TUNBERGIA_JUNGLE_LEAVES);
     }
 
     public static void onClientPostInit(Platform.ModSetupContext ctx) {
@@ -37,6 +43,8 @@ public class Abundance {
 
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_JACARANDA_SAPLING.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_BLUE_JACARANDA_SAPLING.get(), RenderType.cutout());
+
+            RenderTypeRegistry.register(AbundanceBlocks.TUNBERGIA_VINE.get(), RenderType.cutout());
         });
     }
 

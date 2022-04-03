@@ -1,0 +1,27 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "vine": "abundance:block/tunbergia_vine",
+        "overlay": "abundance:block/tunbergia_vine_overlay",
+        "particle": "abundance:block/tunbergia_vine"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0.8 ],
+            "to": [ 16, 16, 0.8 ],
+            "shade": false,
+            "faces": {
+                "north": { "uv": [ 16, 0, 0, 16 ], "texture": "#vine", "tintindex": 0 },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#vine", "tintindex": 0 }
+            }
+        },
+        {   "from": [ 0, 0, 0.8 ],
+            "to": [ 16, 16, 0.8 ],
+            "faces": {
+                "north": {"texture": "#overlay"},
+                "south": {"texture": "#overlay"},
+                "west":  {"texture": "#overlay"},
+                "east":  {"texture": "#overlay"}
+            }
+        }
+    ]
+}

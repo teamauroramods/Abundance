@@ -51,10 +51,15 @@
 
   "item.abundance.jacaranda_boat": "Jacaranda Boat",
 
+  "block.abundance.budding_jacaranda_leaves": "Budding Jacaranda Leaves",
+  "block.abundance.flowering_jacaranda_leaves": "Flowering Jacaranda Leaves",
   "block.abundance.blue_jacaranda_leaves": "Blue Jacaranda Leaves",
   "block.abundance.budding_blue_jacaranda_leaves": "Budding Blue Jacaranda Leaves",
   "block.abundance.flowering_blue_jacaranda_leaves": "Flowering Blue Jacaranda Leaves",
   "block.abundance.blue_jacaranda_sapling" : "Blue Jacaranda Sapling",
+
+  "block.abundance.tunbergia_vine": "Tunbergia Vine",
+  "block.abundance.tunbergia_jungle_leaves": "Tunbergia Jungle Leaves",
 
   "_comment3": "Redbud Trees",
   "block.abundance.stripped_redbud_log": "Stripped Redbud Log",

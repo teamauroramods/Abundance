@@ -8,7 +8,6 @@ import com.teamaurora.abundance.core.registry.AbundanceBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
-import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -25,19 +24,19 @@ public class JacarandaFeature extends Feature<TreeConfiguration> {
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<TreeConfiguration> context) {
-        int height = context.random().nextInt(4) + 4;
-        if (context.origin().getY() <= 0 || context.origin().getY() + height > context.level().getHeight() - 2) {
+    public boolean place(FeaturePlaceContext<TreeConfiguration> ctx) {
+        int height = ctx.random().nextInt(4) + 4;
+        if (ctx.origin().getY() <= -64 || ctx.origin().getY() + height > ctx.level().getHeight() - 2) {
             return false;
         }
-        if (!TreeUtil.isValidGround(context.level(), context.origin().below())) {
+        if (!TreeUtil.isValidGround(ctx.level(), ctx.origin().below())) {
             return false;
         }
         List<DirectionalBlockPos> logs = new ArrayList<>();
         List<BlockPos> leaves = new ArrayList<>();
 
         for (int i = 0; i <= height; i++) {
-            logs.add(new DirectionalBlockPos(context.origin().above(i), Direction.UP));
+            logs.add(new DirectionalBlockPos(ctx.origin().above(i), Direction.UP));
         }
 
         List<Direction> dirs = new ArrayList<>();
@@ -47,37 +46,36 @@ public class JacarandaFeature extends Feature<TreeConfiguration> {
         dirs.add(Direction.EAST);
 
         for (int i = 2; i <= height - 2; i++) {
-            Direction dir = dirs.get(context.random().nextInt(dirs.size()));
+            Direction dir = dirs.get(ctx.random().nextInt(dirs.size()));
             dirs.remove(dir);
-            addBranch(context.origin().above(i), dir, leaves, logs, context.random());
+            addBranch(ctx.origin().above(i), dir, leaves, logs, ctx.random());
         }
-        addCanopy(context.origin().above(height), leaves, context.random());
+        addCanopy(ctx.origin().above(height), leaves, ctx.random());
 
         List<BlockPos> leavesClean = cleanLeavesArray(leaves, logs);
 
         boolean flag = true;
         for (DirectionalBlockPos log : logs) {
-            if (!TreeUtil.isAirOrLeaves(context.level(), log.pos)) {
+            if (!TreeUtil.isAirOrLeaves(ctx.level(), log.pos)) {
                 flag = false;
             }
         }
         if (!flag) return false;
 
-        TreeUtil.setDirtAt(context.level(), context.origin().below());
+        TreeUtil.setDirtAt(ctx.level(), ctx.origin().below());
 
         for (DirectionalBlockPos log : logs) {
-            TreeUtil.placeDirectionalLogAt(context.level(), log.pos, log.direction, context.random(), context.config());
+            TreeUtil.placeDirectionalLogAt(ctx.level(), log.pos, log.direction, ctx.random(), ctx.config());
         }
         for (BlockPos leaf : leavesClean) {
-            TreeUtil.placeLeafAt(context.level(), leaf, context.random(), context.config());
+            TreeUtil.placeLeafAt(ctx.level(), leaf, ctx.random(), ctx.config());
         }
-
         Set<BlockPos> set = Sets.newHashSet();
         BiConsumer<BlockPos, BlockState> decSet = (blockPos, blockState) -> {
             set.add(blockPos.immutable());
-            context.level().setBlock(blockPos, blockState, 19);
+            ctx.level().setBlock(blockPos, blockState, 19);
         };
-        BoundingBox mutableBoundingBox = BoundingBox.infinite();
+        BoundingBox boundingBox = new BoundingBox(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE);
 
         List<BlockPos> logsPos = new ArrayList<>();
 
@@ -85,19 +83,18 @@ public class JacarandaFeature extends Feature<TreeConfiguration> {
             logsPos.add(log.pos);
         }
 
-        if (!context.config().decorators.isEmpty()) {
+        if (!ctx.config().decorators.isEmpty()) {
             logsPos.sort(Comparator.comparingInt(Vec3i::getY));
             leavesClean.sort(Comparator.comparingInt(Vec3i::getY));
-            context.config().decorators.forEach((decorator) -> decorator.place(context.level(), decSet, context.random(), logsPos, leavesClean));
+            ctx.config().decorators.forEach((decorator) -> decorator.place(ctx.level(), decSet, ctx.random(), logsPos, leavesClean));
         }
-
         return true;
     }
 
     private void addBranch(BlockPos pos, Direction dir, List<BlockPos> leaves, List<DirectionalBlockPos> logs, Random rand) {
         logs.add(new DirectionalBlockPos(pos.offset(dir.getNormal()), dir));
         int i = rand.nextInt(3) - 1;
-        BlockPos b2pos = pos.above(i).offset(dir.getNormal());
+        BlockPos b2pos = pos.relative(dir, 2).relative(dir.getClockWise(), i);
         logs.add(new DirectionalBlockPos(b2pos, dir));
         addCanopy(b2pos, leaves, rand);
     }
@@ -106,7 +103,7 @@ public class JacarandaFeature extends Feature<TreeConfiguration> {
         cir1(pos.below(), leaves, rand);
         cir2(pos, leaves, rand);
         cir2(pos.above(), leaves, rand);
-        cir1(pos.below(2), leaves, rand);
+        cir1(pos.above(2), leaves, rand);
     }
 
     private void cir1(BlockPos pos, List<BlockPos> leaves, Random rand) {

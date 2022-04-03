@@ -58,7 +58,7 @@ public final class TreeUtil {
 
     public static boolean isValidGround(LevelAccessor level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
-        return state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.DIRT) || state.is(Blocks.COARSE_DIRT) || state.is(Blocks.PODZOL) || state.is(Blocks.FARMLAND);
+        return state.is(Blocks.GRASS_BLOCK) || state.is(BlockTags.DIRT) || state.is(Blocks.PODZOL) || state.is(Blocks.FARMLAND);
     }
 
 }
