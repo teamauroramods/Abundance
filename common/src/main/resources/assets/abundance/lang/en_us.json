@@ -127,6 +127,8 @@
 
   "block.abundance.amaranthus": "Amaranthus",
   "block.abundance.chicory": "Chicory",
+  "block.abundance.chicory_colony": "Chicory Colony",
+  "item.abundance.chicory_roots": "Chicory Roots",
   "block.abundance.nemophila": "Nemophila",
   "block.abundance.myosotis": "Myosotis",
   "block.abundance.fiddleneck": "Fiddleneck",

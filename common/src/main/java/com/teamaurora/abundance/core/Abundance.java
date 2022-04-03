@@ -58,6 +58,8 @@ public class Abundance {
             RenderTypeRegistry.register(AbundanceBlocks.PINK_BLOSSOM_CARPET.get(), RenderType.cutout());
 
             RenderTypeRegistry.register(AbundanceBlocks.NEMOPHILA.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.CHICORY.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.CHICORY_COLONY.get(), RenderType.cutout());
         });
     }
 

@@ -1,9 +1,6 @@
 package com.teamaurora.abundance.core.registry;
 
-import com.teamaurora.abundance.common.block.BlossomCarpetBlock;
-import com.teamaurora.abundance.common.block.LavenderBlock;
-import com.teamaurora.abundance.common.block.NemophilaBlock;
-import com.teamaurora.abundance.common.block.TallLavenderBlock;
+import com.teamaurora.abundance.common.block.*;
 import com.teamaurora.abundance.common.block.trees.BlueJacarandaTreeGrower;
 import com.teamaurora.abundance.common.block.trees.FloweringRedbudTreeGrower;
 import com.teamaurora.abundance.common.block.trees.JacarandaTreeGrower;
@@ -105,7 +102,8 @@ public class AbundanceBlocks {
 
     /* Other Random Flowers */
 
-    public static final Supplier<Block> CHICORY = registerBlock("chicory", () -> new FlowerBlock(MobEffects.DIG_SPEED, 5, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> CHICORY = registerBlock("chicory", () -> new ChicoryBlock(MobEffects.DIG_SPEED, 5, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> CHICORY_COLONY = registerBlock("chicory_colony", () -> new BushBlock(Properties.CHICORY_COLONY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> NEMOPHILA = registerBlock("nemophila", () -> new NemophilaBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
 
@@ -143,6 +141,7 @@ public class AbundanceBlocks {
         public static final BlockBehaviour.Properties PINK_BLOSSOM_CARPET = BlockBehaviour.Properties.of(Material.CLOTH_DECORATION, MaterialColor.COLOR_PINK).noOcclusion().instabreak().randomTicks().sound(SoundType.AZALEA_LEAVES);
         public static final BlockBehaviour.Properties BLUE_FLOWER = BlockBehaviour.Properties.copy(Blocks.CORNFLOWER);
         public static final BlockBehaviour.Properties CHICORY = BlockBehaviour.Properties.copy(Blocks.ALLIUM);
+        public static final BlockBehaviour.Properties CHICORY_COLONY = BlockBehaviour.Properties.copy(Blocks.ALLIUM).sound(SoundType.CROP);
     }
 
 }
