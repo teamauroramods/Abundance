@@ -5,7 +5,6 @@ import com.teamaurora.abundance.core.registry.AbundanceBlocks;
 import com.teamaurora.abundance.core.registry.AbundanceFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.VineBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -17,12 +16,12 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.BiConsumer;
 
-public class LeaveTunbergiaVineDecorator extends LeaveVineDecorator {
-    public static final LeaveVineDecorator DECORATOR = new LeaveTunbergiaVineDecorator();
+public class LeaveThunbergiaVineDecorator extends LeaveVineDecorator {
+    public static final LeaveVineDecorator DECORATOR = new LeaveThunbergiaVineDecorator();
 
     public static final Codec<LeaveVineDecorator> CODEC = Codec.unit(() -> DECORATOR);
 
-    public LeaveTunbergiaVineDecorator() {
+    public LeaveThunbergiaVineDecorator() {
     }
 
     @Override
@@ -54,7 +53,7 @@ public class LeaveTunbergiaVineDecorator extends LeaveVineDecorator {
         pos = pos.below();
         Random rand = new Random();
         for (int i = 4; Feature.isAir(level, pos) && i > 0; --i) {
-            blockSetter.accept(pos, AbundanceBlocks.TUNBERGIA_VINE.get().defaultBlockState().setValue(sideProperty, true));
+            blockSetter.accept(pos, AbundanceBlocks.THUNBERGIA_VINE.get().defaultBlockState().setValue(sideProperty, true));
             pos = pos.below();
         }
     }

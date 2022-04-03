@@ -1,9 +1,9 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "vine": "abundance:block/tunbergia_vine",
-        "overlay": "abundance:block/tunbergia_vine_overlay",
-        "particle": "abundance:block/tunbergia_vine"
+        "vine": "abundance:block/thunbergia_vine",
+        "overlay": "abundance:block/thunbergia_vine_overlay",
+        "particle": "abundance:block/thunbergia_vine"
     },
     "elements": [
         {   "from": [ 0, 0, 0.8 ],

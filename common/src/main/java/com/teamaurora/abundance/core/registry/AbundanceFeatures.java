@@ -2,8 +2,8 @@ package com.teamaurora.abundance.core.registry;
 
 import com.google.common.collect.ImmutableList;
 import com.teamaurora.abundance.common.world.feature.JacarandaFeature;
-import com.teamaurora.abundance.common.world.treedecorator.LeaveTunbergiaVineDecorator;
-import com.teamaurora.abundance.common.world.treedecorator.TrunkTunbergiaVineDecorator;
+import com.teamaurora.abundance.common.world.treedecorator.LeaveThunbergiaVineDecorator;
+import com.teamaurora.abundance.common.world.treedecorator.TrunkThunbergiaVineDecorator;
 import com.teamaurora.abundance.core.Abundance;
 import gg.moonflower.pollen.api.registry.PollinatedRegistry;
 import net.minecraft.core.Registry;
@@ -34,8 +34,8 @@ public class AbundanceFeatures {
 
     public static final Supplier<Feature<TreeConfiguration>> JACARANDA_TREE = FEATURES.register("cypress_tree", () -> new JacarandaFeature(TreeConfiguration.CODEC));
 
-    public static final Supplier<TreeDecoratorType<?>> TRUNK_TUNBERGIA_VINE = TREE_DECORATOR_TYPES.register("trunk_tunbergia_vine", () -> new TreeDecoratorType<>(TrunkTunbergiaVineDecorator.CODEC));
-    public static final Supplier<TreeDecoratorType<?>> LEAVE_TUNBERGIA_VINE = TREE_DECORATOR_TYPES.register("leave_tunbergia_vine", () -> new TreeDecoratorType<>(LeaveTunbergiaVineDecorator.CODEC));
+    public static final Supplier<TreeDecoratorType<?>> TRUNK_TUNBERGIA_VINE = TREE_DECORATOR_TYPES.register("trunk_tunbergia_vine", () -> new TreeDecoratorType<>(TrunkThunbergiaVineDecorator.CODEC));
+    public static final Supplier<TreeDecoratorType<?>> LEAVE_TUNBERGIA_VINE = TREE_DECORATOR_TYPES.register("leave_tunbergia_vine", () -> new TreeDecoratorType<>(LeaveThunbergiaVineDecorator.CODEC));
 
 
     /* Beehives */
@@ -50,7 +50,7 @@ public class AbundanceFeatures {
         public static final BlockState BLUE_JACARANDA_LEAVES = AbundanceBlocks.BLUE_JACARANDA_LEAVES.get().defaultBlockState();
         public static final BlockState BUDDING_BLUE_JACARANDA_LEAVES = AbundanceBlocks.BUDDING_BLUE_JACARANDA_LEAVES.get().defaultBlockState();
         public static final BlockState FLOWERING_BLUE_JACARANDA_LEAVES = AbundanceBlocks.FLOWERING_BLUE_JACARANDA_LEAVES.get().defaultBlockState();
-        public static final BlockState TUNBERGIA_JUNGLE_LEAVES = AbundanceBlocks.TUNBERGIA_JUNGLE_LEAVES.get().defaultBlockState();
+        public static final BlockState TUNBERGIA_JUNGLE_LEAVES = AbundanceBlocks.THUNBERGIA_JUNGLE_LEAVES.get().defaultBlockState();
         public static final BlockState JUNGLE_LEAVES = Blocks.JUNGLE_LEAVES.defaultBlockState();
         public static final BlockState JUNGLE_LOG = Blocks.JUNGLE_LOG.defaultBlockState();
     }
@@ -140,13 +140,13 @@ public class AbundanceFeatures {
                 new BlobFoliagePlacer(UniformInt.of(0, 0), UniformInt.of(0, 0), 0),
                 new TwoLayersFeatureSize(0, 0, 0)
         )).ignoreVines().decorators(ImmutableList.of(ABUNDANCE_BEEHIVE_0002)).build();
-        public static final TreeConfiguration TUNBERGIA_JUNGLE_TREE_CONFIG = (new TreeConfiguration.TreeConfigurationBuilder(
+        public static final TreeConfiguration THUNBERGIA_JUNGLE_TREE_CONFIG = (new TreeConfiguration.TreeConfigurationBuilder(
                 new SimpleStateProvider(BlockStates.JUNGLE_LOG),
                 new StraightTrunkPlacer(4, 8, 0),
                 new WeightedStateProvider(new SimpleWeightedRandomList.Builder().add(BlockStates.TUNBERGIA_JUNGLE_LEAVES, 3).add(BlockStates.JUNGLE_LEAVES, 2).build()),
                 new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1)
-        )).decorators(ImmutableList.of(new CocoaDecorator(0.2F), TrunkTunbergiaVineDecorator.DECORATOR, LeaveTunbergiaVineDecorator.DECORATOR)).ignoreVines().build();
+        )).decorators(ImmutableList.of(new CocoaDecorator(0.2F), TrunkThunbergiaVineDecorator.DECORATOR, LeaveThunbergiaVineDecorator.DECORATOR)).ignoreVines().build();
     }
 
     public static final class Configured {
@@ -164,7 +164,7 @@ public class AbundanceFeatures {
         public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> BLUE_JACARANDA_BEES_0002 = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(Configs.BLUE_JACARANDA_TREE_BEES_0002_CONFIG);
         public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> FLOWERING_BLUE_JACARANDA_BEES_0002 = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(Configs.FLOWERING_BLUE_JACARANDA_TREE_BEES_0002_CONFIG);
 
-        public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> TUNBERGIA_JUNGLE = () -> Feature.TREE.configured(Configs.TUNBERGIA_JUNGLE_TREE_CONFIG);
+        public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> THUNBERGIA_JUNGLE = () -> Feature.TREE.configured(Configs.THUNBERGIA_JUNGLE_TREE_CONFIG);
 
 
         public static void registerConfiguredFeatures() {
@@ -180,7 +180,7 @@ public class AbundanceFeatures {
             CONFIGURED_FEATURES.register("flowering_blue_jacaranda_bees_005", Configured.FLOWERING_BLUE_JACARANDA_BEES_005);
             CONFIGURED_FEATURES.register("blue_jacaranda_bees_0002", Configured.BLUE_JACARANDA_BEES_0002);
             CONFIGURED_FEATURES.register("flowering_blue_jacaranda_bees_0002", Configured.FLOWERING_BLUE_JACARANDA_BEES_0002);
-            CONFIGURED_FEATURES.register("tunbergia_jungle", Configured.TUNBERGIA_JUNGLE);
+            CONFIGURED_FEATURES.register("tunbergia_jungle", Configured.THUNBERGIA_JUNGLE);
         }
     }
 }

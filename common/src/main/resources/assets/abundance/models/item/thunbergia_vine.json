@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "abundance:block/thunbergia_vine",
+    "layer1": "abundance:block/thunbergia_vine_overlay"
+  }
+}

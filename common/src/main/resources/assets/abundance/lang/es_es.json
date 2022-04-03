@@ -41,8 +41,6 @@
   "block.abundance.jacaranda_chest": "Cofre de jacarandá",
   "block.abundance.jacaranda_trapped_chest": "Cofre trampa de jacarandá",
   "block.abundance.jacaranda_ladder": "Escalera de mano de jacarandá",
-  "block.abundance.jacaranda_vertical_slab": "Losa vertical de jacarandá",
-  "block.abundance.vertical_jacaranda_planks": "Tablones de jacarandá verticales",
   "block.abundance.jacaranda_hedge": "Seto de jacarandá",
   "block.abundance.budding_jacaranda_hedge": "Seto de jacarandá en brote",
   "block.abundance.flowering_jacaranda_hedge": "Seto de jacarandá florecido",
@@ -55,8 +53,6 @@
 
   "block.abundance.budding_jacaranda_leaves": "Hojas de jacarandá en brote",
   "block.abundance.flowering_jacaranda_leaves": "Hojas de jacarandá florecidas",
-  "block.abundance.budding_jacaranda_leaf_carpet": "Alfombra de hojas de jacarandá en brote",
-  "block.abundance.flowering_jacaranda_leaf_carpet": "Alfombra de hojas de jacarandá florecidas",
 
 
   "_comment3": "Redbud Trees",
@@ -81,8 +77,6 @@
   "block.abundance.redbud_chest": "Cofre de ciclamor",
   "block.abundance.redbud_trapped_chest": "Cofre trampa de ciclamor",
   "block.abundance.redbud_ladder": "Escalera de mano de ciclamor",
-  "block.abundance.redbud_vertical_slab": "Losa vertical de ciclamor",
-  "block.abundance.vertical_redbud_planks": "Tablones de ciclamor verticales",
   "block.abundance.redbud_hedge": "Seto de ciclamor",
   "block.abundance.budding_redbud_hedge": "Seto de ciclamor en brote",
   "block.abundance.flowering_redbud_hedge": "Seto de ciclamor florecido",
@@ -175,5 +169,11 @@
   "_comment9": "Sound subtitles",
   "sound_event.abundance.entity.screecher.hurt": "Chillón herido",
   "sound_event.abundance.entity.screecher.screech": "Chillido de chillón",
-  "sound_event.abundance.entity.screecher.death": "Chillón muere"
+  "sound_event.abundance.entity.screecher.death": "Chillón muere",
+  "block.abundance.blue_jacaranda_leaves": "Blue Jacaranda Leaves",
+  "block.abundance.budding_blue_jacaranda_leaves": "Budding Blue Jacaranda Leaves",
+  "block.abundance.flowering_blue_jacaranda_leaves": "Flowering Blue Jacaranda Leaves",
+  "block.abundance.blue_jacaranda_sapling": "Blue Jacaranda Sapling",
+  "block.abundance.thunbergia_vine": "Thunbergia Vine",
+  "block.abundance.thunbergia_jungle_leaves": "Thunbergia Jungle Leaves"
 }

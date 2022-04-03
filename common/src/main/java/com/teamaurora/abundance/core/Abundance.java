@@ -26,8 +26,8 @@ public class Abundance {
             .build();
 
     public static void onClientInit() {
-        ColorRegistry.register((state, level, pos, tintIndex) -> {return level != null && pos != null ? BiomeColors.getAverageFoliageColor(level, pos) : FoliageColor.getDefaultColor();}, AbundanceBlocks.TUNBERGIA_VINE, AbundanceBlocks.TUNBERGIA_JUNGLE_LEAVES);
-        ColorRegistry.register((stack, tintIndex) -> {return FoliageColor.getDefaultColor();}, AbundanceBlocks.TUNBERGIA_VINE, AbundanceBlocks.TUNBERGIA_JUNGLE_LEAVES);
+        ColorRegistry.register((state, level, pos, tintIndex) -> {return level != null && pos != null ? BiomeColors.getAverageFoliageColor(level, pos) : FoliageColor.getDefaultColor();}, AbundanceBlocks.THUNBERGIA_VINE, AbundanceBlocks.THUNBERGIA_JUNGLE_LEAVES);
+        ColorRegistry.register((stack, tintIndex) -> {return FoliageColor.getDefaultColor();}, AbundanceBlocks.THUNBERGIA_VINE, AbundanceBlocks.THUNBERGIA_JUNGLE_LEAVES);
     }
 
     public static void onClientPostInit(Platform.ModSetupContext ctx) {
@@ -44,7 +44,7 @@ public class Abundance {
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_JACARANDA_SAPLING.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_BLUE_JACARANDA_SAPLING.get(), RenderType.cutout());
 
-            RenderTypeRegistry.register(AbundanceBlocks.TUNBERGIA_VINE.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.THUNBERGIA_VINE.get(), RenderType.cutout());
         });
     }
 

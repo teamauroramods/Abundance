@@ -9,22 +9,21 @@ import net.minecraft.world.level.block.VineBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 
 import java.util.List;
 import java.util.Random;
 import java.util.function.BiConsumer;
 
-public class TrunkTunbergiaVineDecorator extends TrunkVineDecorator {
+public class TrunkThunbergiaVineDecorator extends TrunkVineDecorator {
 
-    public static final TrunkTunbergiaVineDecorator DECORATOR = new TrunkTunbergiaVineDecorator();
+    public static final TrunkThunbergiaVineDecorator DECORATOR = new TrunkThunbergiaVineDecorator();
 
-    public static final Codec<TrunkTunbergiaVineDecorator> CODEC = Codec.unit(() -> {
+    public static final Codec<TrunkThunbergiaVineDecorator> CODEC = Codec.unit(() -> {
         return DECORATOR;
     });
 
-    public TrunkTunbergiaVineDecorator() {
+    public TrunkThunbergiaVineDecorator() {
     }
 
     @Override
@@ -65,7 +64,7 @@ public class TrunkTunbergiaVineDecorator extends TrunkVineDecorator {
     protected static void placeTunbergiaVine(BiConsumer<BlockPos, BlockState> blockSetter, BlockPos pos, BooleanProperty sideProperty) {
         Random rand = new Random();
         if (rand.nextBoolean()) {
-            blockSetter.accept(pos, AbundanceBlocks.TUNBERGIA_VINE.get().defaultBlockState().setValue(sideProperty, true));
+            blockSetter.accept(pos, AbundanceBlocks.THUNBERGIA_VINE.get().defaultBlockState().setValue(sideProperty, true));
         } else {
             blockSetter.accept(pos, Blocks.VINE.defaultBlockState().setValue(sideProperty, true));
         }

@@ -1,8 +1,8 @@
 {   "parent": "block/block",
   "textures": {
-    "all": "abundance:block/tunbergia_jungle_leaves",
+    "all": "abundance:block/thunbergia_jungle_leaves",
     "particle": "#all",
-    "overlay": "abundance:block/tunbergia_jungle_leaves_overlay"
+    "overlay": "abundance:block/thunbergia_jungle_leaves_overlay"
   },
   "elements": [
     {   "from": [ 0, 0, 0 ],
