@@ -1,7 +1,9 @@
 package com.teamaurora.abundance.core.registry;
 
 import com.teamaurora.abundance.common.block.trees.BlueJacarandaTreeGrower;
+import com.teamaurora.abundance.common.block.trees.FloweringRedbudTreeGrower;
 import com.teamaurora.abundance.common.block.trees.JacarandaTreeGrower;
+import com.teamaurora.abundance.common.block.trees.RedbudTreeGrower;
 import com.teamaurora.abundance.common.item.FollowItemLike;
 import com.teamaurora.abundance.core.Abundance;
 import com.teamaurora.abundance.core.registry.util.Woodset;
@@ -77,6 +79,11 @@ public class AbundanceBlocks {
     public static final Supplier<Block> REDBUD_LEAVES = registerBlock("redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> BUDDING_REDBUD_LEAVES = registerBlock("budding_redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> FLOWERING_REDBUD_LEAVES = registerBlock("flowering_redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> REDBUD_SAPLING = registerBlock("redbud_sapling", () -> new SaplingBlock(new RedbudTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FLOWERING_REDBUD_SAPLING = registerBlock("flowering_redbud_sapling", () -> new SaplingBlock(new FloweringRedbudTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+
+    public static final Supplier<Block> POTTED_REDBUD_SAPLING = registerPotted("potted_redbud_sapling", REDBUD_SAPLING);
+    public static final Supplier<Block> POTTED_FLOWERING_REDBUD_SAPLING = registerPotted("potted_flowering_redbud_sapling", FLOWERING_REDBUD_SAPLING);
 
     /* Tunbergia Blocks */
 

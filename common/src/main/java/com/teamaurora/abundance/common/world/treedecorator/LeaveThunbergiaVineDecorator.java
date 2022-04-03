@@ -26,7 +26,7 @@ public class LeaveThunbergiaVineDecorator extends LeaveVineDecorator {
 
     @Override
     protected TreeDecoratorType<?> type() {
-        return AbundanceFeatures.TRUNK_TUNBERGIA_VINE.get();
+        return AbundanceFeatures.LEAVE_THUNBERGIA_VINE.get();
     }
 
     @Override

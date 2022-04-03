@@ -2,6 +2,7 @@ package com.teamaurora.abundance.common.world.treedecorator;
 
 import com.mojang.serialization.Codec;
 import com.teamaurora.abundance.core.registry.AbundanceBlocks;
+import com.teamaurora.abundance.core.registry.AbundanceFeatures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.Blocks;
@@ -9,6 +10,7 @@ import net.minecraft.world.level.block.VineBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 
 import java.util.List;
@@ -24,6 +26,11 @@ public class TrunkThunbergiaVineDecorator extends TrunkVineDecorator {
     });
 
     public TrunkThunbergiaVineDecorator() {
+    }
+
+    @Override
+    protected TreeDecoratorType<?> type() {
+        return AbundanceFeatures.TRUNK_THUNBERGIA_VINE.get();
     }
 
     @Override

@@ -45,6 +45,12 @@ public class Abundance {
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_BLUE_JACARANDA_SAPLING.get(), RenderType.cutout());
 
             RenderTypeRegistry.register(AbundanceBlocks.THUNBERGIA_VINE.get(), RenderType.cutout());
+
+            RenderTypeRegistry.register(AbundanceBlocks.REDBUD_SAPLING.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.FLOWERING_REDBUD_SAPLING.get(), RenderType.cutout());
+
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_REDBUD_SAPLING.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_FLOWERING_REDBUD_SAPLING.get(), RenderType.cutout());
         });
     }
 

@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "abundance:potted_jacaranda_sapling",
-    "abundance:potted_blue_jacaranda_sapling"
+    "abundance:potted_blue_jacaranda_sapling",
+    "abundance:potted_redbud_sapling",
+    "abundance:potted_flowering_redbud_sapling"
   ]
 }
