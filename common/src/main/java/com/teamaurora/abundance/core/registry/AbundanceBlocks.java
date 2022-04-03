@@ -2,6 +2,7 @@ package com.teamaurora.abundance.core.registry;
 
 import com.teamaurora.abundance.common.block.BlossomCarpetBlock;
 import com.teamaurora.abundance.common.block.LavenderBlock;
+import com.teamaurora.abundance.common.block.NemophilaBlock;
 import com.teamaurora.abundance.common.block.TallLavenderBlock;
 import com.teamaurora.abundance.common.block.trees.BlueJacarandaTreeGrower;
 import com.teamaurora.abundance.common.block.trees.FloweringRedbudTreeGrower;
@@ -94,14 +95,19 @@ public class AbundanceBlocks {
     public static final Supplier<Block> POTTED_REDBUD_SAPLING = registerPotted("potted_redbud_sapling", REDBUD_SAPLING);
     public static final Supplier<Block> POTTED_FLOWERING_REDBUD_SAPLING = registerPotted("potted_flowering_redbud_sapling", FLOWERING_REDBUD_SAPLING);
 
-    /* Tunbergia Blocks */
+    public static final Supplier<Block> PINK_BLOSSOM_CARPET = registerBlock("pink_blossom_carpet", () -> new BlossomCarpetBlock(Properties.PINK_BLOSSOM_CARPET), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+
+
+    /* Thunbergia Blocks */
 
     public static final Supplier<Block> THUNBERGIA_VINE = registerBlock("thunbergia_vine", () -> new VineBlock(Properties.VINE), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> THUNBERGIA_JUNGLE_LEAVES = registerBlock("thunbergia_jungle_leaves", () -> new LeavesBlock(Properties.TUNBERGIA_JUNGLE_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
-    /* Misc */
+    /* Other Random Flowers */
 
-    public static final Supplier<Block> PINK_BLOSSOM_CARPET = registerBlock("pink_blossom_carpet", () -> new BlossomCarpetBlock(Properties.PINK_BLOSSOM_CARPET), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> CHICORY = registerBlock("chicory", () -> new FlowerBlock(MobEffects.DIG_SPEED, 5, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> NEMOPHILA = registerBlock("nemophila", () -> new NemophilaBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+
 
     private static Supplier<Block> registerBlock(String id, Supplier<Block> block, Item.Properties properties) {
         Supplier<Block> register = BLOCKS.register(id, block);
@@ -135,6 +141,8 @@ public class AbundanceBlocks {
         public static final BlockBehaviour.Properties SAPLING = BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING);
         public static final BlockBehaviour.Properties POTTED_PLANT = BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM);
         public static final BlockBehaviour.Properties PINK_BLOSSOM_CARPET = BlockBehaviour.Properties.of(Material.CLOTH_DECORATION, MaterialColor.COLOR_PINK).noOcclusion().instabreak().randomTicks().sound(SoundType.AZALEA_LEAVES);
+        public static final BlockBehaviour.Properties BLUE_FLOWER = BlockBehaviour.Properties.copy(Blocks.CORNFLOWER);
+        public static final BlockBehaviour.Properties CHICORY = BlockBehaviour.Properties.copy(Blocks.ALLIUM);
     }
 
 }
