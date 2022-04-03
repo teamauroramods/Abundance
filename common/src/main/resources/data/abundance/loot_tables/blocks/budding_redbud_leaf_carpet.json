@@ -1,0 +1,1 @@
+{"type": "minecraft:block", "pools": [{"rolls": 1, "entries": [{"type": "minecraft:item", "name": "abundance:budding_redbud_leaf_carpet"}], "conditions": [{"condition": "minecraft:survives_explosion"}]}]}

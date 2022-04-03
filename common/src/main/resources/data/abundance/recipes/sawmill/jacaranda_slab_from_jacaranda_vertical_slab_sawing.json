@@ -1,0 +1,1 @@
+{"type": "environmental:sawing", "ingredient": {"item": "abundance:jacaranda_vertical_slab"}, "result": "abundance:jacaranda_slab", "count": 1, "conditions": [{"type": "forge:mod_loaded", "modid": "environmental"}]}

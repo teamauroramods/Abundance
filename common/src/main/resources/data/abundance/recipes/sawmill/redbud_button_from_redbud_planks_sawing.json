@@ -1,0 +1,1 @@
+{"type": "environmental:sawing", "ingredient": {"item": "abundance:redbud_planks"}, "result": "abundance:redbud_button", "count": 1, "conditions": [{"type": "forge:mod_loaded", "modid": "environmental"}]}

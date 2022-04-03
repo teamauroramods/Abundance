@@ -1,0 +1,24 @@
+
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "F",
+    "F",
+    "F"
+  ],
+  "key": {
+    "F": {
+      "item": "abundance:redbud_wood"
+    }
+  },
+  "result": {
+    "item": "abundance:redbud_post",
+    "count": 8
+  },
+  "conditions": [
+    {
+      "type": "abnormals_core:quark_flag",
+      "flag": "wooden_posts"
+    }
+  ]
+}

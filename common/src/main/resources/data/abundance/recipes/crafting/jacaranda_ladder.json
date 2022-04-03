@@ -1,0 +1,1 @@
+{"type": "minecraft:crafting_shaped", "pattern": ["S S", "SPS", "S S"], "key": {"S": {"item": "minecraft:stick"}, "P": {"item": "abundance:jacaranda_planks"}}, "result": {"item": "abundance:jacaranda_ladder", "count": 4}, "conditions": [{"type": "abnormals_core:quark_flag", "flag": "variant_ladders"}]}

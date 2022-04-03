@@ -1,0 +1,1 @@
+{"type": "environmental:sawing", "ingredient": {"item": "abundance:vertical_jacaranda_planks"}, "result": "abundance:jacaranda_planks", "count": 1, "conditions": [{"type": "forge:mod_loaded", "modid": "environmental"}]}

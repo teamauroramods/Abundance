@@ -1,5 +1,6 @@
 package com.teamaurora.abundance.core.registry;
 
+import com.teamaurora.abundance.common.block.BlossomCarpetBlock;
 import com.teamaurora.abundance.common.block.trees.BlueJacarandaTreeGrower;
 import com.teamaurora.abundance.common.block.trees.FloweringRedbudTreeGrower;
 import com.teamaurora.abundance.common.block.trees.JacarandaTreeGrower;
@@ -16,6 +17,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
 import java.util.function.Supplier;
@@ -90,6 +92,10 @@ public class AbundanceBlocks {
     public static final Supplier<Block> THUNBERGIA_VINE = registerBlock("thunbergia_vine", () -> new VineBlock(Properties.VINE), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> THUNBERGIA_JUNGLE_LEAVES = registerBlock("thunbergia_jungle_leaves", () -> new LeavesBlock(Properties.TUNBERGIA_JUNGLE_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
+    /* Misc */
+
+    public static final Supplier<Block> PINK_BLOSSOM_CARPET = registerBlock("pink_blossom_carpet", () -> new BlossomCarpetBlock(Properties.PINK_BLOSSOM_CARPET), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+
     private static Supplier<Block> registerBlock(String id, Supplier<Block> block, Item.Properties properties) {
         Supplier<Block> register = BLOCKS.register(id, block);
         AbundanceItems.ITEMS.register(id, () -> new BlockItem(register.get(), properties));
@@ -120,6 +126,7 @@ public class AbundanceBlocks {
         public static final BlockBehaviour.Properties REDBUD_LEAVES = BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).color(MaterialColor.COLOR_RED);
         public static final BlockBehaviour.Properties SAPLING = BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING);
         public static final BlockBehaviour.Properties POTTED_PLANT = BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM);
+        public static final BlockBehaviour.Properties PINK_BLOSSOM_CARPET = BlockBehaviour.Properties.of(Material.CLOTH_DECORATION, MaterialColor.COLOR_PINK).noOcclusion().instabreak().randomTicks().sound(SoundType.AZALEA_LEAVES);
     }
 
 }

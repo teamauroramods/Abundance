@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "abundance:orange_daisy"
+    }
+  ],
+  "result": {
+    "item": "minecraft:orange_dye"
+  }
+}

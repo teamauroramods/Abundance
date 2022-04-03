@@ -1,0 +1,24 @@
+
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "F",
+    "F",
+    "F"
+  ],
+  "key": {
+    "F": {
+      "item": "abundance:stripped_redbud_wood"
+    }
+  },
+  "result": {
+    "item": "abundance:stripped_redbud_post",
+    "count": 8
+  },
+  "conditions": [
+    {
+      "type": "abnormals_core:quark_flag",
+      "flag": "wooden_posts"
+    }
+  ]
+}

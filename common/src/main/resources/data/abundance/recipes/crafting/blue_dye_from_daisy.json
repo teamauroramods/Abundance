@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "abundance:blue_daisy"
+    }
+  ],
+  "result": {
+    "item": "minecraft:blue_dye"
+  }
+}

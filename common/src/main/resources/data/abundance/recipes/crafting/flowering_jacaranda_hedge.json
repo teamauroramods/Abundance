@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "L",
+    "W"
+  ],
+  "key": {
+    "L": {
+      "item": "abundance:flowering_jacaranda_leaves"
+    },
+    "W": {
+      "tag": "abundance:jacaranda_logs"
+    }
+  },
+  "result": {
+    "item": "abundance:flowering_jacaranda_hedge",
+    "count": 2
+  },
+  "conditions": [
+    {
+      "type": "abnormals_core:quark_flag",
+      "flag": "hedges"
+    }
+  ]
+}

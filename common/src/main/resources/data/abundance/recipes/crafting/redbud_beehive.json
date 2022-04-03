@@ -1,0 +1,1 @@
+{"type": "minecraft:crafting_shaped", "pattern": ["PPP", "HHH", "PPP"], "key": {"P": {"item": "abundance:redbud_planks"}, "H": {"item": "minecraft:honeycomb"}}, "result": {"item": "abundance:redbud_beehive"}, "conditions": [{"type": "forge:mod_loaded", "modid": "buzzier_bees"}]}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "abundance:lavender_basket"
+    }
+  ],
+  "result": {
+    "item": "abundance:lavender",
+    "count": 9
+  },
+  "conditions": [
+    {
+      "type": "abnormals_core:quark_flag",
+      "flag": "apple_crate"
+    }
+  ]
+}

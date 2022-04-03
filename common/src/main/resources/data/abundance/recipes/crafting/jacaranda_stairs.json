@@ -1,0 +1,1 @@
+{"type": "minecraft:crafting_shaped", "group": "wooden_stairs", "pattern": ["#  ", "## ", "###"], "key": {"#": {"item": "abundance:jacaranda_planks"}}, "result": {"item": "abundance:jacaranda_stairs", "count": 4}}

@@ -1,0 +1,1 @@
+{"type": "environmental:sawing", "ingredient": {"tag": "abundance:jacaranda_logs"}, "result": "abundance:jacaranda_button", "count": 4, "conditions": [{"type": "forge:mod_loaded", "modid": "environmental"}]}
