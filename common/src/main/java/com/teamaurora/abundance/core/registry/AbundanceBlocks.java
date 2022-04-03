@@ -1,6 +1,8 @@
 package com.teamaurora.abundance.core.registry;
 
 import com.teamaurora.abundance.common.block.BlossomCarpetBlock;
+import com.teamaurora.abundance.common.block.LavenderBlock;
+import com.teamaurora.abundance.common.block.TallLavenderBlock;
 import com.teamaurora.abundance.common.block.trees.BlueJacarandaTreeGrower;
 import com.teamaurora.abundance.common.block.trees.FloweringRedbudTreeGrower;
 import com.teamaurora.abundance.common.block.trees.JacarandaTreeGrower;
@@ -25,6 +27,11 @@ import java.util.function.Supplier;
 @SuppressWarnings("unused")
 public class AbundanceBlocks {
     public static final PollinatedRegistry<Block> BLOCKS = PollinatedRegistry.create(Registry.BLOCK, Abundance.MOD_ID);
+
+    /* Lavender */
+
+    public static final Supplier<Block> LAVENDER = registerBlockNoItem("lavender", () -> new LavenderBlock(Properties.LAVENDER));
+    public static final Supplier<Block> TALL_LAVENDER = registerBlockNoItem("tall_lavender", () -> new TallLavenderBlock(Properties.LAVENDER));
 
     /* Jacaranda Woodset */
 
@@ -119,6 +126,7 @@ public class AbundanceBlocks {
     }
 
     public static final class Properties {
+        public static final BlockBehaviour.Properties LAVENDER = BlockBehaviour.Properties.copy(Blocks.ALLIUM).sound(SoundType.CROP);
         public static final BlockBehaviour.Properties JACARANDA_LEAVES = BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).color(MaterialColor.COLOR_PURPLE);
         public static final BlockBehaviour.Properties BLUE_JACARANDA_LEAVES = BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).color(MaterialColor.COLOR_LIGHT_BLUE);
         public static final BlockBehaviour.Properties TUNBERGIA_JUNGLE_LEAVES = BlockBehaviour.Properties.copy(Blocks.JUNGLE_LEAVES).color(MaterialColor.COLOR_YELLOW);

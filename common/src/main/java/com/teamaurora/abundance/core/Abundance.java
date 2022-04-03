@@ -32,6 +32,9 @@ public class Abundance {
 
     public static void onClientPostInit(Platform.ModSetupContext ctx) {
         ctx.enqueueWork(() -> {
+            RenderTypeRegistry.register(AbundanceBlocks.LAVENDER.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.TALL_LAVENDER.get(), RenderType.cutout());
+
             RenderTypeRegistry.register(AbundanceBlocks.JACARANDA_DOOR.get(), RenderType.cutoutMipped());
             RenderTypeRegistry.register(AbundanceBlocks.JACARANDA_TRAPDOOR.get(), RenderType.cutoutMipped());
 
