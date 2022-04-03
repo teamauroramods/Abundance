@@ -13,6 +13,11 @@
   },
   "license": "GPLv3",
   "environment": "*",
+  "accessWidener" : "${id}.accesswidener",
+  "mixins": [
+    "${id}-common.mixins.json",
+    "${id}.mixins.json"
+  ],
   "entrypoints": {
     "main": [
       "com.teamaurora.abundance.core.fabric.AbundanceFabric"

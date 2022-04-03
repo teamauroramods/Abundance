@@ -4,15 +4,12 @@ import com.teamaurora.abundance.core.registry.AbundanceBlocks;
 import com.teamaurora.abundance.core.registry.AbundanceFeatures;
 import com.teamaurora.abundance.core.registry.AbundanceMobEffects;
 import com.teamaurora.abundance.core.registry.AbundanceItems;
-import gg.moonflower.pollen.api.datagen.provider.model.PollinatedModelProvider;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.StrippingRegistry;
 import gg.moonflower.pollen.api.registry.client.ColorRegistry;
 import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
-import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.FoliageColor;
 
 public class Abundance {
