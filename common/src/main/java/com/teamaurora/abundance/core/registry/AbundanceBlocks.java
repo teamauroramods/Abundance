@@ -104,8 +104,17 @@ public class AbundanceBlocks {
 
     public static final Supplier<Block> CHICORY = registerBlock("chicory", () -> new ChicoryBlock(MobEffects.DIG_SPEED, 5, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> CHICORY_COLONY = registerBlock("chicory_colony", () -> new BushBlock(Properties.CHICORY_COLONY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> AMARANTHUS = registerBlock("amaranthus", () -> new ModifiedFlowerBlock(MobEffects.HUNGER, 6, Properties.AMARANTHUS), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> NEMOPHILA = registerBlock("nemophila", () -> new NemophilaBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> MYOSOTIS = registerBlock("myosotis", () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FIDDLENECK = registerBlock("fiddleneck", () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.FIDDLENECK), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> HELICONIA = registerBlock("heliconia", () -> new TallFlowerBlock(Properties.HELICONIA), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
+    public static final Supplier<Block> POTTED_CHICORY = registerPotted("potted_chicory", CHICORY);
+    public static final Supplier<Block> POTTED_AMARANTHUS = registerPotted("potted_amaranthus", AMARANTHUS);
+    public static final Supplier<Block> POTTED_NEMOPHILA = registerPotted("potted_nemophila", NEMOPHILA);
+    public static final Supplier<Block> POTTED_MYOSOTIS = registerPotted("potted_myosotis", MYOSOTIS);
+    public static final Supplier<Block> POTTED_FIDDLENECK = registerPotted("potted_fiddleneck", FIDDLENECK);
 
     private static Supplier<Block> registerBlock(String id, Supplier<Block> block, Item.Properties properties) {
         Supplier<Block> register = BLOCKS.register(id, block);
@@ -142,6 +151,8 @@ public class AbundanceBlocks {
         public static final BlockBehaviour.Properties BLUE_FLOWER = BlockBehaviour.Properties.copy(Blocks.CORNFLOWER);
         public static final BlockBehaviour.Properties CHICORY = BlockBehaviour.Properties.copy(Blocks.ALLIUM);
         public static final BlockBehaviour.Properties CHICORY_COLONY = BlockBehaviour.Properties.copy(Blocks.ALLIUM).sound(SoundType.CROP);
+        public static final BlockBehaviour.Properties AMARANTHUS = BlockBehaviour.Properties.copy(Blocks.POPPY);
+        public static final BlockBehaviour.Properties FIDDLENECK = BlockBehaviour.Properties.copy(Blocks.DANDELION);
+        public static final BlockBehaviour.Properties HELICONIA = BlockBehaviour.Properties.copy(Blocks.PEONY);
     }
-
 }

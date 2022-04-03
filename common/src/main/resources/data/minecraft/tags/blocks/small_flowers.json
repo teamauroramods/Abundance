@@ -2,8 +2,11 @@
   "replace": false,
   "values": [
     "abundance:lavender",
+    "abundance:amaranthus",
     "abundance:nemophila",
     "abundance:chicory",
+    "abundance:myosotis",
+    "abundance:fiddleneck",
     "abundance:budding_redbud_leaves",
     "abundance:flowering_redbud_leaves",
     "abundance:flowering_redbud_log",

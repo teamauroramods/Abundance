@@ -60,6 +60,16 @@ public class Abundance {
             RenderTypeRegistry.register(AbundanceBlocks.NEMOPHILA.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.CHICORY.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.CHICORY_COLONY.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.AMARANTHUS.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.MYOSOTIS.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.FIDDLENECK.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.HELICONIA.get(), RenderType.cutout());
+
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_NEMOPHILA.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_CHICORY.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_AMARANTHUS.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_MYOSOTIS.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_FIDDLENECK.get(), RenderType.cutout());
         });
     }
 
