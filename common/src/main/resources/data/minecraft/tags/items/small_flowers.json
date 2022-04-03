@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "abundance:lavender",
+    "abundance:budding_redbud_leaves",
+    "abundance:flowering_redbud_leaves",
+    "abundance:flowering_redbud_log",
+    "abundance:flowering_redbud_wood",
+    "abundance:flowering_redbud_sapling",
+    "abundance:budding_jacaranda_leaves",
+    "abundance:flowering_jacaranda_leaves",
+    "abundance:budding_blue_jacaranda_leaves",
+    "abundance:flowering_blue_jacaranda_leaves",
+    "abundance:pink_blossom_carpet"
+  ]
+}
