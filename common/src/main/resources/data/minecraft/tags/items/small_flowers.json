@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "abundance:lavender",
+    "abundance:sunny_marigold",
+    "abundance:shady_marigold",
     "abundance:amaranthus",
     "abundance:nemophila",
     "abundance:chicory",

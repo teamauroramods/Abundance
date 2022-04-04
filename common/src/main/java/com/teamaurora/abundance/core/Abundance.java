@@ -31,29 +31,25 @@ public class Abundance {
         ctx.enqueueWork(() -> {
             RenderTypeRegistry.register(AbundanceBlocks.LAVENDER.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.TALL_LAVENDER.get(), RenderType.cutout());
-
+            RenderTypeRegistry.register(AbundanceBlocks.SUNNY_MARIGOLD.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.SHADY_MARIGOLD.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.TALL_MARIGOLD.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_SUNNY_MARIGOLD.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_SHADY_MARIGOLD.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.JACARANDA_DOOR.get(), RenderType.cutoutMipped());
             RenderTypeRegistry.register(AbundanceBlocks.JACARANDA_TRAPDOOR.get(), RenderType.cutoutMipped());
-
             RenderTypeRegistry.register(AbundanceBlocks.REDBUD_DOOR.get(), RenderType.cutoutMipped());
             RenderTypeRegistry.register(AbundanceBlocks.REDBUD_TRAPDOOR.get(), RenderType.cutoutMipped());
-
             RenderTypeRegistry.register(AbundanceBlocks.JACARANDA_SAPLING.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.BLUE_JACARANDA_SAPLING.get(), RenderType.cutout());
-
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_JACARANDA_SAPLING.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_BLUE_JACARANDA_SAPLING.get(), RenderType.cutout());
-
             RenderTypeRegistry.register(AbundanceBlocks.THUNBERGIA_VINE.get(), RenderType.cutout());
-
             RenderTypeRegistry.register(AbundanceBlocks.REDBUD_SAPLING.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.FLOWERING_REDBUD_SAPLING.get(), RenderType.cutout());
-
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_REDBUD_SAPLING.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_FLOWERING_REDBUD_SAPLING.get(), RenderType.cutout());
-
             RenderTypeRegistry.register(AbundanceBlocks.PINK_BLOSSOM_CARPET.get(), RenderType.cutout());
-
             RenderTypeRegistry.register(AbundanceBlocks.NEMOPHILA.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.CHICORY.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.CHICORY_COLONY.get(), RenderType.cutout());
@@ -61,7 +57,6 @@ public class Abundance {
             RenderTypeRegistry.register(AbundanceBlocks.MYOSOTIS.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.FIDDLENECK.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.HELICONIA.get(), RenderType.cutout());
-
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_NEMOPHILA.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_CHICORY.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_AMARANTHUS.get(), RenderType.cutout());

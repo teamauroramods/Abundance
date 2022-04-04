@@ -31,6 +31,17 @@ public class AbundanceBlocks {
     public static final Supplier<Block> LAVENDER = registerBlockNoItem("lavender", () -> new LavenderBlock(Properties.LAVENDER));
     public static final Supplier<Block> TALL_LAVENDER = registerBlockNoItem("tall_lavender", () -> new TallLavenderBlock(Properties.LAVENDER));
 
+
+    /* Marigolds */
+
+    public static final Supplier<Block> SUNNY_MARIGOLD = registerBlock("sunny_marigold", () -> new MarigoldBlock(MobEffects.HEAL, 1, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> SHADY_MARIGOLD = registerBlock("shady_marigold", () -> new MarigoldBlock(MobEffects.HEAL, 1, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> TALL_MARIGOLD = registerBlock("tall_marigold", () -> new TallMarigoldBlock(Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+
+    public static final Supplier<Block> POTTED_SUNNY_MARIGOLD = registerPotted("potted_sunny_marigold", SUNNY_MARIGOLD);
+    public static final Supplier<Block> POTTED_SHADY_MARIGOLD = registerPotted("potted_shady_marigold", SHADY_MARIGOLD);
+
+
     /* Jacaranda Woodset */
 
     private static final Woodset JACARANDA = new Woodset(MaterialColor.COLOR_LIGHT_GRAY, MaterialColor.COLOR_PURPLE);
@@ -107,7 +118,7 @@ public class AbundanceBlocks {
     public static final Supplier<Block> AMARANTHUS = registerBlock("amaranthus", () -> new ModifiedFlowerBlock(MobEffects.HUNGER, 6, Properties.AMARANTHUS), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> NEMOPHILA = registerBlock("nemophila", () -> new NemophilaBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> MYOSOTIS = registerBlock("myosotis", () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> FIDDLENECK = registerBlock("fiddleneck", () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.FIDDLENECK), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FIDDLENECK = registerBlock("fiddleneck", () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> HELICONIA = registerBlock("heliconia", () -> new TallFlowerBlock(Properties.HELICONIA), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
     public static final Supplier<Block> POTTED_CHICORY = registerPotted("potted_chicory", CHICORY);
@@ -152,7 +163,7 @@ public class AbundanceBlocks {
         public static final BlockBehaviour.Properties CHICORY = BlockBehaviour.Properties.copy(Blocks.ALLIUM);
         public static final BlockBehaviour.Properties CHICORY_COLONY = BlockBehaviour.Properties.copy(Blocks.ALLIUM).sound(SoundType.CROP);
         public static final BlockBehaviour.Properties AMARANTHUS = BlockBehaviour.Properties.copy(Blocks.POPPY);
-        public static final BlockBehaviour.Properties FIDDLENECK = BlockBehaviour.Properties.copy(Blocks.DANDELION);
+        public static final BlockBehaviour.Properties YELLOW_FLOWER = BlockBehaviour.Properties.copy(Blocks.DANDELION);
         public static final BlockBehaviour.Properties HELICONIA = BlockBehaviour.Properties.copy(Blocks.PEONY);
     }
 }

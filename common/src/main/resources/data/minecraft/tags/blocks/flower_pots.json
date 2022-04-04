@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "abundance:potted_sunny_marigold",
+    "abundance:potted_shady_marigold",
     "abundance:potted_jacaranda_sapling",
     "abundance:potted_blue_jacaranda_sapling",
     "abundance:potted_redbud_sapling",
