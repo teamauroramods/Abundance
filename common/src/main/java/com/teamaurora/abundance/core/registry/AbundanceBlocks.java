@@ -111,6 +111,26 @@ public class AbundanceBlocks {
     public static final Supplier<Block> THUNBERGIA_VINE = registerBlock("thunbergia_vine", () -> new VineBlock(Properties.VINE), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> THUNBERGIA_JUNGLE_LEAVES = registerBlock("thunbergia_jungle_leaves", () -> new LeavesBlock(Properties.TUNBERGIA_JUNGLE_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
+
+    /* Daisies */
+
+    public static final Supplier<Block> PINK_DAISY = registerBlock("pink_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> PURPLE_DAISY = registerBlock("purple_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> MAGENTA_DAISY = registerBlock("magenta_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> YELLOW_DAISY = registerBlock("yellow_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> ORANGE_DAISY = registerBlock("orange_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> RED_DAISY = registerBlock("red_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BLUE_DAISY = registerBlock("blue_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+
+    public static final Supplier<Block> POTTED_PINK_DAISY = registerPotted("potted_pink_daisy", PINK_DAISY);
+    public static final Supplier<Block> POTTED_PURPLE_DAISY = registerPotted("potted_purple_daisy", PURPLE_DAISY);
+    public static final Supplier<Block> POTTED_MAGENTA_DAISY = registerPotted("potted_magenta_daisy", MAGENTA_DAISY);
+    public static final Supplier<Block> POTTED_YELLOW_DAISY = registerPotted("potted_yellow_daisy", YELLOW_DAISY);
+    public static final Supplier<Block> POTTED_ORANGE_DAISY = registerPotted("potted_orange_daisy", ORANGE_DAISY);
+    public static final Supplier<Block> POTTED_RED_DAISY = registerPotted("potted_red_daisy", RED_DAISY);
+    public static final Supplier<Block> POTTED_BLUE_DAISY = registerPotted("potted_blue_daisy", BLUE_DAISY);
+
+
     /* Other Random Flowers */
 
     public static final Supplier<Block> CHICORY = registerBlock("chicory", () -> new ChicoryBlock(MobEffects.DIG_SPEED, 5, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
@@ -159,6 +179,7 @@ public class AbundanceBlocks {
         public static final BlockBehaviour.Properties SAPLING = BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING);
         public static final BlockBehaviour.Properties POTTED_PLANT = BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM);
         public static final BlockBehaviour.Properties PINK_BLOSSOM_CARPET = BlockBehaviour.Properties.of(Material.CLOTH_DECORATION, MaterialColor.COLOR_PINK).noOcclusion().instabreak().randomTicks().sound(SoundType.AZALEA_LEAVES);
+        public static final BlockBehaviour.Properties DAISY = BlockBehaviour.Properties.copy(Blocks.OXEYE_DAISY);
         public static final BlockBehaviour.Properties BLUE_FLOWER = BlockBehaviour.Properties.copy(Blocks.CORNFLOWER);
         public static final BlockBehaviour.Properties CHICORY = BlockBehaviour.Properties.copy(Blocks.ALLIUM);
         public static final BlockBehaviour.Properties CHICORY_COLONY = BlockBehaviour.Properties.copy(Blocks.ALLIUM).sound(SoundType.CROP);
