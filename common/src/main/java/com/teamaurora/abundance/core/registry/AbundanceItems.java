@@ -16,7 +16,7 @@ public class AbundanceItems {
     public static final Supplier<Item> PINK_BLOSSOMS = registerItem("pink_blossoms", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     public static final Supplier<Item> LAVENDER = registerItem("lavender", () -> new ItemNameBlockItem(AbundanceBlocks.LAVENDER.get(), new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    public static final Supplier<Item> CHICORY_ROOTS = registerItem("chicory_roots", () -> new Item(new Item.Properties().food(Foods.CHICORY_ROOTS).tab(CreativeModeTab.TAB_MISC)));
+    public static final Supplier<Item> CHICORY_ROOTS = registerItem("chicory_roots", () -> new Item(new Item.Properties().food(Foods.CHICORY_ROOTS).tab(CreativeModeTab.TAB_FOOD)));
 
     public static Supplier<Item> registerItem(String id, Supplier<Item> item) {
         Supplier<Item> register = ITEMS.register(id, item);
