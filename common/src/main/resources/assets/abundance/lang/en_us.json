@@ -58,7 +58,7 @@
   "block.abundance.flowering_blue_jacaranda_leaves": "Flowering Blue Jacaranda Leaves",
   "block.abundance.blue_jacaranda_sapling" : "Blue Jacaranda Sapling",
 
-  "block.abundance.thunbergia_vine": "Thunbergia Vine",
+  "block.abundance.thunbergia_vine": "Thunbergia Vines",
   "block.abundance.thunbergia_jungle_leaves": "Thunbergia Jungle Leaves",
 
   "_comment3": "Redbud Trees",
@@ -153,6 +153,9 @@
   "item.abundance.screecher_tail": "Screecher Tail",
   "item.abundance.screecher_spawn_egg": "Screecher Spawn Egg",
   "block.abundance.sunflower_seed_sack": "Sunflower Seed Sack",
+
+  "block.abundance.tropical_grass": "Tropical Grass",
+  "block.abundance.tropical_fern":  "Tropical Fern",
 
   "_comment8": "Potions",
   "item.minecraft.potion.effect.supportive": "Potion of Supporting",

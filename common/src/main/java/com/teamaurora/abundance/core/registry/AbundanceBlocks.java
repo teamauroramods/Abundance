@@ -147,6 +147,12 @@ public class AbundanceBlocks {
     public static final Supplier<Block> POTTED_MYOSOTIS = registerPotted("potted_myosotis", MYOSOTIS);
     public static final Supplier<Block> POTTED_FIDDLENECK = registerPotted("potted_fiddleneck", FIDDLENECK);
 
+    /* Tropical Foliage */
+
+    public static final Supplier<Block> TROPICAL_GRASS = registerBlock("tropical_grass", () -> new TallGrassBlock(Properties.GRASS), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> TROPICAL_FERN = registerBlock("tropical_fern", () -> new TallGrassBlock(Properties.GRASS), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+
+
     private static Supplier<Block> registerBlock(String id, Supplier<Block> block, Item.Properties properties) {
         Supplier<Block> register = BLOCKS.register(id, block);
         AbundanceItems.ITEMS.register(id, () -> new BlockItem(register.get(), properties));
@@ -186,5 +192,7 @@ public class AbundanceBlocks {
         public static final BlockBehaviour.Properties AMARANTHUS = BlockBehaviour.Properties.copy(Blocks.POPPY);
         public static final BlockBehaviour.Properties YELLOW_FLOWER = BlockBehaviour.Properties.copy(Blocks.DANDELION);
         public static final BlockBehaviour.Properties HELICONIA = BlockBehaviour.Properties.copy(Blocks.PEONY);
+        public static final BlockBehaviour.Properties GRASS = BlockBehaviour.Properties.copy(Blocks.GRASS);
+        public static final BlockBehaviour.Properties FERN = BlockBehaviour.Properties.copy(Blocks.FERN);
     }
 }

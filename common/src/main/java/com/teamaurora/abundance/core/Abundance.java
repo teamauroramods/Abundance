@@ -11,6 +11,7 @@ import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.FoliageColor;
+import net.minecraft.world.level.GrassColor;
 
 public class Abundance {
     public static final String MOD_ID = "abundance";
@@ -25,6 +26,8 @@ public class Abundance {
     public static void onClientInit() {
         ColorRegistry.register((state, level, pos, tintIndex) -> {return level != null && pos != null ? BiomeColors.getAverageFoliageColor(level, pos) : FoliageColor.getDefaultColor();}, AbundanceBlocks.THUNBERGIA_VINE, AbundanceBlocks.THUNBERGIA_JUNGLE_LEAVES);
         ColorRegistry.register((stack, tintIndex) -> {return FoliageColor.getDefaultColor();}, AbundanceBlocks.THUNBERGIA_VINE, AbundanceBlocks.THUNBERGIA_JUNGLE_LEAVES);
+        ColorRegistry.register((state, level, pos, tintIndex) -> {return level != null && pos != null ? BiomeColors.getAverageGrassColor(level, pos) : GrassColor.get(0.5D, 1.0D);}, AbundanceBlocks.TROPICAL_GRASS, AbundanceBlocks.TROPICAL_FERN);
+        ColorRegistry.register((stack, tintIndex) -> {return GrassColor.get(0.5D, 1.0D);}, AbundanceBlocks.TROPICAL_GRASS, AbundanceBlocks.TROPICAL_FERN);
     }
 
     public static void onClientPostInit(Platform.ModSetupContext ctx) {
@@ -76,6 +79,8 @@ public class Abundance {
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_AMARANTHUS.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_MYOSOTIS.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_FIDDLENECK.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.TROPICAL_GRASS.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.TROPICAL_FERN.get(), RenderType.cutout());
         });
     }
 
