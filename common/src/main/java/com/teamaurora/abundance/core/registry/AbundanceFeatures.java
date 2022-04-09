@@ -203,7 +203,7 @@ public class AbundanceFeatures {
             CONFIGURED_FEATURES.register("flowering_blue_jacaranda_bees_005", Configured.FLOWERING_BLUE_JACARANDA_BEES_005);
             CONFIGURED_FEATURES.register("blue_jacaranda_bees_0002", Configured.BLUE_JACARANDA_BEES_0002);
             CONFIGURED_FEATURES.register("flowering_blue_jacaranda_bees_0002", Configured.FLOWERING_BLUE_JACARANDA_BEES_0002);
-            CONFIGURED_FEATURES.register("tunbergia_jungle", Configured.THUNBERGIA_JUNGLE);
+            CONFIGURED_FEATURES.register("thunbergia_jungle", Configured.THUNBERGIA_JUNGLE);
             CONFIGURED_FEATURES.register("redbud", Configured.REDBUD);
             CONFIGURED_FEATURES.register("flowering_redbud", Configured.FLOWERING_REDBUD);
         }
