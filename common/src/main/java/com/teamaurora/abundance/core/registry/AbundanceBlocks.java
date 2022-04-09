@@ -10,7 +10,6 @@ import com.teamaurora.abundance.core.Abundance;
 import com.teamaurora.abundance.core.registry.util.Woodset;
 import gg.moonflower.pollen.api.registry.PollinatedRegistry;
 import net.minecraft.core.Registry;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;

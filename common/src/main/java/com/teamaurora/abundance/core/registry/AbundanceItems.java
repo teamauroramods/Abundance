@@ -2,7 +2,6 @@ package com.teamaurora.abundance.core.registry;
 
 import com.teamaurora.abundance.common.item.DrinkItem;
 import com.teamaurora.abundance.core.Abundance;
-import gg.moonflower.pollen.api.item.SpawnEggItemBase;
 import gg.moonflower.pollen.api.registry.PollinatedRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.world.effect.MobEffectInstance;

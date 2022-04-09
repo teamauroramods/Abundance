@@ -1,6 +1,5 @@
 package com.teamaurora.abundance.client.render.entity.living;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.teamaurora.abundance.common.entity.living.ScreecherEntity;
 import com.teamaurora.abundance.core.Abundance;
 import gg.moonflower.pollen.pinwheel.api.client.animation.AnimatedEntityRenderer;
