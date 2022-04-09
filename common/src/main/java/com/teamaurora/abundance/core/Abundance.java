@@ -87,7 +87,6 @@ public class Abundance {
     public static void onCommonInit() {
         AbundanceBlocks.BLOCKS.register(Abundance.PLATFORM);
         AbundanceItems.ITEMS.register(Abundance.PLATFORM);
-        AbundanceMobEffects.MOB_EFFECTS.register(Abundance.PLATFORM);
         AbundanceFeatures.FEATURES.register(Abundance.PLATFORM);
         AbundanceFeatures.CONFIGURED_FEATURES.register(Abundance.PLATFORM);
         AbundanceFeatures.TREE_DECORATOR_TYPES.register(Abundance.PLATFORM);
