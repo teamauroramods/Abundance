@@ -53,11 +53,6 @@ public class DrinkItem extends Item {
     }
 
     @Override
-    public SoundEvent getEatingSound() {
-        return SoundEvents.GENERIC_DRINK;
-    }
-
-    @Override
     public SoundEvent getDrinkingSound() {
         return SoundEvents.GENERIC_DRINK;
     }

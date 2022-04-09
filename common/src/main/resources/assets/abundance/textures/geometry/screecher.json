@@ -1,0 +1,7 @@
+{
+  "texture": {
+    "type": "location",
+    "texture": "abundance:entity/living/screecher",
+    "layer": "cutout"
+  }
+}

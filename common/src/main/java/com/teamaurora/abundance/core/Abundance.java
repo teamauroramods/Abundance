@@ -1,15 +1,16 @@
 package com.teamaurora.abundance.core;
 
-import com.teamaurora.abundance.core.registry.AbundanceBlocks;
-import com.teamaurora.abundance.core.registry.AbundanceFeatures;
-import com.teamaurora.abundance.core.registry.AbundanceMobEffects;
-import com.teamaurora.abundance.core.registry.AbundanceItems;
+import com.teamaurora.abundance.client.render.entity.living.ScreecherRenderer;
+import com.teamaurora.abundance.core.registry.*;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.StrippingRegistry;
 import gg.moonflower.pollen.api.registry.client.ColorRegistry;
+import gg.moonflower.pollen.api.registry.client.EntityRendererRegistry;
 import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.GrassColor;
 
@@ -81,6 +82,7 @@ public class Abundance {
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_FIDDLENECK.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.TROPICAL_GRASS.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.TROPICAL_FERN.get(), RenderType.cutout());
+            EntityRendererRegistry.register(AbundanceEntities.SCREECHER, ScreecherRenderer::new);
         });
     }
 
@@ -90,22 +92,27 @@ public class Abundance {
         AbundanceFeatures.FEATURES.register(Abundance.PLATFORM);
         AbundanceFeatures.CONFIGURED_FEATURES.register(Abundance.PLATFORM);
         AbundanceFeatures.TREE_DECORATOR_TYPES.register(Abundance.PLATFORM);
+        AbundanceSoundEvents.SOUND_EVENTS.register(Abundance.PLATFORM);
+        AbundanceEntities.ENTITY_TYPES.register(Abundance.PLATFORM);
     }
 
     public static void onCommonPostInit(Platform.ModSetupContext ctx) {
         ctx.enqueueWork(() -> {
             StrippingRegistry.register(AbundanceBlocks.JACARANDA_LOG.get(), AbundanceBlocks.STRIPPED_JACARANDA_LOG.get());
             StrippingRegistry.register(AbundanceBlocks.JACARANDA_WOOD.get(), AbundanceBlocks.STRIPPED_JACARANDA_WOOD.get());
-
             StrippingRegistry.register(AbundanceBlocks.REDBUD_LOG.get(), AbundanceBlocks.STRIPPED_REDBUD_LOG.get());
             StrippingRegistry.register(AbundanceBlocks.FLOWERING_REDBUD_LOG.get(), AbundanceBlocks.STRIPPED_REDBUD_LOG.get());
             StrippingRegistry.register(AbundanceBlocks.REDBUD_WOOD.get(), AbundanceBlocks.STRIPPED_REDBUD_WOOD.get());
             StrippingRegistry.register(AbundanceBlocks.FLOWERING_REDBUD_WOOD.get(), AbundanceBlocks.STRIPPED_REDBUD_WOOD.get());
-
             AbundanceFeatures.Configured.registerConfiguredFeatures();
+            AbundanceEntities.registerEntityAttributes();
         });
     }
 
     public static void onDataInit(Platform.DataSetupContext ctx) {
+    }
+
+    public static ResourceLocation generateResourceLocation(String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 }
