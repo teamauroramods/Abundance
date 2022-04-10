@@ -1,11 +1,14 @@
 package com.teamaurora.abundance.core.registry;
 
+import com.teamaurora.abundance.common.entity.living.ScreecherEntity;
 import com.teamaurora.abundance.common.item.DrinkItem;
 import com.teamaurora.abundance.core.Abundance;
+import gg.moonflower.pollen.api.item.SpawnEggItemBase;
 import gg.moonflower.pollen.api.registry.PollinatedRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 
@@ -22,7 +25,7 @@ public class AbundanceItems {
     public static final Supplier<Item> PINK_BLOSSOMS = ITEMS.register("pink_blossoms", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     public static final Supplier<Item> SUNFLOWER_SEEDS = ITEMS.register("sunflower_seeds", () -> new Item(new Item.Properties().food(Foods.SUNFLOWER_SEEDS).tab(CreativeModeTab.TAB_FOOD)));
 
-    public static final Supplier<Item> SCREECHER_SPAWN_EGG = ITEMS.register("screecher_spawn_egg", () -> new SpawnEggItem(AbundanceEntities.SCREECHER.get(), 0x74A837, 0xB76CCB, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final Supplier<Item> SCREECHER_SPAWN_EGG = ITEMS.register("screecher_spawn_egg", () -> new SpawnEggItemBase<>(AbundanceEntities.SCREECHER, 0x74A837, 0xB76CCB, true, new Item.Properties()));
 
     public static final class Foods {
         public static final FoodProperties LAVENDER_TEA = new FoodProperties.Builder().nutrition(0).saturationMod(0.0F).alwaysEat().effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 600, 1), 1.0F).effect(new MobEffectInstance(MobEffects.REGENERATION, 100, 1), 1.0F).build();

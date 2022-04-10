@@ -28,6 +28,7 @@ public class Abundance {
         ColorRegistry.register((stack, tintIndex) -> {return FoliageColor.getDefaultColor();}, AbundanceBlocks.THUNBERGIA_VINE, AbundanceBlocks.THUNBERGIA_JUNGLE_LEAVES);
         ColorRegistry.register((state, level, pos, tintIndex) -> {return level != null && pos != null ? BiomeColors.getAverageGrassColor(level, pos) : GrassColor.get(0.5D, 1.0D);}, AbundanceBlocks.TROPICAL_GRASS, AbundanceBlocks.TROPICAL_FERN);
         ColorRegistry.register((stack, tintIndex) -> {return GrassColor.get(0.5D, 1.0D);}, AbundanceBlocks.TROPICAL_GRASS, AbundanceBlocks.TROPICAL_FERN);
+        EntityRendererRegistry.register(AbundanceEntities.SCREECHER, ScreecherRenderer::new);
     }
 
     public static void onClientPostInit(Platform.ModSetupContext ctx) {
@@ -81,7 +82,6 @@ public class Abundance {
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_FIDDLENECK.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.TROPICAL_GRASS.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.TROPICAL_FERN.get(), RenderType.cutout());
-            EntityRendererRegistry.register(AbundanceEntities.SCREECHER, ScreecherRenderer::new);
         });
     }
 
@@ -93,6 +93,7 @@ public class Abundance {
         AbundanceFeatures.TREE_DECORATOR_TYPES.register(Abundance.PLATFORM);
         AbundanceSoundEvents.SOUND_EVENTS.register(Abundance.PLATFORM);
         AbundanceEntities.ENTITY_TYPES.register(Abundance.PLATFORM);
+        AbundanceEntities.registerEntityAttributes();
     }
 
     public static void onCommonPostInit(Platform.ModSetupContext ctx) {
@@ -104,7 +105,6 @@ public class Abundance {
             StrippingRegistry.register(AbundanceBlocks.REDBUD_WOOD.get(), AbundanceBlocks.STRIPPED_REDBUD_WOOD.get());
             StrippingRegistry.register(AbundanceBlocks.FLOWERING_REDBUD_WOOD.get(), AbundanceBlocks.STRIPPED_REDBUD_WOOD.get());
             AbundanceFeatures.Configured.registerConfiguredFeatures();
-            AbundanceEntities.registerEntityAttributes();
         });
     }
 

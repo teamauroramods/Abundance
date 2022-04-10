@@ -13,7 +13,6 @@ import net.minecraft.resources.ResourceLocation;
 public class ScreecherRenderer extends AnimatedEntityRenderer<ScreecherEntity> {
     public static final ResourceLocation SCREECHER_LOCATION = new ResourceLocation(Abundance.MOD_ID, "screecher");
 
-
     public ScreecherRenderer(EntityRendererProvider.Context context) {
         super(context, new ResourceLocation(Abundance.MOD_ID, "screecher"), 1.0F);
     }
