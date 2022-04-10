@@ -17,6 +17,9 @@ public class ScreecherRenderer extends AnimatedEntityRenderer<ScreecherEntity> {
     public static final ResourceLocation SCREECHER_LOCATION = new ResourceLocation(Abundance.MOD_ID, "screecher");
     private static final ResourceLocation[] WALK_ANIMATION = new ResourceLocation[]{new ResourceLocation(Abundance.MOD_ID, "screecher.setup"), new ResourceLocation(Abundance.MOD_ID, "screecher.walking")};
 
+    private boolean isMoving = true;
+
+
     public ScreecherRenderer(EntityRendererProvider.Context context) {
         super(context, new ResourceLocation(Abundance.MOD_ID, "screecher"), 1.0F);
     }
@@ -24,7 +27,9 @@ public class ScreecherRenderer extends AnimatedEntityRenderer<ScreecherEntity> {
 
     @Override
     public ResourceLocation[] getAnimations(ScreecherEntity entity) {
-        return WALK_ANIMATION;
+        if (isMoving)
+            return WALK_ANIMATION;
+        return super.getAnimations(entity);
     }
 
     @Override
@@ -35,6 +40,17 @@ public class ScreecherRenderer extends AnimatedEntityRenderer<ScreecherEntity> {
     @Override
     public void render(ScreecherEntity entity, float entityYaw, float partialTicks, PoseStack matrixStack, MultiBufferSource buffer, int packedLight) {
         matrixStack.pushPose();
+
+        float limbSwingAmount = 0.0F;
+        if (entity.isAlive()) {
+            limbSwingAmount = Mth.lerp(partialTicks, entity.animationSpeedOld, entity.animationSpeed);
+
+            if (limbSwingAmount > 1.0F) {
+                limbSwingAmount = 1.0F;
+            }
+        }
+        this.isMoving = !(limbSwingAmount > -0.15F && limbSwingAmount < 0.15F);
+
         matrixStack.popPose();
         super.render(entity, entityYaw, partialTicks, matrixStack, buffer, packedLight);
     }

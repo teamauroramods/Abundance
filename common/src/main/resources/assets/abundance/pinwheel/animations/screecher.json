@@ -7,9 +7,9 @@
 			"bones": {
 				"tail": {
 					"rotation": {
-						"0.0": [0, 5, 0],
-						"0.5": [0, -5, 0],
-						"1.0": [0, 5, 0]
+						"0.0": [0, 10, 0],
+						"0.5": [0, -10, 0],
+						"1.0": [0, 10, 0]
 					}
 				},
 				"right_leg": {
@@ -43,7 +43,21 @@
 			}
 		},
 		"screecher.setup": {
-			"loop": true
+			"loop": true,
+			"bones": {
+				"right_leg": {
+					"rotation": [0, 0, 0]
+				},
+				"left_leg": {
+					"rotation": [0, 0, 0]
+				},
+				"left_arm": {
+					"rotation": [0, 0, 0]
+				},
+				"right_arm": {
+					"rotation": [0, 0, 0]
+				}
+			}
 		}
 	}
 }
