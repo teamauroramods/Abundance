@@ -16,6 +16,7 @@ import net.minecraft.util.Mth;
 public class ScreecherRenderer extends AnimatedEntityRenderer<ScreecherEntity> {
     public static final ResourceLocation SCREECHER_LOCATION = new ResourceLocation(Abundance.MOD_ID, "screecher");
     private static final ResourceLocation[] WALK_ANIMATION = new ResourceLocation[]{new ResourceLocation(Abundance.MOD_ID, "screecher.setup"), new ResourceLocation(Abundance.MOD_ID, "screecher.walking")};
+    private static final ResourceLocation[] SCREECH_ANIMATION = new ResourceLocation[]{new ResourceLocation(Abundance.MOD_ID, "screecher.setup"), new ResourceLocation(Abundance.MOD_ID, "screecher.screech")};
 
     private boolean isMoving = true;
 
@@ -29,6 +30,8 @@ public class ScreecherRenderer extends AnimatedEntityRenderer<ScreecherEntity> {
     public ResourceLocation[] getAnimations(ScreecherEntity entity) {
         if (isMoving)
             return WALK_ANIMATION;
+        else if (entity.isScreeching())
+            return SCREECH_ANIMATION;
         return super.getAnimations(entity);
     }
 

@@ -39,7 +39,7 @@ public class ScreecherEntity extends AnimatedPathfinder {
 
     public static final EntityDataAccessor<Boolean> IS_SCREECHING = SynchedEntityData.defineId(ScreecherEntity.class, EntityDataSerializers.BOOLEAN);
 
-    public static final AnimationState WALKING_ANIMATION = new AnimationState(40);
+    public static final AnimationState WALKING_ANIMATION = new AnimationState(20);
     public static final AnimationState SCREECH_ANIMATION = new AnimationState(60);
 
     private int timeNextScreech = 0;
