@@ -92,6 +92,8 @@ public class Abundance {
         AbundanceFeatures.CONFIGURED_FEATURES.register(Abundance.PLATFORM);
         AbundanceFeatures.TREE_DECORATOR_TYPES.register(Abundance.PLATFORM);
         AbundanceSoundEvents.SOUND_EVENTS.register(Abundance.PLATFORM);
+        AbundanceEffects.MOB_EFFECTS.register(Abundance.PLATFORM);
+        AbundanceEffects.POTIONS.register(Abundance.PLATFORM);
         AbundanceEntities.ENTITY_TYPES.register(Abundance.PLATFORM);
         AbundanceEntities.registerEntityAttributes();
     }
@@ -105,6 +107,7 @@ public class Abundance {
             StrippingRegistry.register(AbundanceBlocks.REDBUD_WOOD.get(), AbundanceBlocks.STRIPPED_REDBUD_WOOD.get());
             StrippingRegistry.register(AbundanceBlocks.FLOWERING_REDBUD_WOOD.get(), AbundanceBlocks.STRIPPED_REDBUD_WOOD.get());
             AbundanceFeatures.Configured.registerConfiguredFeatures();
+            AbundanceEffects.registerBrewingRecipes();
         });
     }
 

@@ -1,5 +1,6 @@
 package com.teamaurora.abundance.common.entity.living;
 
+import com.teamaurora.abundance.core.registry.AbundanceEffects;
 import com.teamaurora.abundance.core.registry.AbundanceSoundEvents;
 import gg.moonflower.pollen.pinwheel.api.client.animation.AnimationManager;
 import gg.moonflower.pollen.pinwheel.api.common.animation.AnimatedEntity;
@@ -16,6 +17,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,6 +29,7 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -185,7 +188,11 @@ public class ScreecherEntity extends AnimatedPathfinder {
 
         private void doScreechEffect() {
             AABB box = this.screecher.getBoundingBox().expandTowards(14.0D, 14.0D, 14.0D);
-            List<Player> nearbyPlayers = this.screecher.level.getEntitiesOfClass(Player.class, box);
+            List<Player> nearbyPlayers = this.screecher.level.getNearbyPlayers(TargetingConditions.DEFAULT.range(14.0D), this.screecher, box);
+
+            for (Player player : nearbyPlayers) {
+                player.addEffect(new MobEffectInstance(AbundanceEffects.DEAFNESS.get(), 140));
+            }
         }
     }
 }
