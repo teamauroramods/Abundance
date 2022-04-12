@@ -8,6 +8,7 @@ import com.teamaurora.abundance.common.block.trees.RedbudTreeGrower;
 import com.teamaurora.abundance.common.item.FollowItemLike;
 import com.teamaurora.abundance.core.Abundance;
 import com.teamaurora.abundance.core.registry.util.Woodset;
+import gg.moonflower.pollen.api.registry.PollinatedBlockRegistry;
 import gg.moonflower.pollen.api.registry.PollinatedRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.world.effect.MobEffects;
@@ -27,16 +28,18 @@ public class AbundanceBlocks {
 
     /* Lavender */
 
-    public static final Supplier<Block> LAVENDER = registerBlockNoItem("lavender", () -> new LavenderBlock(Properties.LAVENDER));
-    public static final Supplier<Block> TALL_LAVENDER = registerBlockNoItem("tall_lavender", () -> new TallLavenderBlock(Properties.LAVENDER));
+    public static final Supplier<Block> LAVENDER = BLOCKS.register("lavender", () -> new LavenderBlock(Properties.LAVENDER));
+    public static final Supplier<Block> TALL_LAVENDER = BLOCKS.register("tall_lavender", () -> new TallLavenderBlock(Properties.LAVENDER));
 
 
     /* Marigolds */
 
+    public static final Supplier<Block> SMALL_MARIGOLD = registerBlock("small_marigold", () -> new SmallMarigoldBlock(MobEffects.HEAL, 1, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> SUNNY_MARIGOLD = registerBlock("sunny_marigold", () -> new MarigoldBlock(MobEffects.HEAL, 1, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> SHADY_MARIGOLD = registerBlock("shady_marigold", () -> new MarigoldBlock(MobEffects.HEAL, 1, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> TALL_MARIGOLD = registerBlock("tall_marigold", () -> new TallMarigoldBlock(Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
+    public static final Supplier<Block> POTTED_SMALL_MARIGOLD = registerPotted("potted_small_marigold", SMALL_MARIGOLD);
     public static final Supplier<Block> POTTED_SUNNY_MARIGOLD = registerPotted("potted_sunny_marigold", SUNNY_MARIGOLD);
     public static final Supplier<Block> POTTED_SHADY_MARIGOLD = registerPotted("potted_shady_marigold", SHADY_MARIGOLD);
 
@@ -140,11 +143,23 @@ public class AbundanceBlocks {
     public static final Supplier<Block> FIDDLENECK = registerBlock("fiddleneck", () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> HELICONIA = registerBlock("heliconia", () -> new TallFlowerBlock(Properties.HELICONIA), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
+    public static final Supplier<Block> BEGONIA = registerBlock("begonia", () -> new ModifiedFlowerBlock(MobEffects.DAMAGE_RESISTANCE, 6, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> CARNATION = registerBlock("carnation", () -> new ModifiedFlowerBlock(MobEffects.DAMAGE_RESISTANCE, 6, Properties.RED_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> CHRYSANTHEMUM = registerBlock("chrysanthemum", () -> new ModifiedFlowerBlock(MobEffects.REGENERATION, 8, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> DIANTHUS = registerBlock("dianthus", () -> new ModifiedFlowerBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.PINK_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> HEATHER = registerBlock("heather", () -> new ModifiedFlowerBlock(MobEffects.LUCK, 16, Properties.PURPLE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+
     public static final Supplier<Block> POTTED_CHICORY = registerPotted("potted_chicory", CHICORY);
     public static final Supplier<Block> POTTED_AMARANTHUS = registerPotted("potted_amaranthus", AMARANTHUS);
     public static final Supplier<Block> POTTED_NEMOPHILA = registerPotted("potted_nemophila", NEMOPHILA);
     public static final Supplier<Block> POTTED_MYOSOTIS = registerPotted("potted_myosotis", MYOSOTIS);
     public static final Supplier<Block> POTTED_FIDDLENECK = registerPotted("potted_fiddleneck", FIDDLENECK);
+
+    public static final Supplier<Block> POTTED_BEGONIA = registerPotted("potted_begonia", BEGONIA);
+    public static final Supplier<Block> POTTED_CARNATION = registerPotted("potted_carnation", CARNATION);
+    public static final Supplier<Block> POTTED_CHRYSANTHEMUM = registerPotted("potted_chrysanthemum", CHRYSANTHEMUM);
+    public static final Supplier<Block> POTTED_DIANTHUS = registerPotted("potted_dianthus", DIANTHUS);
+    public static final Supplier<Block> POTTED_HEATHER = registerPotted("potted_heather", HEATHER);
 
     /* Tropical Foliage */
 
@@ -155,11 +170,6 @@ public class AbundanceBlocks {
     private static Supplier<Block> registerBlock(String id, Supplier<Block> block, Item.Properties properties) {
         Supplier<Block> register = BLOCKS.register(id, block);
         AbundanceItems.ITEMS.register(id, () -> new BlockItem(register.get(), properties));
-        return register;
-    }
-
-    private static Supplier<Block> registerBlockNoItem(String id, Supplier<Block> block) {
-        Supplier<Block> register = BLOCKS.register(id, block);
         return register;
     }
 
@@ -190,8 +200,11 @@ public class AbundanceBlocks {
         public static final BlockBehaviour.Properties CHICORY_COLONY = BlockBehaviour.Properties.copy(Blocks.ALLIUM).sound(SoundType.CROP);
         public static final BlockBehaviour.Properties AMARANTHUS = BlockBehaviour.Properties.copy(Blocks.POPPY);
         public static final BlockBehaviour.Properties YELLOW_FLOWER = BlockBehaviour.Properties.copy(Blocks.DANDELION);
+        public static final BlockBehaviour.Properties RED_FLOWER = BlockBehaviour.Properties.copy(Blocks.POPPY);
         public static final BlockBehaviour.Properties HELICONIA = BlockBehaviour.Properties.copy(Blocks.PEONY);
         public static final BlockBehaviour.Properties GRASS = BlockBehaviour.Properties.copy(Blocks.GRASS);
         public static final BlockBehaviour.Properties FERN = BlockBehaviour.Properties.copy(Blocks.FERN);
+        public static final BlockBehaviour.Properties PINK_FLOWER = RED_FLOWER.color(MaterialColor.COLOR_PINK);
+        public static final BlockBehaviour.Properties PURPLE_FLOWER = BlockBehaviour.Properties.copy(Blocks.ALLIUM);
     }
 }

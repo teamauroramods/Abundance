@@ -1,7 +1,10 @@
 package com.teamaurora.abundance.core;
 
 import com.teamaurora.abundance.client.render.entity.living.ScreecherRenderer;
+import com.teamaurora.abundance.common.other.SunflowerSeedManager;
 import com.teamaurora.abundance.core.registry.*;
+import gg.moonflower.pollen.api.event.events.LootTableConstructingEvent;
+import gg.moonflower.pollen.api.event.events.entity.player.PlayerInteractionEvents;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.StrippingRegistry;
 import gg.moonflower.pollen.api.registry.client.ColorRegistry;
@@ -82,6 +85,18 @@ public class Abundance {
             RenderTypeRegistry.register(AbundanceBlocks.POTTED_FIDDLENECK.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.TROPICAL_GRASS.get(), RenderType.cutout());
             RenderTypeRegistry.register(AbundanceBlocks.TROPICAL_FERN.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.BEGONIA.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_BEGONIA.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.CARNATION.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_CARNATION.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.CHRYSANTHEMUM.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_CHRYSANTHEMUM.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.DIANTHUS.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_DIANTHUS.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.HEATHER.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_HEATHER.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.SMALL_MARIGOLD.get(), RenderType.cutout());
+            RenderTypeRegistry.register(AbundanceBlocks.POTTED_SMALL_MARIGOLD.get(), RenderType.cutout());
         });
     }
 
@@ -96,6 +111,8 @@ public class Abundance {
         AbundanceEffects.POTIONS.register(Abundance.PLATFORM);
         AbundanceEntities.ENTITY_TYPES.register(Abundance.PLATFORM);
         AbundanceEntities.registerEntityAttributes();
+
+        PlayerInteractionEvents.RIGHT_CLICK_BLOCK.register(SunflowerSeedManager::onRightClickBlock);
     }
 
     public static void onCommonPostInit(Platform.ModSetupContext ctx) {

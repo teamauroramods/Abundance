@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "abundance:potted_small_marigold",
     "abundance:potted_sunny_marigold",
     "abundance:potted_shady_marigold",
     "abundance:potted_jacaranda_sapling",
@@ -18,6 +19,11 @@
     "abundance:potted_yellow_daisy",
     "abundance:potted_orange_daisy",
     "abundance:potted_red_daisy",
-    "abundance:potted_blue_daisy"
+    "abundance:potted_blue_daisy",
+    "abundance:potted_begonia",
+    "abundance:potted_carnation",
+    "abundance:potted_chrysanthemum",
+    "abundance:potted_dianthus",
+    "abundance:potted_heather"
   ]
 }

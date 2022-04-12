@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "abundance:lavender",
+    "abundance:small_marigold",
     "abundance:sunny_marigold",
     "abundance:shady_marigold",
     "abundance:amaranthus",
@@ -25,6 +26,11 @@
     "abundance:yellow_daisy",
     "abundance:orange_daisy",
     "abundance:red_daisy",
-    "abundance:blue_daisy"
+    "abundance:blue_daisy",
+    "abundance:begonia",
+    "abundance:carnation",
+    "abundance:chrysanthemum",
+    "abundance:dianthus",
+    "abundance:heather"
   ]
 }

@@ -1,1 +1,0 @@
-{"type": "minecraft:crafting_shaped", "pattern": ["S S", "SPS", "S S"], "key": {"S": {"item": "minecraft:stick"}, "P": {"item": "abundance:redbud_planks"}}, "result": {"item": "abundance:redbud_ladder", "count": 4}, "conditions": [{"type": "abnormals_core:quark_flag", "flag": "variant_ladders"}]}
