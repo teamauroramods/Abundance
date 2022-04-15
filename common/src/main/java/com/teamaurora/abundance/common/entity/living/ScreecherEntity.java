@@ -34,6 +34,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -187,11 +188,11 @@ public class ScreecherEntity extends AnimatedPathfinder {
         }
 
         private void doScreechEffect() {
-            AABB box = this.screecher.getBoundingBox().expandTowards(14.0D, 14.0D, 14.0D);
-            List<Player> nearbyPlayers = this.screecher.level.getNearbyPlayers(TargetingConditions.DEFAULT.range(14.0D), this.screecher, box);
+            AABB box = this.screecher.getBoundingBox().expandTowards(new Vec3(14.0D, 14.0D, 14.0D));
+            List<Player> nearbyPlayers = this.screecher.level.getEntitiesOfClass(Player.class, box);
 
             for (Player player : nearbyPlayers) {
-                player.addEffect(new MobEffectInstance(AbundanceEffects.DEAFNESS.get(), 140));
+                player.forceAddEffect(new MobEffectInstance(AbundanceEffects.DEAFNESS.get(), 140), this.screecher);
             }
         }
     }
