@@ -12,6 +12,7 @@
     "sources": "https://github.com/teamauroramods/Abundance/"
   },
   "license": "GPLv3",
+  "icon": "icon.png",
   "environment": "*",
   "accessWidener" : "${id}.accesswidener",
   "mixins": [
