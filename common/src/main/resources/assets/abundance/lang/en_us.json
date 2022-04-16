@@ -189,10 +189,13 @@
   "item.minecraft.tipped_arrow.effect.supportive_long": "Arrow of Supporting",
   "item.minecraft.potion.effect.deafness": "Potion of Deafness",
   "item.minecraft.potion.effect.deafness_long": "Potion of Deafness",
+  "item.minecraft.potion.effect.deafness_strong": "Potion of Deafness",
   "item.minecraft.splash_potion.effect.deafness": "Splash Potion of Deafness",
   "item.minecraft.splash_potion.effect.deafness_long": "Splash Potion of Deafness",
+  "item.minecraft.splash_potion.effect.deafness_strong": "Splash Potion of Deafness",
   "item.minecraft.lingering_potion.effect.deafness": "Lingering Potion of Deafness",
   "item.minecraft.lingering_potion.effect.deafness_long": "Lingering Potion of Deafness",
+  "item.minecraft.lingering_potion.effect.deafness_strong": "Lingering Potion of Deafness",
 
   "_comment9": "Sound subtitles",
   "sound_event.abundance.entity.screecher.hurt": "Screecher hurts",

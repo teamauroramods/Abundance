@@ -1,23 +1,17 @@
 package com.teamaurora.abundance.core;
 
 import com.teamaurora.abundance.client.render.entity.living.ScreecherRenderer;
-import com.teamaurora.abundance.common.other.SunflowerSeedManager;
 import com.teamaurora.abundance.core.registry.*;
-import gg.moonflower.pollen.api.event.events.LootTableConstructingEvent;
-import gg.moonflower.pollen.api.event.events.entity.player.PlayerInteractionEvents;
+import gg.moonflower.pollen.api.config.ConfigManager;
+import gg.moonflower.pollen.api.config.PollinatedConfigType;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.StrippingRegistry;
 import gg.moonflower.pollen.api.registry.client.ColorRegistry;
 import gg.moonflower.pollen.api.registry.client.EntityRendererRegistry;
 import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.color.block.BlockColor;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.block.Blocks;
@@ -26,6 +20,7 @@ import net.minecraft.world.level.block.FireBlock;
 
 public class Abundance {
     public static final String MOD_ID = "abundance";
+    public static final AbundanceCommonConfig CONFIG = ConfigManager.register(MOD_ID, PollinatedConfigType.COMMON, AbundanceCommonConfig::new);
     public static final Platform PLATFORM = Platform.builder(MOD_ID)
             .clientInit(Abundance::onClientInit)
             .clientPostInit(Abundance::onClientPostInit)
