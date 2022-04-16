@@ -15,30 +15,17 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.Random;
 
 
 /**
- * Allows for sunflower seeds to be dropped when the player clicks on the top half of a sunflower.
+ * Adds Sunflower Seeds to the Sunflower loot table in a mod-friendly manner.
  * @author ebo2022
  */
+
 public class SunflowerSeedManager {
-    public static InteractionResult onRightClickBlock(Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
-        BlockPos pos = hitResult.getBlockPos();
-        BlockState state = level.getBlockState(pos);
-        Random rand = level.getRandom();
 
-        int chance = rand.nextInt(0, 4);
-
-        if (state.getBlock() == Blocks.SUNFLOWER && state.getValue(TallFlowerBlock.HALF) == DoubleBlockHalf.UPPER) {
-            if (chance == 0) {
-                Block.popResource(level, pos, new ItemStack(AbundanceItems.SUNFLOWER_SEEDS.get(), rand.nextInt( 1 ,3)));
-                level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
-                return InteractionResult.sidedSuccess(level.isClientSide);
-            }
-        }
-        return InteractionResult.PASS;
-    }
 }
