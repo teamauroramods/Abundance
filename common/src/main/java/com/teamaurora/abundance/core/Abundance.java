@@ -109,6 +109,7 @@ public class Abundance {
         AbundanceFeatures.FEATURES.register(Abundance.PLATFORM);
         AbundanceFeatures.CONFIGURED_FEATURES.register(Abundance.PLATFORM);
         AbundanceFeatures.TREE_DECORATOR_TYPES.register(Abundance.PLATFORM);
+        AbundanceFeatures.PLACED_FEATURES.register(Abundance.PLATFORM);
         AbundanceSoundEvents.SOUND_EVENTS.register(Abundance.PLATFORM);
         AbundanceEffects.MOB_EFFECTS.register(Abundance.PLATFORM);
         AbundanceEffects.POTIONS.register(Abundance.PLATFORM);
@@ -207,6 +208,7 @@ public class Abundance {
 
             /* Misc Registry */
             AbundanceFeatures.Configured.registerConfiguredFeatures();
+            AbundanceFeatures.Placed.registerPlacedFeatures();
             AbundanceEffects.registerBrewingRecipes();
         });
     }

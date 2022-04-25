@@ -1,1 +1,0 @@
-{"type": "minecraft:block", "pools": [{"rolls": 1, "entries": [{"type": "minecraft:item", "name": "abundance:jacaranda_sapling"}], "conditions": [{"condition": "minecraft:survives_explosion"}]}]}

@@ -16,6 +16,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
@@ -25,6 +27,10 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorato
 import net.minecraft.world.level.levelgen.feature.treedecorators.CocoaDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 
 import java.util.function.Supplier;
 
@@ -32,6 +38,7 @@ public class AbundanceFeatures {
     public static final PollinatedRegistry<Feature<?>> FEATURES = PollinatedRegistry.create(Registry.FEATURE, Abundance.MOD_ID);
     public static final PollinatedRegistry<TreeDecoratorType<?>> TREE_DECORATOR_TYPES = PollinatedRegistry.create(Registry.TREE_DECORATOR_TYPES, Abundance.MOD_ID);
     public static final PollinatedRegistry<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = PollinatedRegistry.create(BuiltinRegistries.CONFIGURED_FEATURE, Abundance.MOD_ID);
+    public static final PollinatedRegistry<PlacedFeature> PLACED_FEATURES = PollinatedRegistry.create(BuiltinRegistries.PLACED_FEATURE, Abundance.MOD_ID);
 
     public static final Supplier<Feature<TreeConfiguration>> JACARANDA_TREE = FEATURES.register("jacaranda_tree", () -> new JacarandaFeature(TreeConfiguration.CODEC));
     public static final Supplier<Feature<TreeConfiguration>> REDBUD_TREE = FEATURES.register("redbud_tree", () -> new RedbudFeature(TreeConfiguration.CODEC));
@@ -190,6 +197,9 @@ public class AbundanceFeatures {
         public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> REDBUD = () -> AbundanceFeatures.REDBUD_TREE.get().configured(AbundanceFeatures.Configs.REDBUD_TREE_CONFIG);
         public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> FLOWERING_REDBUD = () -> AbundanceFeatures.REDBUD_TREE.get().configured(AbundanceFeatures.Configs.FLOWERING_REDBUD_TREE_CONFIG);
 
+        public static final Supplier<ConfiguredFeature<RandomFeatureConfiguration, ?>> TREES_JACARANDA_SPARSE = () -> Feature.RANDOM_SELECTOR.configured((new RandomFeatureConfiguration(ImmutableList.of(new WeightedPlacedFeature(Placed.BLUE_JACARANDA_BEES_0002.get(), 0.5f)), Placed.FLOWERING_BLUE_JACARANDA_BEES_0002.get())));
+
+
         public static void registerConfiguredFeatures() {
             CONFIGURED_FEATURES.register("jacaranda", Configured.JACARANDA);
             CONFIGURED_FEATURES.register("flowering_jacaranda", Configured.FLOWERING_JACARANDA);
@@ -206,6 +216,25 @@ public class AbundanceFeatures {
             CONFIGURED_FEATURES.register("thunbergia_jungle", Configured.THUNBERGIA_JUNGLE);
             CONFIGURED_FEATURES.register("redbud", Configured.REDBUD);
             CONFIGURED_FEATURES.register("flowering_redbud", Configured.FLOWERING_REDBUD);
+            CONFIGURED_FEATURES.register("trees_jacaranda_sparse", Configured.TREES_JACARANDA_SPARSE);
+        }
+    }
+
+    public static final class Placed {
+        public static final Supplier<PlacedFeature> BLUE_JACARANDA_CHECKED = () -> Configured.BLUE_JACARANDA.get().filteredByBlockSurvival(AbundanceBlocks.BLUE_JACARANDA_SAPLING.get());
+        public static final Supplier<PlacedFeature> FLOWERING_BLUE_JACARANDA_CHECKED = () -> Configured.FLOWERING_BLUE_JACARANDA.get().filteredByBlockSurvival(AbundanceBlocks.BLUE_JACARANDA_SAPLING.get());
+        public static final Supplier<PlacedFeature> BLUE_JACARANDA_BEES_005 = () -> Configured.BLUE_JACARANDA_BEES_005.get().filteredByBlockSurvival(AbundanceBlocks.BLUE_JACARANDA_SAPLING.get());
+        public static final Supplier<PlacedFeature> FLOWERING_BLUE_JACARANDA_BEES_005 = () -> Configured.FLOWERING_BLUE_JACARANDA_BEES_005.get().filteredByBlockSurvival(AbundanceBlocks.BLUE_JACARANDA_SAPLING.get());
+        public static final Supplier<PlacedFeature> BLUE_JACARANDA_BEES_0002 = () -> Configured.BLUE_JACARANDA_BEES_0002.get().filteredByBlockSurvival(AbundanceBlocks.BLUE_JACARANDA_SAPLING.get());
+        public static final Supplier<PlacedFeature> FLOWERING_BLUE_JACARANDA_BEES_0002 = () -> Configured.FLOWERING_BLUE_JACARANDA_BEES_0002.get().filteredByBlockSurvival(AbundanceBlocks.BLUE_JACARANDA_SAPLING.get());
+
+        public static void registerPlacedFeatures() {
+            PLACED_FEATURES.register("blue_jacaranda_checked", Placed.BLUE_JACARANDA_CHECKED);
+            PLACED_FEATURES.register("flowering_blue_jacaranda_checked", Placed.FLOWERING_BLUE_JACARANDA_CHECKED);
+            PLACED_FEATURES.register("blue_jacaranda_bees_005", Placed.BLUE_JACARANDA_BEES_005);
+            PLACED_FEATURES.register("flowering_blue_jacaranda_bees_005", Placed.FLOWERING_BLUE_JACARANDA_BEES_005);
+            PLACED_FEATURES.register("blue_jacaranda_bees_0002", Placed.BLUE_JACARANDA_BEES_0002);
+            PLACED_FEATURES.register("flowering_blue_jacaranda_bees_0002", Placed.FLOWERING_BLUE_JACARANDA_BEES_0002);
         }
     }
 }

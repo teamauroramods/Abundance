@@ -1,1 +1,0 @@
-{"type": "minecraft:crafting_shaped", "group": "wooden_stairs", "pattern": ["#  ", "## ", "###"], "key": {"#": {"item": "abundance:redbud_planks"}}, "result": {"item": "abundance:redbud_stairs", "count": 4}}
