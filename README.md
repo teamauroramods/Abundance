@@ -1,9 +1,5 @@
 <p align="center"><img src="https://raw.githubusercontent.com/teamauroramods/Abundance/1.18.x/forge/src/main/resources/logo.png" width=60%></p>
 <h3 align="center">Abundance</h3>
-
-<p align="center">Abundance adds a small collection of flowery biomes to your world. New materials can be found in these biomes, such as Lavender, and 2 new, vibrant tree types! In addition, more unique flowers are added which can be found throughout the Overworld.
-
-</p>
 <p align="center">
   1.18 and above requires Pollen
 </p>
