@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "abundance:tropical_grass",
+    "abundance:tropical_fern",
+    "abundance:tall_marigold",
+    "abundance:tall_lavender",
+    "abundance:thunbergia_vine"
+  ]
+}

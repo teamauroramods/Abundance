@@ -1,0 +1,1 @@
+{"type": "minecraft:crafting_shaped", "group": "bark", "pattern": ["##", "##"], "key": {"#": {"item": "abundance:stripped_redbud_log"}}, "result": {"item": "abundance:stripped_redbud_wood", "count": 3}}

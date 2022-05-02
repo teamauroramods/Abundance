@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "abundance:lavender"
+    }
+  ],
+  "result": {
+    "item": "abundance:lavender_tea"
+  }
+}

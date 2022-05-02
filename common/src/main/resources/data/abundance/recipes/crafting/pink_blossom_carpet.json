@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "abundance:pink_blossoms"
+    }
+  },
+  "result": {
+    "item": "abundance:pink_blossom_carpet"
+  }
+}
