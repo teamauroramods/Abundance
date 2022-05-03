@@ -7,6 +7,7 @@ import com.teamaurora.abundance.common.world.treedecorator.LeaveThunbergiaVineDe
 import com.teamaurora.abundance.common.world.treedecorator.TrunkThunbergiaVineDecorator;
 import com.teamaurora.abundance.core.Abundance;
 import gg.moonflower.pollen.api.registry.PollinatedRegistry;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.util.random.SimpleWeightedRandomList;
@@ -171,7 +172,7 @@ public class AbundanceFeatures {
     }
 
     public static final class Configured {
-        public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> JACARANDA = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(AbundanceFeatures.Configs.JACARANDA_TREE_CONFIG);
+        public static final Supplier<Holder<ConfiguredFeature<TreeConfiguration, ?>>> JACARANDA = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(AbundanceFeatures.Configs.JACARANDA_TREE_CONFIG);
         public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> FLOWERING_JACARANDA = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(AbundanceFeatures.Configs.FLOWERING_JACARANDA_TREE_CONFIG);
         public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> JACARANDA_BEES_005 = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(AbundanceFeatures.Configs.JACARANDA_TREE_BEES_005_CONFIG);
         public static final Supplier<ConfiguredFeature<TreeConfiguration, ?>> FLOWERING_JACARANDA_BEES_005 = () -> AbundanceFeatures.JACARANDA_TREE.get().configured(AbundanceFeatures.Configs.FLOWERING_JACARANDA_TREE_BEES_005_CONFIG);

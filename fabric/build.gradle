@@ -19,6 +19,8 @@ loom {
     mixin {
         defaultRefmapName = "${project.mod_id}-refmap.json"
     }
+    accessWidenerPath.set(accessWidenerFile)
+
     runs {
         datagen {
             server()
@@ -30,7 +32,6 @@ loom {
             runDir "build/datagen"
         }
     }
-    accessWidenerPath.set(accessWidenerFile)
 }
 
 sourceSets.main.resources {
