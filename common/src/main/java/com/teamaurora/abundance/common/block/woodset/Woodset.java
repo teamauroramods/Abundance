@@ -1,4 +1,4 @@
-package com.teamaurora.abundance.core.registry.util;
+package com.teamaurora.abundance.common.block.woodset;
 
 import com.teamaurora.abundance.common.block.FloweringWoodBlock;
 import com.teamaurora.abundance.core.registry.AbundanceBlocks;

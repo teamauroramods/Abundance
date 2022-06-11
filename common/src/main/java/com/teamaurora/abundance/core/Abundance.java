@@ -1,6 +1,7 @@
 package com.teamaurora.abundance.core;
 
 import com.teamaurora.abundance.client.render.entity.living.ScreecherRenderer;
+import com.teamaurora.abundance.core.other.AbundanceData;
 import com.teamaurora.abundance.core.registry.*;
 import gg.moonflower.pollen.api.config.ConfigManager;
 import gg.moonflower.pollen.api.config.PollinatedConfigType;
@@ -22,8 +23,8 @@ public class Abundance {
     public static final String MOD_ID = "abundance";
     public static final AbundanceCommonConfig CONFIG = ConfigManager.register(MOD_ID, PollinatedConfigType.COMMON, AbundanceCommonConfig::new);
     public static final Platform PLATFORM = Platform.builder(MOD_ID)
-            .clientInit(Abundance::onClientInit)
-            .clientPostInit(Abundance::onClientPostInit)
+            .clientInit(() -> Abundance::onClientInit)
+            .clientPostInit(() -> Abundance::onClientPostInit)
             .commonInit(Abundance::onCommonInit)
             .commonPostInit(Abundance::onCommonPostInit)
             .dataInit(Abundance::onDataInit)
@@ -106,107 +107,20 @@ public class Abundance {
     public static void onCommonInit() {
         AbundanceBlocks.BLOCKS.register(Abundance.PLATFORM);
         AbundanceItems.ITEMS.register(Abundance.PLATFORM);
-        AbundanceFeatures.FEATURES.register(Abundance.PLATFORM);
-        AbundanceFeatures.CONFIGURED_FEATURES.register(Abundance.PLATFORM);
-        AbundanceFeatures.TREE_DECORATOR_TYPES.register(Abundance.PLATFORM);
         AbundanceSoundEvents.SOUND_EVENTS.register(Abundance.PLATFORM);
         AbundanceEffects.MOB_EFFECTS.register(Abundance.PLATFORM);
         AbundanceEffects.POTIONS.register(Abundance.PLATFORM);
-        AbundanceEntities.ENTITY_TYPES.register(Abundance.PLATFORM);
+        AbundanceEntities.ENTITIES.register(Abundance.PLATFORM);
         AbundanceEntities.registerEntityAttributes();
     }
 
     public static void onCommonPostInit(Platform.ModSetupContext ctx) {
         ctx.enqueueWork(() -> {
-
-            /* Strippables */
-            StrippingRegistry.register(AbundanceBlocks.JACARANDA_LOG.get(), AbundanceBlocks.STRIPPED_JACARANDA_LOG.get());
-            StrippingRegistry.register(AbundanceBlocks.JACARANDA_WOOD.get(), AbundanceBlocks.STRIPPED_JACARANDA_WOOD.get());
-            StrippingRegistry.register(AbundanceBlocks.REDBUD_LOG.get(), AbundanceBlocks.STRIPPED_REDBUD_LOG.get());
-            StrippingRegistry.register(AbundanceBlocks.FLOWERING_REDBUD_LOG.get(), AbundanceBlocks.STRIPPED_REDBUD_LOG.get());
-            StrippingRegistry.register(AbundanceBlocks.REDBUD_WOOD.get(), AbundanceBlocks.STRIPPED_REDBUD_WOOD.get());
-            StrippingRegistry.register(AbundanceBlocks.FLOWERING_REDBUD_WOOD.get(), AbundanceBlocks.STRIPPED_REDBUD_WOOD.get());
-
-            /* Compostables */
-            ComposterBlock.add(0.65f, AbundanceItems.LAVENDER.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.PINK_BLOSSOM_CARPET.get());
-
-            ComposterBlock.add(0.3f, AbundanceBlocks.JACARANDA_LEAVES.get());
-            ComposterBlock.add(0.3f, AbundanceBlocks.BUDDING_JACARANDA_LEAVES.get());
-            ComposterBlock.add(0.3f, AbundanceBlocks.FLOWERING_JACARANDA_LEAVES.get());
-            ComposterBlock.add(0.3f, AbundanceBlocks.JACARANDA_SAPLING.get());
-
-            ComposterBlock.add(0.3f, AbundanceBlocks.BLUE_JACARANDA_LEAVES.get());
-            ComposterBlock.add(0.3f, AbundanceBlocks.BUDDING_BLUE_JACARANDA_LEAVES.get());
-            ComposterBlock.add(0.3f, AbundanceBlocks.FLOWERING_BLUE_JACARANDA_LEAVES.get());
-            ComposterBlock.add(0.3f, AbundanceBlocks.BLUE_JACARANDA_SAPLING.get());
-
-            ComposterBlock.add(0.3f, AbundanceBlocks.REDBUD_LEAVES.get());
-            ComposterBlock.add(0.3f, AbundanceBlocks.BUDDING_REDBUD_LEAVES.get());
-            ComposterBlock.add(0.3f, AbundanceBlocks.FLOWERING_REDBUD_LEAVES.get());
-            ComposterBlock.add(0.3f, AbundanceBlocks.REDBUD_SAPLING.get());
-            ComposterBlock.add(0.3f, AbundanceBlocks.FLOWERING_REDBUD_SAPLING.get());
-
-            ComposterBlock.add(0.65f, AbundanceItems.PINK_BLOSSOMS.get());
-
-            ComposterBlock.add(0.65f, AbundanceBlocks.SMALL_MARIGOLD.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.SUNNY_MARIGOLD.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.SHADY_MARIGOLD.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.TALL_MARIGOLD.get());
-
-            ComposterBlock.add(0.65f, AbundanceBlocks.AMARANTHUS.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.CHICORY.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.CHICORY_COLONY.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.NEMOPHILA.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.MYOSOTIS.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.FIDDLENECK.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.HELICONIA.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.BEGONIA.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.CARNATION.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.CHRYSANTHEMUM.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.DIANTHUS.get());
-            ComposterBlock.add(0.65f, AbundanceBlocks.HEATHER.get());
-
-            ComposterBlock.add(0.3f, AbundanceItems.SUNFLOWER_SEEDS.get());
-
-            /* Flammables */
-            FireBlock fireBlock = (FireBlock) Blocks.FIRE;
-
-            fireBlock.setFlammable(AbundanceBlocks.PINK_BLOSSOM_CARPET.get(), 30, 60);
-
-            fireBlock.setFlammable(AbundanceBlocks.JACARANDA_LEAVES.get(), 30, 60);
-            fireBlock.setFlammable(AbundanceBlocks.FLOWERING_JACARANDA_LEAVES.get(), 30, 60);
-            fireBlock.setFlammable(AbundanceBlocks.BUDDING_JACARANDA_LEAVES.get(), 30, 60);
-            fireBlock.setFlammable(AbundanceBlocks.BLUE_JACARANDA_LEAVES.get(), 30, 60);
-            fireBlock.setFlammable(AbundanceBlocks.FLOWERING_BLUE_JACARANDA_LEAVES.get(), 30, 60);
-            fireBlock.setFlammable(AbundanceBlocks.BUDDING_BLUE_JACARANDA_LEAVES.get(), 30, 60);
-            fireBlock.setFlammable(AbundanceBlocks.JACARANDA_LOG.get(), 5, 5);
-            fireBlock.setFlammable(AbundanceBlocks.JACARANDA_WOOD.get(), 5, 5);
-            fireBlock.setFlammable(AbundanceBlocks.STRIPPED_JACARANDA_LOG.get(), 5, 5);
-            fireBlock.setFlammable(AbundanceBlocks.STRIPPED_JACARANDA_WOOD.get(), 5, 5);
-            fireBlock.setFlammable(AbundanceBlocks.JACARANDA_PLANKS.get(), 5, 20);
-            fireBlock.setFlammable(AbundanceBlocks.JACARANDA_SLAB.get(), 5, 20);
-            fireBlock.setFlammable(AbundanceBlocks.JACARANDA_STAIRS.get(), 5, 20);
-            fireBlock.setFlammable(AbundanceBlocks.JACARANDA_FENCE.get(), 5, 20);
-            fireBlock.setFlammable(AbundanceBlocks.JACARANDA_FENCE_GATE.get(), 5, 20);
-
-            fireBlock.setFlammable(AbundanceBlocks.REDBUD_LEAVES.get(), 30, 60);
-            fireBlock.setFlammable(AbundanceBlocks.BUDDING_REDBUD_LEAVES.get(), 30, 60);
-            fireBlock.setFlammable(AbundanceBlocks.FLOWERING_REDBUD_LEAVES.get(), 30, 60);
-            fireBlock.setFlammable(AbundanceBlocks.REDBUD_LOG.get(), 5, 5);
-            fireBlock.setFlammable(AbundanceBlocks.FLOWERING_REDBUD_LOG.get(), 5, 5);
-            fireBlock.setFlammable(AbundanceBlocks.FLOWERING_REDBUD_WOOD.get(), 5, 5);
-            fireBlock.setFlammable(AbundanceBlocks.REDBUD_WOOD.get(), 5, 5);
-            fireBlock.setFlammable(AbundanceBlocks.STRIPPED_REDBUD_LOG.get(), 5, 5);
-            fireBlock.setFlammable(AbundanceBlocks.STRIPPED_REDBUD_WOOD.get(), 5, 5);
-            fireBlock.setFlammable(AbundanceBlocks.REDBUD_PLANKS.get(), 5, 20);
-            fireBlock.setFlammable(AbundanceBlocks.REDBUD_SLAB.get(), 5, 20);
-            fireBlock.setFlammable(AbundanceBlocks.REDBUD_STAIRS.get(), 5, 20);
-            fireBlock.setFlammable(AbundanceBlocks.REDBUD_FENCE.get(), 5, 20);
-            fireBlock.setFlammable(AbundanceBlocks.REDBUD_FENCE_GATE.get(), 5, 20);
+            AbundanceData.registerStrippables();
+            AbundanceData.registerFlammables();
+            AbundanceData.registerCompostables();
 
             /* Misc Registry */
-            AbundanceFeatures.Configured.registerConfiguredFeatures();
             AbundanceEffects.registerBrewingRecipes();
         });
     }

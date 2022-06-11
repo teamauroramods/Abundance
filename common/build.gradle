@@ -7,7 +7,7 @@ dependencies {
 }
 
 architectury {
-    common()
+    common("forge", "fabric")
 }
 
 loom {
@@ -19,14 +19,6 @@ publishing {
         mavenCommon(MavenPublication) {
             artifactId = project.archivesBaseName
             from components.java
-        }
-    }
-}
-
-afterEvaluate {
-    tasks {
-        remapJar {
-            remapAccessWidener.set(false)
         }
     }
 }

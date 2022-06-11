@@ -1,30 +1,26 @@
 package com.teamaurora.abundance.core.registry;
 
 import com.teamaurora.abundance.common.block.*;
-import com.teamaurora.abundance.common.block.trees.BlueJacarandaTreeGrower;
-import com.teamaurora.abundance.common.block.trees.FloweringRedbudTreeGrower;
-import com.teamaurora.abundance.common.block.trees.JacarandaTreeGrower;
-import com.teamaurora.abundance.common.block.trees.RedbudTreeGrower;
-import com.teamaurora.abundance.common.item.FollowItemLike;
-import com.teamaurora.abundance.core.Abundance;
-import com.teamaurora.abundance.core.registry.util.Woodset;
+import com.teamaurora.abundance.common.block.woodset.Woodset;
+import com.teamaurora.abundance.common.item.TabInsertBlockItem;
 import gg.moonflower.pollen.api.registry.PollinatedBlockRegistry;
 import gg.moonflower.pollen.api.registry.PollinatedRegistry;
-import net.minecraft.core.Registry;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.grower.OakTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
 public class AbundanceBlocks {
-    public static final PollinatedRegistry<Block> BLOCKS = PollinatedRegistry.create(Registry.BLOCK, Abundance.MOD_ID);
+    public static final PollinatedBlockRegistry BLOCKS = PollinatedRegistry.createBlock(AbundanceItems.ITEMS);
 
     /* Lavender */
 
@@ -34,161 +30,151 @@ public class AbundanceBlocks {
 
     /* Marigolds */
 
-    public static final Supplier<Block> SMALL_MARIGOLD = registerBlock("small_marigold", () -> new SmallMarigoldBlock(MobEffects.HEAL, 1, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> SUNNY_MARIGOLD = registerBlock("sunny_marigold", () -> new MarigoldBlock(MobEffects.HEAL, 1, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> SHADY_MARIGOLD = registerBlock("shady_marigold", () -> new MarigoldBlock(MobEffects.HEAL, 1, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> TALL_MARIGOLD = registerBlock("tall_marigold", () -> new TallMarigoldBlock(Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> SMALL_MARIGOLD = BLOCKS.registerWithItem("small_marigold", () -> new SmallMarigoldBlock(() -> MobEffects.HEAL, 1, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> SUNNY_MARIGOLD = BLOCKS.registerWithItem("sunny_marigold", () -> new MarigoldBlock(() -> MobEffects.HEAL, 1, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> SHADY_MARIGOLD = BLOCKS.registerWithItem("shady_marigold", () -> new MarigoldBlock(() ->MobEffects.HEAL, 1, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> TALL_MARIGOLD = BLOCKS.registerWithItem("tall_marigold", () -> new TallMarigoldBlock(Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
-    public static final Supplier<Block> POTTED_SMALL_MARIGOLD = registerPotted("potted_small_marigold", SMALL_MARIGOLD);
-    public static final Supplier<Block> POTTED_SUNNY_MARIGOLD = registerPotted("potted_sunny_marigold", SUNNY_MARIGOLD);
-    public static final Supplier<Block> POTTED_SHADY_MARIGOLD = registerPotted("potted_shady_marigold", SHADY_MARIGOLD);
+    public static final Supplier<Block> POTTED_SMALL_MARIGOLD = BLOCKS.register("potted_small_marigold", createFlowerPot(SMALL_MARIGOLD));
+    public static final Supplier<Block> POTTED_SUNNY_MARIGOLD = BLOCKS.register("potted_sunny_marigold", createFlowerPot(SUNNY_MARIGOLD));
+    public static final Supplier<Block> POTTED_SHADY_MARIGOLD = BLOCKS.register("potted_shady_marigold", createFlowerPot(SHADY_MARIGOLD));
 
 
     /* Jacaranda Woodset */
 
     private static final Woodset JACARANDA = new Woodset(MaterialColor.COLOR_LIGHT_GRAY, MaterialColor.COLOR_PURPLE);
 
-    public static final Supplier<Block> STRIPPED_JACARANDA_LOG = registerWoodsetBlock("stripped_jacaranda_log", JACARANDA::stripped_log, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.STRIPPED_OAK_LOG);
-    public static final Supplier<Block> STRIPPED_JACARANDA_WOOD = registerWoodsetBlock("stripped_jacaranda_wood", JACARANDA::stripped_wood, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.STRIPPED_OAK_WOOD);
-    public static final Supplier<Block> JACARANDA_LOG = registerWoodsetBlock("jacaranda_log", JACARANDA::log, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_LOG);
-    public static final Supplier<Block> JACARANDA_WOOD = registerWoodsetBlock("jacaranda_wood", JACARANDA::wood, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_WOOD);
-    public static final Supplier<Block> JACARANDA_PLANKS = registerWoodsetBlock("jacaranda_planks", JACARANDA::planks, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_PLANKS);
-    public static final Supplier<Block> JACARANDA_SLAB = registerWoodsetBlock("jacaranda_slab", JACARANDA::slab, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_SLAB);
-    public static final Supplier<Block> JACARANDA_STAIRS = registerWoodsetBlock("jacaranda_stairs", () -> JACARANDA.stairs(JACARANDA_PLANKS), CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_STAIRS);
-    public static final Supplier<Block> JACARANDA_PRESSURE_PLATE = registerWoodsetBlock("jacaranda_pressure_plate", JACARANDA::pressurePlate, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_PRESSURE_PLATE);
-    public static final Supplier<Block> JACARANDA_BUTTON = registerWoodsetBlock("jacaranda_button", JACARANDA::button, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_BUTTON);
-    public static final Supplier<Block> JACARANDA_FENCE = registerWoodsetBlock("jacaranda_fence", JACARANDA::fence, CreativeModeTab.TAB_DECORATIONS, Blocks.OAK_FENCE);
-    public static final Supplier<Block> JACARANDA_FENCE_GATE = registerWoodsetBlock("jacaranda_fence_gate", JACARANDA::fenceGate, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_FENCE_GATE);
-    public static final Supplier<Block> JACARANDA_DOOR = registerWoodsetBlock("jacaranda_door", JACARANDA::door, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_DOOR);
-    public static final Supplier<Block> JACARANDA_TRAPDOOR = registerWoodsetBlock("jacaranda_trapdoor", JACARANDA::trapdoor, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_TRAPDOOR);
+    public static final Supplier<Block> STRIPPED_JACARANDA_LOG = BLOCKS.registerWithItem("stripped_jacaranda_log", JACARANDA::stripped_log, followItem(Items.STRIPPED_WARPED_STEM, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> STRIPPED_JACARANDA_WOOD = BLOCKS.registerWithItem("stripped_jacaranda_wood", JACARANDA::stripped_wood, followItem(Items.STRIPPED_WARPED_HYPHAE, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> JACARANDA_LOG = BLOCKS.registerWithItem("jacaranda_log", JACARANDA::log, followItem(Items.WARPED_STEM, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> JACARANDA_WOOD = BLOCKS.registerWithItem("jacaranda_wood", JACARANDA::wood, followItem(Items.WARPED_HYPHAE, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> JACARANDA_PLANKS = BLOCKS.registerWithItem("jacaranda_planks", JACARANDA::planks, followItem(Items.WARPED_PLANKS, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> JACARANDA_SLAB = BLOCKS.registerWithItem("jacaranda_slab", JACARANDA::slab, followItem(Items.WARPED_SLAB, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> JACARANDA_STAIRS = BLOCKS.registerWithItem("jacaranda_stairs", () -> JACARANDA.stairs(JACARANDA_PLANKS), followItem(Items.WARPED_STAIRS, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> JACARANDA_PRESSURE_PLATE = BLOCKS.registerWithItem("jacaranda_pressure_plate", JACARANDA::pressurePlate, followItem(Items.WARPED_PRESSURE_PLATE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+    public static final Supplier<Block> JACARANDA_BUTTON = BLOCKS.registerWithItem("jacaranda_button", JACARANDA::button, followItem(Items.WARPED_BUTTON, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+    public static final Supplier<Block> JACARANDA_FENCE = BLOCKS.registerWithItem("jacaranda_fence", JACARANDA::fence, followItem(Items.WARPED_FENCE, new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
+    public static final Supplier<Block> JACARANDA_FENCE_GATE = BLOCKS.registerWithItem("jacaranda_fence_gate", JACARANDA::fenceGate, followItem(Items.WARPED_FENCE_GATE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+    public static final Supplier<Block> JACARANDA_DOOR = BLOCKS.registerWithItem("jacaranda_door", JACARANDA::door, followItem(Items.WARPED_DOOR, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+    public static final Supplier<Block> JACARANDA_TRAPDOOR = BLOCKS.registerWithItem("jacaranda_trapdoor", JACARANDA::trapdoor, followItem(Items.WARPED_TRAPDOOR, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
 
-    public static final Supplier<Block> JACARANDA_LEAVES = registerBlock("jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> BUDDING_JACARANDA_LEAVES = registerBlock("budding_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> FLOWERING_JACARANDA_LEAVES = registerBlock("flowering_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> JACARANDA_SAPLING = registerBlock("jacaranda_sapling", () -> new SaplingBlock(new JacarandaTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> JACARANDA_LEAVES = BLOCKS.registerWithItem("jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BUDDING_JACARANDA_LEAVES = BLOCKS.registerWithItem("budding_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FLOWERING_JACARANDA_LEAVES = BLOCKS.registerWithItem("flowering_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> JACARANDA_SAPLING = BLOCKS.registerWithItem("jacaranda_sapling", () -> new SaplingBlock(new OakTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
-    public static final Supplier<Block> BLUE_JACARANDA_LEAVES = registerBlock("blue_jacaranda_leaves", () -> new LeavesBlock(Properties.BLUE_JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> BUDDING_BLUE_JACARANDA_LEAVES = registerBlock("budding_blue_jacaranda_leaves", () -> new LeavesBlock(Properties.BLUE_JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> FLOWERING_BLUE_JACARANDA_LEAVES = registerBlock("flowering_blue_jacaranda_leaves", () -> new LeavesBlock(Properties.BLUE_JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> BLUE_JACARANDA_SAPLING = registerBlock("blue_jacaranda_sapling", () -> new SaplingBlock(new BlueJacarandaTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BLUE_JACARANDA_LEAVES = BLOCKS.registerWithItem("blue_jacaranda_leaves", () -> new LeavesBlock(Properties.BLUE_JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BUDDING_BLUE_JACARANDA_LEAVES = BLOCKS.registerWithItem("budding_blue_jacaranda_leaves", () -> new LeavesBlock(Properties.BLUE_JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FLOWERING_BLUE_JACARANDA_LEAVES = BLOCKS.registerWithItem("flowering_blue_jacaranda_leaves", () -> new LeavesBlock(Properties.BLUE_JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BLUE_JACARANDA_SAPLING = BLOCKS.registerWithItem("blue_jacaranda_sapling", () -> new SaplingBlock(new OakTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
-    public static final Supplier<Block> POTTED_JACARANDA_SAPLING = registerPotted("potted_jacaranda_sapling", JACARANDA_SAPLING);
-    public static final Supplier<Block> POTTED_BLUE_JACARANDA_SAPLING = registerPotted("potted_blue_jacaranda_sapling", BLUE_JACARANDA_SAPLING);
+    public static final Supplier<Block> POTTED_JACARANDA_SAPLING = BLOCKS.register("potted_jacaranda_sapling", createFlowerPot(JACARANDA_SAPLING));
+    public static final Supplier<Block> POTTED_BLUE_JACARANDA_SAPLING = BLOCKS.register("potted_blue_jacaranda_sapling", createFlowerPot(BLUE_JACARANDA_SAPLING));
 
 
     /* Redbud Woodset */
 
     private static final Woodset REDBUD = new Woodset(MaterialColor.COLOR_LIGHT_GRAY, MaterialColor.COLOR_PURPLE);
 
-    public static final Supplier<Block> STRIPPED_REDBUD_LOG = registerWoodsetBlock("stripped_redbud_log", REDBUD::stripped_log, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.STRIPPED_OAK_LOG);
-    public static final Supplier<Block> STRIPPED_REDBUD_WOOD = registerWoodsetBlock("stripped_redbud_wood", REDBUD::stripped_wood, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.STRIPPED_OAK_WOOD);
-    public static final Supplier<Block> REDBUD_LOG = registerWoodsetBlock("redbud_log", REDBUD::log, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_LOG);
-    public static final Supplier<Block> FLOWERING_REDBUD_LOG = registerWoodsetBlock("flowering_redbud_log", REDBUD::flowering_log, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_LOG);
-    public static final Supplier<Block> REDBUD_WOOD = registerWoodsetBlock("redbud_wood", REDBUD::wood, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_WOOD);
-    public static final Supplier<Block> FLOWERING_REDBUD_WOOD = registerWoodsetBlock("flowering_redbud_wood", REDBUD::flowering_wood, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_WOOD);
-    public static final Supplier<Block> REDBUD_PLANKS = registerWoodsetBlock("redbud_planks", REDBUD::planks, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_PLANKS);
-    public static final Supplier<Block> REDBUD_SLAB = registerWoodsetBlock("redbud_slab", REDBUD::slab, CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_SLAB);
-    public static final Supplier<Block> REDBUD_STAIRS = registerWoodsetBlock("redbud_stairs", () -> REDBUD.stairs(REDBUD_PLANKS), CreativeModeTab.TAB_BUILDING_BLOCKS, Blocks.OAK_STAIRS);
-    public static final Supplier<Block> REDBUD_PRESSURE_PLATE = registerWoodsetBlock("redbud_pressure_plate", REDBUD::pressurePlate, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_PRESSURE_PLATE);
-    public static final Supplier<Block> REDBUD_BUTTON = registerWoodsetBlock("redbud_button", REDBUD::button, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_BUTTON);
-    public static final Supplier<Block> REDBUD_FENCE = registerWoodsetBlock("redbud_fence", REDBUD::fence, CreativeModeTab.TAB_DECORATIONS, Blocks.OAK_FENCE);
-    public static final Supplier<Block> REDBUD_FENCE_GATE = registerWoodsetBlock("redbud_fence_gate", REDBUD::fenceGate, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_FENCE_GATE);
-    public static final Supplier<Block> REDBUD_DOOR = registerWoodsetBlock("redbud_door", REDBUD::door, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_DOOR);
-    public static final Supplier<Block> REDBUD_TRAPDOOR = registerWoodsetBlock("redbud_trapdoor", REDBUD::trapdoor, CreativeModeTab.TAB_REDSTONE, Blocks.OAK_TRAPDOOR);
+    public static final Supplier<Block> STRIPPED_REDBUD_LOG = BLOCKS.registerWithItem("stripped_redbud_log", REDBUD::stripped_log, followItem(Items.STRIPPED_WARPED_STEM, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> STRIPPED_REDBUD_WOOD = BLOCKS.registerWithItem("stripped_redbud_wood", REDBUD::stripped_wood, followItem(Items.STRIPPED_WARPED_HYPHAE, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> REDBUD_LOG = BLOCKS.registerWithItem("redbud_log", REDBUD::log, followItem(Items.WARPED_STEM, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> FLOWERING_REDBUD_LOG = BLOCKS.registerWithItem("flowering_redbud_log", REDBUD::flowering_log, followItem(Items.WARPED_STEM, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> REDBUD_WOOD = BLOCKS.registerWithItem("redbud_wood", REDBUD::wood, followItem(Items.WARPED_HYPHAE, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> FLOWERING_REDBUD_WOOD = BLOCKS.registerWithItem("flowering_redbud_wood", REDBUD::flowering_wood, followItem(Items.WARPED_HYPHAE, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> REDBUD_PLANKS = BLOCKS.registerWithItem("redbud_planks", REDBUD::planks, followItem(Items.WARPED_PLANKS, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> REDBUD_SLAB = BLOCKS.registerWithItem("redbud_slab", REDBUD::slab, followItem(Items.WARPED_SLAB, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> REDBUD_STAIRS = BLOCKS.registerWithItem("redbud_stairs", () -> REDBUD.stairs(REDBUD_PLANKS), followItem(Items.WARPED_STAIRS, new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    public static final Supplier<Block> REDBUD_PRESSURE_PLATE = BLOCKS.registerWithItem("redbud_pressure_plate", REDBUD::pressurePlate, followItem(Items.WARPED_PRESSURE_PLATE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+    public static final Supplier<Block> REDBUD_BUTTON = BLOCKS.registerWithItem("redbud_button", REDBUD::button, followItem(Items.WARPED_BUTTON, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+    public static final Supplier<Block> REDBUD_FENCE = BLOCKS.registerWithItem("redbud_fence", REDBUD::fence, followItem(Items.WARPED_FENCE, new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
+    public static final Supplier<Block> REDBUD_FENCE_GATE = BLOCKS.registerWithItem("redbud_fence_gate", REDBUD::fenceGate, followItem(Items.WARPED_FENCE_GATE, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+    public static final Supplier<Block> REDBUD_DOOR = BLOCKS.registerWithItem("redbud_door", REDBUD::door, followItem(Items.WARPED_DOOR, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+    public static final Supplier<Block> REDBUD_TRAPDOOR = BLOCKS.registerWithItem("redbud_trapdoor", REDBUD::trapdoor, followItem(Items.WARPED_TRAPDOOR, new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
 
-    public static final Supplier<Block> REDBUD_LEAVES = registerBlock("redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> BUDDING_REDBUD_LEAVES = registerBlock("budding_redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> FLOWERING_REDBUD_LEAVES = registerBlock("flowering_redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> REDBUD_SAPLING = registerBlock("redbud_sapling", () -> new SaplingBlock(new RedbudTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> FLOWERING_REDBUD_SAPLING = registerBlock("flowering_redbud_sapling", () -> new SaplingBlock(new FloweringRedbudTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> REDBUD_LEAVES = BLOCKS.registerWithItem("redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BUDDING_REDBUD_LEAVES = BLOCKS.registerWithItem("budding_redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FLOWERING_REDBUD_LEAVES = BLOCKS.registerWithItem("flowering_redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> REDBUD_SAPLING = BLOCKS.registerWithItem("redbud_sapling", () -> new SaplingBlock(new OakTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FLOWERING_REDBUD_SAPLING = BLOCKS.registerWithItem("flowering_redbud_sapling", () -> new SaplingBlock(new OakTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
-    public static final Supplier<Block> POTTED_REDBUD_SAPLING = registerPotted("potted_redbud_sapling", REDBUD_SAPLING);
-    public static final Supplier<Block> POTTED_FLOWERING_REDBUD_SAPLING = registerPotted("potted_flowering_redbud_sapling", FLOWERING_REDBUD_SAPLING);
+    public static final Supplier<Block> POTTED_REDBUD_SAPLING = BLOCKS.register("potted_redbud_sapling", createFlowerPot(REDBUD_SAPLING));
+    public static final Supplier<Block> POTTED_FLOWERING_REDBUD_SAPLING = BLOCKS.register("potted_flowering_redbud_sapling", createFlowerPot(FLOWERING_REDBUD_SAPLING));
 
-    public static final Supplier<Block> PINK_BLOSSOM_CARPET = registerBlock("pink_blossom_carpet", () -> new BlossomCarpetBlock(Properties.PINK_BLOSSOM_CARPET), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> PINK_BLOSSOM_CARPET = BLOCKS.registerWithItem("pink_blossom_carpet", () -> new BlossomCarpetBlock(Properties.PINK_BLOSSOM_CARPET), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
 
     /* Thunbergia Blocks */
 
-    public static final Supplier<Block> THUNBERGIA_VINE = registerBlock("thunbergia_vine", () -> new VineBlock(Properties.VINE), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> THUNBERGIA_JUNGLE_LEAVES = registerBlock("thunbergia_jungle_leaves", () -> new LeavesBlock(Properties.TUNBERGIA_JUNGLE_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> THUNBERGIA_VINE = BLOCKS.registerWithItem("thunbergia_vine", () -> new VineBlock(Properties.VINE), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> THUNBERGIA_JUNGLE_LEAVES = BLOCKS.registerWithItem("thunbergia_jungle_leaves", () -> new LeavesBlock(Properties.THUNBERGIA_JUNGLE_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
 
     /* Daisies */
 
-    public static final Supplier<Block> PINK_DAISY = registerBlock("pink_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> PURPLE_DAISY = registerBlock("purple_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> MAGENTA_DAISY = registerBlock("magenta_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> YELLOW_DAISY = registerBlock("yellow_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> ORANGE_DAISY = registerBlock("orange_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> RED_DAISY = registerBlock("red_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> BLUE_DAISY = registerBlock("blue_daisy", () -> new FlowerBlock(MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> PINK_DAISY = BLOCKS.registerWithItem("pink_daisy", () -> new AbundanceFlowerBlock(() -> MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> PURPLE_DAISY = BLOCKS.registerWithItem("purple_daisy", () -> new AbundanceFlowerBlock(() -> MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> MAGENTA_DAISY = BLOCKS.registerWithItem("magenta_daisy", () -> new AbundanceFlowerBlock(() -> MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> YELLOW_DAISY = BLOCKS.registerWithItem("yellow_daisy", () -> new AbundanceFlowerBlock(() -> MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> ORANGE_DAISY = BLOCKS.registerWithItem("orange_daisy", () -> new AbundanceFlowerBlock(() -> MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> RED_DAISY = BLOCKS.registerWithItem("red_daisy", () -> new AbundanceFlowerBlock(() -> MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BLUE_DAISY = BLOCKS.registerWithItem("blue_daisy", () -> new AbundanceFlowerBlock(() -> MobEffects.REGENERATION, 8, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
-    public static final Supplier<Block> POTTED_PINK_DAISY = registerPotted("potted_pink_daisy", PINK_DAISY);
-    public static final Supplier<Block> POTTED_PURPLE_DAISY = registerPotted("potted_purple_daisy", PURPLE_DAISY);
-    public static final Supplier<Block> POTTED_MAGENTA_DAISY = registerPotted("potted_magenta_daisy", MAGENTA_DAISY);
-    public static final Supplier<Block> POTTED_YELLOW_DAISY = registerPotted("potted_yellow_daisy", YELLOW_DAISY);
-    public static final Supplier<Block> POTTED_ORANGE_DAISY = registerPotted("potted_orange_daisy", ORANGE_DAISY);
-    public static final Supplier<Block> POTTED_RED_DAISY = registerPotted("potted_red_daisy", RED_DAISY);
-    public static final Supplier<Block> POTTED_BLUE_DAISY = registerPotted("potted_blue_daisy", BLUE_DAISY);
+    public static final Supplier<Block> POTTED_PINK_DAISY = BLOCKS.register("potted_pink_daisy", createFlowerPot(PINK_DAISY));
+    public static final Supplier<Block> POTTED_PURPLE_DAISY = BLOCKS.register("potted_purple_daisy", createFlowerPot(PURPLE_DAISY));
+    public static final Supplier<Block> POTTED_MAGENTA_DAISY = BLOCKS.register("potted_magenta_daisy", createFlowerPot(MAGENTA_DAISY));
+    public static final Supplier<Block> POTTED_YELLOW_DAISY = BLOCKS.register("potted_yellow_daisy", createFlowerPot(YELLOW_DAISY));
+    public static final Supplier<Block> POTTED_ORANGE_DAISY = BLOCKS.register("potted_orange_daisy", createFlowerPot(ORANGE_DAISY));
+    public static final Supplier<Block> POTTED_RED_DAISY = BLOCKS.register("potted_red_daisy", createFlowerPot(RED_DAISY));
+    public static final Supplier<Block> POTTED_BLUE_DAISY = BLOCKS.register("potted_blue_daisy", createFlowerPot(BLUE_DAISY));
 
 
     /* Other Random Flowers */
 
-    public static final Supplier<Block> CHICORY = registerBlock("chicory", () -> new ChicoryBlock(MobEffects.DIG_SPEED, 5, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> CHICORY_COLONY = registerBlock("chicory_colony", () -> new BushBlock(Properties.CHICORY_COLONY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> AMARANTHUS = registerBlock("amaranthus", () -> new ModifiedFlowerBlock(MobEffects.HUNGER, 6, Properties.AMARANTHUS), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> NEMOPHILA = registerBlock("nemophila", () -> new NemophilaBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> MYOSOTIS = registerBlock("myosotis", () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> FIDDLENECK = registerBlock("fiddleneck", () -> new FlowerBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> HELICONIA = registerBlock("heliconia", () -> new TallFlowerBlock(Properties.HELICONIA), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> CHICORY = BLOCKS.registerWithItem("chicory", () -> new ChicoryBlock(MobEffects.DIG_SPEED, 5, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> CHICORY_COLONY = BLOCKS.registerWithItem("chicory_colony", () -> new BushBlock(Properties.CHICORY_COLONY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> AMARANTHUS = BLOCKS.registerWithItem("amaranthus", () -> new ModifiedFlowerBlock(() -> MobEffects.HUNGER, 6, Properties.AMARANTHUS), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> NEMOPHILA = BLOCKS.registerWithItem("nemophila", () -> new NemophilaBlock(() -> MobEffects.MOVEMENT_SPEED, 8, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> MYOSOTIS = BLOCKS.registerWithItem("myosotis", () -> new AbundanceFlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 8, Properties.BLUE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FIDDLENECK = BLOCKS.registerWithItem("fiddleneck", () -> new AbundanceFlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 8, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> HELICONIA = BLOCKS.registerWithItem("heliconia", () -> new TallFlowerBlock(Properties.HELICONIA), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
-    public static final Supplier<Block> BEGONIA = registerBlock("begonia", () -> new ModifiedFlowerBlock(MobEffects.DAMAGE_RESISTANCE, 6, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> CARNATION = registerBlock("carnation", () -> new ModifiedFlowerBlock(MobEffects.DAMAGE_RESISTANCE, 6, Properties.RED_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> CHRYSANTHEMUM = registerBlock("chrysanthemum", () -> new ModifiedFlowerBlock(MobEffects.REGENERATION, 8, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> DIANTHUS = registerBlock("dianthus", () -> new ModifiedFlowerBlock(MobEffects.MOVEMENT_SPEED, 8, Properties.PINK_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> HEATHER = registerBlock("heather", () -> new ModifiedFlowerBlock(MobEffects.LUCK, 16, Properties.PURPLE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BEGONIA = BLOCKS.registerWithItem("begonia", () -> new ModifiedFlowerBlock(() -> MobEffects.DAMAGE_RESISTANCE, 6, Properties.DAISY), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> CARNATION = BLOCKS.registerWithItem("carnation", () -> new ModifiedFlowerBlock(() -> MobEffects.DAMAGE_RESISTANCE, 6, Properties.RED_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> CHRYSANTHEMUM = BLOCKS.registerWithItem("chrysanthemum", () -> new ModifiedFlowerBlock(() -> MobEffects.REGENERATION, 8, Properties.YELLOW_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> DIANTHUS = BLOCKS.registerWithItem("dianthus", () -> new ModifiedFlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 8, Properties.PINK_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> HEATHER = BLOCKS.registerWithItem("heather", () -> new ModifiedFlowerBlock(() -> MobEffects.LUCK, 16, Properties.PURPLE_FLOWER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
-    public static final Supplier<Block> POTTED_CHICORY = registerPotted("potted_chicory", CHICORY);
-    public static final Supplier<Block> POTTED_AMARANTHUS = registerPotted("potted_amaranthus", AMARANTHUS);
-    public static final Supplier<Block> POTTED_NEMOPHILA = registerPotted("potted_nemophila", NEMOPHILA);
-    public static final Supplier<Block> POTTED_MYOSOTIS = registerPotted("potted_myosotis", MYOSOTIS);
-    public static final Supplier<Block> POTTED_FIDDLENECK = registerPotted("potted_fiddleneck", FIDDLENECK);
+    public static final Supplier<Block> POTTED_CHICORY = BLOCKS.register("potted_chicory", createFlowerPot(CHICORY));
+    public static final Supplier<Block> POTTED_AMARANTHUS = BLOCKS.register("potted_amaranthus", createFlowerPot(AMARANTHUS));
+    public static final Supplier<Block> POTTED_NEMOPHILA = BLOCKS.register("potted_nemophila", createFlowerPot(NEMOPHILA));
+    public static final Supplier<Block> POTTED_MYOSOTIS = BLOCKS.register("potted_myosotis", createFlowerPot(MYOSOTIS));
+    public static final Supplier<Block> POTTED_FIDDLENECK = BLOCKS.register("potted_fiddleneck", createFlowerPot(FIDDLENECK));
 
-    public static final Supplier<Block> POTTED_BEGONIA = registerPotted("potted_begonia", BEGONIA);
-    public static final Supplier<Block> POTTED_CARNATION = registerPotted("potted_carnation", CARNATION);
-    public static final Supplier<Block> POTTED_CHRYSANTHEMUM = registerPotted("potted_chrysanthemum", CHRYSANTHEMUM);
-    public static final Supplier<Block> POTTED_DIANTHUS = registerPotted("potted_dianthus", DIANTHUS);
-    public static final Supplier<Block> POTTED_HEATHER = registerPotted("potted_heather", HEATHER);
+    public static final Supplier<Block> POTTED_BEGONIA = BLOCKS.register("potted_begonia", createFlowerPot(BEGONIA));
+    public static final Supplier<Block> POTTED_CARNATION = BLOCKS.register("potted_carnation", createFlowerPot(CARNATION));
+    public static final Supplier<Block> POTTED_CHRYSANTHEMUM = BLOCKS.register("potted_chrysanthemum", createFlowerPot(CHRYSANTHEMUM));
+    public static final Supplier<Block> POTTED_DIANTHUS = BLOCKS.register("potted_dianthus", createFlowerPot(DIANTHUS));
+    public static final Supplier<Block> POTTED_HEATHER = BLOCKS.register("potted_heather", createFlowerPot(HEATHER));
 
     /* Tropical Foliage */
 
-    public static final Supplier<Block> TROPICAL_GRASS = registerBlock("tropical_grass", () -> new TallGrassBlock(Properties.GRASS), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> TROPICAL_FERN = registerBlock("tropical_fern", () -> new TallGrassBlock(Properties.GRASS), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> TROPICAL_GRASS = BLOCKS.registerWithItem("tropical_grass", () -> new TallGrassBlock(Properties.GRASS), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> TROPICAL_FERN = BLOCKS.registerWithItem("tropical_fern", () -> new TallGrassBlock(Properties.GRASS), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
-
-    private static Supplier<Block> registerBlock(String id, Supplier<Block> block, Item.Properties properties) {
-        Supplier<Block> register = BLOCKS.register(id, block);
-        AbundanceItems.ITEMS.register(id, () -> new BlockItem(register.get(), properties));
-        return register;
+    private static Supplier<Block> createFlowerPot(Supplier<Block> block) {
+        return () -> new FlowerPotBlock(block.get(), Properties.POTTED_PLANT);
     }
 
-    private static Supplier<Block> registerWoodsetBlock(String id, Supplier<Block> block, CreativeModeTab tab, Block followBlock) {
-        Supplier<Block> register = BLOCKS.register(id, block);
-        AbundanceItems.ITEMS.register(id, () -> new FollowItemLike(register.get(), new Item.Properties(), tab, followBlock));
-        return register;
-    }
-
-    private static Supplier<Block> registerPotted(String id, Supplier<Block> block) {
-        Supplier<Block> register = BLOCKS.register(id, () -> new FlowerPotBlock(block.get(), Properties.POTTED_PLANT));
-        return register;
+    private static Function<Block, Item> followItem(Item insertAfter, Item.Properties properties) {
+        return object -> new TabInsertBlockItem(insertAfter, object, properties);
     }
 
     public static final class Properties {
         public static final BlockBehaviour.Properties LAVENDER = BlockBehaviour.Properties.copy(Blocks.ALLIUM).sound(SoundType.CROP);
         public static final BlockBehaviour.Properties JACARANDA_LEAVES = BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).color(MaterialColor.COLOR_PURPLE);
         public static final BlockBehaviour.Properties BLUE_JACARANDA_LEAVES = BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).color(MaterialColor.COLOR_LIGHT_BLUE);
-        public static final BlockBehaviour.Properties TUNBERGIA_JUNGLE_LEAVES = BlockBehaviour.Properties.copy(Blocks.JUNGLE_LEAVES).color(MaterialColor.COLOR_YELLOW);
+        public static final BlockBehaviour.Properties THUNBERGIA_JUNGLE_LEAVES = BlockBehaviour.Properties.copy(Blocks.JUNGLE_LEAVES).color(MaterialColor.COLOR_YELLOW);
         public static final BlockBehaviour.Properties VINE = BlockBehaviour.Properties.copy(Blocks.VINE);
         public static final BlockBehaviour.Properties REDBUD_LEAVES = BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).color(MaterialColor.COLOR_RED);
         public static final BlockBehaviour.Properties SAPLING = BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING);

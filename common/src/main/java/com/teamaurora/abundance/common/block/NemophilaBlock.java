@@ -12,12 +12,14 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class NemophilaBlock extends FlowerBlock {
+import java.util.function.Supplier;
+
+public class NemophilaBlock extends AbundanceFlowerBlock {
 
     protected static final VoxelShape SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
 
-    public NemophilaBlock(MobEffect stewEffect, int stewEffectDuration, Properties properties) {
-        super(stewEffect, stewEffectDuration, properties);
+    public NemophilaBlock(Supplier<MobEffect> effectSupplier, int effectDuration, Properties properties) {
+        super(effectSupplier, effectDuration, properties);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.teamaurora.abundance.client.render.entity.living;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.teamaurora.abundance.common.entity.living.ScreecherEntity;
+import com.teamaurora.abundance.common.entity.living.Screecher;
 import com.teamaurora.abundance.core.Abundance;
 import gg.moonflower.pollen.pinwheel.api.client.animation.AnimatedEntityRenderer;
 import net.fabricmc.api.EnvType;
@@ -13,7 +13,7 @@ import net.minecraft.util.Mth;
 
 
 @Environment(EnvType.CLIENT)
-public class ScreecherRenderer extends AnimatedEntityRenderer<ScreecherEntity> {
+public class ScreecherRenderer extends AnimatedEntityRenderer<Screecher> {
     public static final ResourceLocation SCREECHER_LOCATION = new ResourceLocation(Abundance.MOD_ID, "screecher");
     private static final ResourceLocation[] WALK_ANIMATION = new ResourceLocation[]{new ResourceLocation(Abundance.MOD_ID, "screecher.setup"), new ResourceLocation(Abundance.MOD_ID, "screecher.walking")};
     private static final ResourceLocation[] SCREECH_ANIMATION = new ResourceLocation[]{new ResourceLocation(Abundance.MOD_ID, "screecher.setup"), new ResourceLocation(Abundance.MOD_ID, "screecher.screech")};
@@ -27,7 +27,7 @@ public class ScreecherRenderer extends AnimatedEntityRenderer<ScreecherEntity> {
 
 
     @Override
-    public ResourceLocation[] getAnimations(ScreecherEntity entity) {
+    public ResourceLocation[] getAnimations(Screecher entity) {
         if (isMoving)
             return WALK_ANIMATION;
         else if (entity.isScreeching())
@@ -36,12 +36,12 @@ public class ScreecherRenderer extends AnimatedEntityRenderer<ScreecherEntity> {
     }
 
     @Override
-    public ResourceLocation getTextureTableLocation(ScreecherEntity entity) {
+    public ResourceLocation getTextureTableLocation(Screecher entity) {
         return SCREECHER_LOCATION;
     }
 
     @Override
-    public void render(ScreecherEntity entity, float entityYaw, float partialTicks, PoseStack matrixStack, MultiBufferSource buffer, int packedLight) {
+    public void render(Screecher entity, float entityYaw, float partialTicks, PoseStack matrixStack, MultiBufferSource buffer, int packedLight) {
         matrixStack.pushPose();
 
         float limbSwingAmount = 0.0F;

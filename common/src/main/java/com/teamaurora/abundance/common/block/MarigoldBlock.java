@@ -11,11 +11,12 @@ import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Random;
+import java.util.function.Supplier;
 
 public class MarigoldBlock extends ModifiedFlowerBlock implements BonemealableBlock {
 
-    public MarigoldBlock(MobEffect stewEffect, int stewEffectDuration, Properties properties) {
-        super(stewEffect, stewEffectDuration, properties);
+    public MarigoldBlock(Supplier<MobEffect> effectSupplier, int effectDuration, Properties properties) {
+        super(effectSupplier, effectDuration, properties);
     }
 
     @Override

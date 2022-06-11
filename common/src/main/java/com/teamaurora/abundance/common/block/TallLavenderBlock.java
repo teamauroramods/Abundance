@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.phys.BlockHitResult;
 
+@SuppressWarnings("deprecation")
 public class TallLavenderBlock extends DoublePlantBlock {
 
     public TallLavenderBlock(BlockBehaviour.Properties properties) {
@@ -25,15 +26,11 @@ public class TallLavenderBlock extends DoublePlantBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public ItemStack getCloneItemStack(BlockGetter worldIn, BlockPos pos, BlockState state) {
         return new ItemStack(AbundanceItems.LAVENDER.get());
     }
 
-    //public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
-
     @Override
-    @SuppressWarnings("deprecation")
     public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         popResource(worldIn, pos, new ItemStack(AbundanceItems.LAVENDER.get(), 2));
         worldIn.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + worldIn.random.nextFloat() * 0.4F);

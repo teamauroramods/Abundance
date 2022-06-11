@@ -10,11 +10,13 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class ModifiedFlowerBlock extends FlowerBlock {
+import java.util.function.Supplier;
+
+public class ModifiedFlowerBlock extends AbundanceFlowerBlock {
     protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-    public ModifiedFlowerBlock(MobEffect stewEffect, int stewEffectDuration, Properties properties) {
-        super(stewEffect, stewEffectDuration, properties);
+    public ModifiedFlowerBlock(Supplier<MobEffect> effectSupplier, int effectDuration, Properties properties) {
+        super(effectSupplier, effectDuration, properties);
     }
 
     @Override

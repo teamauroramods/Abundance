@@ -2,23 +2,16 @@ package com.teamaurora.abundance.common.entity.living;
 
 import com.teamaurora.abundance.core.registry.AbundanceEffects;
 import com.teamaurora.abundance.core.registry.AbundanceSoundEvents;
-import gg.moonflower.pollen.pinwheel.api.client.animation.AnimationManager;
-import gg.moonflower.pollen.pinwheel.api.common.animation.AnimatedEntity;
 import gg.moonflower.pollen.pinwheel.api.common.animation.AnimatedPathfinder;
-import gg.moonflower.pollen.pinwheel.api.common.animation.AnimationData;
 import gg.moonflower.pollen.pinwheel.api.common.animation.AnimationState;
-import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
@@ -29,7 +22,6 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -39,16 +31,16 @@ import net.minecraft.world.phys.Vec3;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class ScreecherEntity extends AnimatedPathfinder {
+public class Screecher extends AnimatedPathfinder {
 
-    public static final EntityDataAccessor<Boolean> IS_SCREECHING = SynchedEntityData.defineId(ScreecherEntity.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Boolean> IS_SCREECHING = SynchedEntityData.defineId(Screecher.class, EntityDataSerializers.BOOLEAN);
 
     public static final AnimationState WALKING_ANIMATION = new AnimationState(20);
     public static final AnimationState SCREECH_ANIMATION = new AnimationState(60);
 
     private int timeNextScreech = 0;
 
-    public ScreecherEntity(EntityType<? extends PathfinderMob> type, Level worldIn) {
+    public Screecher(EntityType<? extends PathfinderMob> type, Level worldIn) {
         super(type, worldIn);
     }
 
@@ -71,7 +63,7 @@ public class ScreecherEntity extends AnimatedPathfinder {
         this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 0.9D));
         this.goalSelector.addGoal(2, new ScreechGoal(this));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.targetSelector.addGoal(0, new HurtByTargetGoal(this, ScreecherEntity.class));
+        this.targetSelector.addGoal(0, new HurtByTargetGoal(this, Screecher.class));
     }
 
     public boolean canScreech() {
@@ -142,11 +134,11 @@ public class ScreecherEntity extends AnimatedPathfinder {
 
     private static class ScreechGoal extends Goal {
 
-        private final ScreecherEntity screecher;
+        private final Screecher screecher;
         private static final int maxScreechTime = 40;
         private int screechTime;
 
-        protected ScreechGoal(ScreecherEntity screecher) {
+        protected ScreechGoal(Screecher screecher) {
             this.screecher = screecher;
         }
 
