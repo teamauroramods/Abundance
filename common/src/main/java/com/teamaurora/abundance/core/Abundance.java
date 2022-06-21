@@ -10,6 +10,8 @@ import gg.moonflower.pollen.api.registry.StrippingRegistry;
 import gg.moonflower.pollen.api.registry.client.ColorRegistry;
 import gg.moonflower.pollen.api.registry.client.EntityRendererRegistry;
 import gg.moonflower.pollen.api.registry.client.RenderTypeRegistry;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
@@ -38,6 +40,7 @@ public class Abundance {
         EntityRendererRegistry.register(AbundanceEntities.SCREECHER, ScreecherRenderer::new);
     }
 
+    @Environment(EnvType.CLIENT)
     public static void onClientPostInit(Platform.ModSetupContext ctx) {
         ctx.enqueueWork(() -> {
             RenderTypeRegistry.register(AbundanceBlocks.LAVENDER.get(), RenderType.cutout());

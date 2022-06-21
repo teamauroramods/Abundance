@@ -17,16 +17,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -63,8 +61,10 @@ public class Screecher extends AnimatedPathfinder {
         this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 0.9D));
         this.goalSelector.addGoal(2, new ScreechGoal(this));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(0, new HurtByTargetGoal(this, Screecher.class));
     }
+
 
     public boolean canScreech() {
         return this.timeNextScreech <= 0;
@@ -83,7 +83,7 @@ public class Screecher extends AnimatedPathfinder {
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource damageSource) {
+    protected SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
         return AbundanceSoundEvents.SCREECHER_HURT.get();
     }
 
@@ -113,13 +113,13 @@ public class Screecher extends AnimatedPathfinder {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compoundTag) {
+    public void addAdditionalSaveData(@NotNull CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         compoundTag.putInt("ScreechTime", this.timeNextScreech);
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compoundTag) {
+    public void readAdditionalSaveData(@NotNull CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
         this.timeNextScreech = compoundTag.getInt("ScreechTime");
     }
@@ -172,7 +172,7 @@ public class Screecher extends AnimatedPathfinder {
             ++this.screechTime;
 
             LivingEntity target = this.screecher.getTarget();
-            this.screecher.getLookControl().setLookAt(target.getX(), target.getEyeY(), target.getZ());
+            this.screecher.getLookControl().setLookAt(target.getX(), target.getY(), target.getZ());
 
             if (this.screechTime >= maxScreechTime) {
                 this.doScreechEffect();
