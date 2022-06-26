@@ -1,0 +1,32 @@
+{
+  "parent": "abundance:recipes/root",
+  "rewards": {
+    "recipes": [
+      "abundance:crafting/jacaranda_stairs"
+    ]
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "abundance:crafting/jacaranda_stairs"
+      }
+    },
+    "has_items": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [ "abundance:jacaranda_planks" ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "abundance:recipes/root",
+  "rewards": {
+    "recipes": [
+      "abundance:crafting/redbud_wood"
+    ]
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "abundance:crafting/redbud_wood"
+      }
+    },
+    "has_items": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [ "abundance:redbud_log" ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items"
+    ]
+  ]
+}

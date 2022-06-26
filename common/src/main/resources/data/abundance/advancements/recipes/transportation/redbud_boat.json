@@ -1,0 +1,28 @@
+{
+  "parent": "abundance:recipes/root",
+  "rewards": {
+    "recipes": [
+      "abundance:crafting/redbud_boat"
+    ]
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "abundance:crafting/redbud_boat"
+      }
+    },
+    "in_water": {
+      "conditions": {
+        "block": "minecraft:water"
+      },
+      "trigger": "minecraft:enter_block"
+    }
+  },
+  "requirements": [
+    [
+      "in_water",
+      "has_the_recipe"
+    ]
+  ]
+}
