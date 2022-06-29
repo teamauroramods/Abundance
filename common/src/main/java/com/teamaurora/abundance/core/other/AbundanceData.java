@@ -50,7 +50,7 @@ public class AbundanceData {
     }
 
     public static void registerCompostables() {
-        CompostablesRegistry.register(AbundanceItems.LAVENDER.get(), 0.65F);
+        CompostablesRegistry.register(AbundanceBlocks.LAVENDER.get(), 0.65F);
         CompostablesRegistry.register(AbundanceBlocks.PINK_BLOSSOM_CARPET.get(), 0.65F);
         CompostablesRegistry.register(AbundanceBlocks.JACARANDA_LEAVES.get(), 0.3F);
         CompostablesRegistry.register(AbundanceBlocks.BUDDING_JACARANDA_LEAVES.get(), 0.3F);

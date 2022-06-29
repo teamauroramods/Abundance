@@ -24,7 +24,7 @@ public class AbundanceBlocks {
 
     /* Lavender */
 
-    public static final Supplier<Block> LAVENDER = BLOCKS.register("lavender", () -> new LavenderBlock(Properties.LAVENDER));
+    public static final Supplier<Block> LAVENDER = BLOCKS.registerWithItem("lavender", () -> new LavenderBlock(Properties.LAVENDER), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> TALL_LAVENDER = BLOCKS.register("tall_lavender", () -> new TallLavenderBlock(Properties.LAVENDER));
 
 

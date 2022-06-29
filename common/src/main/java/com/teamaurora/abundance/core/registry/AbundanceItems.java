@@ -9,15 +9,12 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Block;
 
-import java.util.Objects;
 import java.util.function.Supplier;
 
 public class AbundanceItems {
     public static final PollinatedRegistry<Item> ITEMS = PollinatedRegistry.create(Registry.ITEM, Abundance.MOD_ID);
 
-    public static final Supplier<Item> LAVENDER = ITEMS.register("lavender", () -> new BlockItem(AbundanceBlocks.LAVENDER.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
     public static final Supplier<Item> LAVENDER_TEA = ITEMS.register("lavender_tea", () -> new DrinkItem(new Item.Properties().food(Foods.LAVENDER_TEA).stacksTo(16).tab(CreativeModeTab.TAB_FOOD)));
     public static final Supplier<Item> LAVENDER_SALAD = ITEMS.register("lavender_salad", () -> new BowlFoodItem(new Item.Properties().food(Foods.LAVENDER_SALAD).stacksTo(1).tab(CreativeModeTab.TAB_FOOD)));
 

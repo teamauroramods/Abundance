@@ -27,12 +27,12 @@ public class TallLavenderBlock extends DoublePlantBlock {
 
     @Override
     public ItemStack getCloneItemStack(BlockGetter worldIn, BlockPos pos, BlockState state) {
-        return new ItemStack(AbundanceItems.LAVENDER.get());
+        return new ItemStack(AbundanceBlocks.LAVENDER.get().asItem());
     }
 
     @Override
     public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
-        popResource(worldIn, pos, new ItemStack(AbundanceItems.LAVENDER.get(), 2));
+        popResource(worldIn, pos, new ItemStack(AbundanceBlocks.LAVENDER.get().asItem(), 2));
         worldIn.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + worldIn.random.nextFloat() * 0.4F);
         int downAmount = state.getValue(HALF) == DoubleBlockHalf.LOWER ? 0 : 1;
         worldIn.setBlock(pos.below(downAmount), AbundanceBlocks.LAVENDER.get().defaultBlockState().setValue(LavenderBlock.AGE, 0), 2);

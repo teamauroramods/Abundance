@@ -108,12 +108,12 @@ public class Abundance {
     }
 
     public static void onCommonInit() {
-        AbundanceBlocks.BLOCKS.register(Abundance.PLATFORM);
-        AbundanceItems.ITEMS.register(Abundance.PLATFORM);
-        AbundanceSoundEvents.SOUND_EVENTS.register(Abundance.PLATFORM);
-        AbundanceEffects.MOB_EFFECTS.register(Abundance.PLATFORM);
-        AbundanceEffects.POTIONS.register(Abundance.PLATFORM);
-        AbundanceEntities.ENTITIES.register(Abundance.PLATFORM);
+        AbundanceBlocks.BLOCKS.register(PLATFORM);
+        AbundanceItems.ITEMS.register(PLATFORM);
+        AbundanceSoundEvents.SOUND_EVENTS.register(PLATFORM);
+        AbundanceEffects.MOB_EFFECTS.register(PLATFORM);
+        AbundanceEffects.POTIONS.register(PLATFORM);
+        AbundanceEntities.ENTITIES.register(PLATFORM);
         AbundanceEntities.registerEntityAttributes();
     }
 

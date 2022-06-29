@@ -39,7 +39,7 @@ public class LavenderBlock extends BushBlock implements BonemealableBlock {
     @Override
     @SuppressWarnings("deprecation")
     public ItemStack getCloneItemStack(BlockGetter worldIn, BlockPos pos, BlockState state) {
-        return new ItemStack(AbundanceItems.LAVENDER.get());
+        return new ItemStack(AbundanceBlocks.LAVENDER.get().asItem());
     }
 
     @Override
@@ -79,7 +79,7 @@ public class LavenderBlock extends BushBlock implements BonemealableBlock {
             return InteractionResult.PASS;
         }
         else if (i > 1) {
-            popResource(worldIn, pos, new ItemStack(AbundanceItems.LAVENDER.get(), 1));
+            popResource(worldIn, pos, new ItemStack(AbundanceBlocks.LAVENDER.get().asItem(), 1));
             worldIn.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + worldIn.random.nextFloat() * 0.4F);
             worldIn.setBlock(pos, state.setValue(AGE, 0), 2);
             return InteractionResult.sidedSuccess(worldIn.isClientSide);
