@@ -29,6 +29,13 @@ side = "BOTH"
 [[dependencies.${id}]]
 modId = "pollen"
 mandatory = true
-versionRange = "[1.4.5,)"
+versionRange = "[1.4.9,)"
 ordering = "BEFORE"
+side = "BOTH"
+
+[[dependencies.${id}]]
+modId = "terrablender"
+mandatory = true
+versionRange = "[1.1.0.101,)"
+ordering = "NONE"
 side = "BOTH"
