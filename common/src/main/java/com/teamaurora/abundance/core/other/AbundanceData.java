@@ -7,6 +7,13 @@ import gg.moonflower.pollen.api.registry.content.CompostablesRegistry;
 import gg.moonflower.pollen.api.registry.content.FlammabilityRegistry;
 
 public class AbundanceData {
+
+    public static void init() {
+        registerStrippables();
+        registerFlammables();
+        registerCompostables();
+    }
+
     public static void registerStrippables() {
         StrippingRegistry.register(AbundanceBlocks.JACARANDA_LOG.get(), AbundanceBlocks.STRIPPED_JACARANDA_LOG.get());
         StrippingRegistry.register(AbundanceBlocks.JACARANDA_WOOD.get(), AbundanceBlocks.STRIPPED_JACARANDA_WOOD.get());

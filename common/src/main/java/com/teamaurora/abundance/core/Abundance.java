@@ -115,14 +115,13 @@ public class Abundance {
         AbundanceEntities.ENTITIES.register(PLATFORM);
         AbundanceFeatures.load(PLATFORM);
         AbundanceFeatures.Configured.load(PLATFORM);
+        AbundanceBiomes.load(PLATFORM);
         AbundanceEntities.registerEntityAttributes();
     }
 
     public static void onCommonPostInit(Platform.ModSetupContext ctx) {
         ctx.enqueueWork(() -> {
-            AbundanceData.registerStrippables();
-            AbundanceData.registerFlammables();
-            AbundanceData.registerCompostables();
+            AbundanceData.init();
 
             // TODO: Convert to pollen brewing recipes
             AbundanceEffects.registerBrewingRecipes();

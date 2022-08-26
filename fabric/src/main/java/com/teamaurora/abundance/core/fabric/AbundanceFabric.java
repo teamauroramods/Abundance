@@ -10,8 +10,10 @@ import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import terrablender.api.Regions;
+import terrablender.api.TerraBlenderApi;
 
-public class AbundanceFabric implements ModInitializer {
+public class AbundanceFabric implements ModInitializer, TerraBlenderApi {
     @Override
     public void onInitialize() {
         Abundance.PLATFORM.setup();
@@ -22,5 +24,10 @@ public class AbundanceFabric implements ModInitializer {
             gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AbundanceFeatures.Configured.NEMOPHILA_DENSE_KEY);
             gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AbundanceFeatures.Configured.EXTRA_MEADOW_FLOWERS_KEY);
         });
+    }
+
+    @Override
+    public void onTerraBlenderInitialized() {
+        Regions.register(new AbundanceRegion(Abundance.location("overworld"), 3));
     }
 }

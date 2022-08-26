@@ -23,8 +23,8 @@
     "main": [
       "com.teamaurora.abundance.core.fabric.AbundanceFabric"
     ],
-    "fabric-datagen": [
-      "com.teamaurora.abundance.core.fabric.AbundanceFabricDatagen"
+    "terrablender": [
+      "com.teamaurora.abundance.core.fabric.AbundanceFabric"
     ]
   },
   "depends": {

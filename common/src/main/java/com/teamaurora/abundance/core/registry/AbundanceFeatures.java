@@ -2,6 +2,7 @@ package com.teamaurora.abundance.core.registry;
 
 import com.google.common.collect.ImmutableList;
 import com.teamaurora.abundance.common.levelgen.feature.JacarandaFeature;
+import com.teamaurora.abundance.common.levelgen.feature.LavenderFeature;
 import com.teamaurora.abundance.common.levelgen.feature.NemophilaFeature;
 import com.teamaurora.abundance.common.levelgen.feature.RedbudFeature;
 import com.teamaurora.abundance.core.Abundance;
@@ -44,6 +45,7 @@ public class AbundanceFeatures {
     public static final Supplier<Feature<TreeConfiguration>> JACARANDA_TREE = FEATURES.register("jacaranda_tree", () -> new JacarandaFeature(TreeConfiguration.CODEC));
     public static final Supplier<Feature<TreeConfiguration>> REDBUD_TREE = FEATURES.register("redbud_tree", () -> new RedbudFeature(TreeConfiguration.CODEC));
     public static final Supplier<Feature<NoneFeatureConfiguration>> NEMOPHILA = FEATURES.register("nemophila", () -> new NemophilaFeature(NoneFeatureConfiguration.CODEC));
+    public static final Supplier<Feature<NoneFeatureConfiguration>> LAVENDER = FEATURES.register("lavender", () -> new LavenderFeature(NoneFeatureConfiguration.CODEC));
 
     public static void load(Platform platform) {
         LOGGER.debug("Registered to platform");
@@ -149,19 +151,27 @@ public class AbundanceFeatures {
 
         // Flowers
         public static final Supplier<ConfiguredFeature<NoneFeatureConfiguration, ?>> NEMOPHILA_BASE = CONFIGURED_FEATURES.register("nemophila", () -> new ConfiguredFeature<>(NEMOPHILA.get(), FeatureConfiguration.NONE));
+        public static final Supplier<ConfiguredFeature<NoneFeatureConfiguration, ?>> LAVENDER_BASE = CONFIGURED_FEATURES.register("lavender", () -> new ConfiguredFeature<>(LAVENDER.get(), FeatureConfiguration.NONE));
         public static final Supplier<ConfiguredFeature<RandomPatchConfiguration, ?>> MEADOW_EXTRA_FLOWERS = CONFIGURED_FEATURES.register("meadow_extra_flowers", () -> new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(96, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(BlockStates.BLUE_DAISY, 1).add(BlockStates.MYOSOTIS, 1)))))));
 
         // Placements
         public static final Supplier<PlacedFeature> BLUE_JACARANDA_BEES_02_PLACED = PLACEMENTS.register("blue_jacaranda_bees_002", () -> new PlacedFeature(Holder.direct(BLUE_JACARANDA_BEES_002.get()), List.of(PlacementUtils.filteredByBlockSurvival(AbundanceBlocks.BLUE_JACARANDA_SAPLING.get()))));
         public static final Supplier<PlacedFeature> FLOWERING_BLUE_JACARANDA_BEES_02_PLACED = PLACEMENTS.register("flowering_blue_jacaranda_bees_002", () -> new PlacedFeature(Holder.direct(FLOWERING_BLUE_JACARANDA_BEES_002.get()), List.of(PlacementUtils.filteredByBlockSurvival(AbundanceBlocks.BLUE_JACARANDA_SAPLING.get()))));
+        public static final Supplier<PlacedFeature> JACARANDA_BEES_02_PLACED = PLACEMENTS.register("jacaranda_bees_002", () -> new PlacedFeature(Holder.direct(JACARANDA_BEES_002.get()), List.of(PlacementUtils.filteredByBlockSurvival(AbundanceBlocks.JACARANDA_SAPLING.get()))));
+        public static final Supplier<PlacedFeature> FLOWERING_JACARANDA_BEES_02_PLACED = PLACEMENTS.register("flowering_jacaranda_bees_002", () -> new PlacedFeature(Holder.direct(FLOWERING_JACARANDA_BEES_002.get()), List.of(PlacementUtils.filteredByBlockSurvival(AbundanceBlocks.JACARANDA_SAPLING.get()))));
         public static final Supplier<PlacedFeature> MEADOW_EXTRA_FLOWERS_PLACED = PLACEMENTS.register("meadow_extra_flowers", () -> new PlacedFeature(Holder.direct(MEADOW_EXTRA_FLOWERS.get()), List.of(InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
         public static final ResourceKey<PlacedFeature> EXTRA_MEADOW_FLOWERS_KEY = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Abundance.location("meadow_extra_flowers"));
 
         // Natural Generation
 
         public static final Supplier<ConfiguredFeature<RandomFeatureConfiguration, ?>> TREES_JACARANDA_MEADOW = CONFIGURED_FEATURES.register("trees_jacaranda_meadow", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(getHolder(BLUE_JACARANDA_BEES_02_PLACED, "blue_jacaranda_bees_002"), 0.5f)), getHolder(FLOWERING_BLUE_JACARANDA_BEES_02_PLACED, "flowering_blue_jacaranda_bees_002"))));
-        public static final Supplier<PlacedFeature> TREES_JACARANDA_MEADOW_PLACED = PLACEMENTS.register("trees_jacaranda_meadow", () -> new PlacedFeature(Holder.direct(TREES_JACARANDA_MEADOW.get()), VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(4))));
+        public static final Supplier<ConfiguredFeature<RandomFeatureConfiguration, ?>> TREES_JACARANDA_SPARSE = CONFIGURED_FEATURES.register("trees_jacaranda_sparse", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(getHolder(JACARANDA_BEES_02_PLACED, "jacaranda_bees_002"), 0.5f)), getHolder(FLOWERING_JACARANDA_BEES_02_PLACED, "flowering_jacaranda_bees_002"))));
+        public static final Supplier<PlacedFeature> TREES_JACARANDA_MEADOW_PLACED = PLACEMENTS.register("trees_jacaranda_meadow", () -> new PlacedFeature(Holder.direct(TREES_JACARANDA_MEADOW.get()), VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(6))));
+        public static final Supplier<PlacedFeature> TREES_JACARANDA_SPARSE_PLACED = PLACEMENTS.register("trees_jacaranda_sparse", () -> new PlacedFeature(Holder.direct(TREES_JACARANDA_SPARSE.get()), VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(4))));
+
         public static final ResourceKey<PlacedFeature> TREES_MEADOW_KEY = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Abundance.location("trees_jacaranda_meadow"));
+
+        public static final Supplier<PlacedFeature> LAVENDER_DENSE = PLACEMENTS.register("lavender", () -> new PlacedFeature(Holder.direct(LAVENDER_BASE.get()), List.of(PlacementUtils.countExtra(3, 0.1F, 1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
         public static final Supplier<PlacedFeature> NEMOPHILA_DENSE = PLACEMENTS.register("nemophila_dense", () -> new PlacedFeature(Holder.direct(NEMOPHILA_BASE.get()), List.of(PlacementUtils.countExtra(24, 0.2F, 2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
         public static final ResourceKey<PlacedFeature> NEMOPHILA_DENSE_KEY = ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY, Abundance.location("nemophila_dense"));
 

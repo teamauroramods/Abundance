@@ -23,7 +23,8 @@ public class CommonForgeEvents {
             gen.getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).removeIf(holder -> holder.is(VegetationPlacements.FLOWER_MEADOW.unwrapKey().orElseThrow()));
             gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(AbundanceFeatures.Configured.TREES_JACARANDA_MEADOW_PLACED.get()));
             gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(AbundanceFeatures.Configured.NEMOPHILA_DENSE.get()));
-            gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(AbundanceFeatures.Configured.MEADOW_EXTRA_FLOWERS_PLACED.get()));        }
+            gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Holder.direct(AbundanceFeatures.Configured.MEADOW_EXTRA_FLOWERS_PLACED.get()));
+        }
     }
 
     public static boolean matchesKeys(ResourceLocation location, ResourceKey<?>... keys) {
