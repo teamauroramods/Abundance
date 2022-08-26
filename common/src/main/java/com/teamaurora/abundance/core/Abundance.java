@@ -29,7 +29,6 @@ public class Abundance {
             .clientPostInit(() -> Abundance::onClientPostInit)
             .commonInit(Abundance::onCommonInit)
             .commonPostInit(Abundance::onCommonPostInit)
-            .dataInit(Abundance::onDataInit)
             .build();
 
     public static void onClientInit() {
@@ -114,6 +113,8 @@ public class Abundance {
         AbundanceEffects.MOB_EFFECTS.register(PLATFORM);
         AbundanceEffects.POTIONS.register(PLATFORM);
         AbundanceEntities.ENTITIES.register(PLATFORM);
+        AbundanceFeatures.load(PLATFORM);
+        AbundanceFeatures.Configured.load(PLATFORM);
         AbundanceEntities.registerEntityAttributes();
     }
 
@@ -123,15 +124,12 @@ public class Abundance {
             AbundanceData.registerFlammables();
             AbundanceData.registerCompostables();
 
-            /* Misc Registry */
+            // TODO: Convert to pollen brewing recipes
             AbundanceEffects.registerBrewingRecipes();
         });
     }
 
-    public static void onDataInit(Platform.DataSetupContext ctx) {
-    }
-
-    public static ResourceLocation generateResourceLocation(String path) {
+    public static ResourceLocation location(String path) {
         return new ResourceLocation(MOD_ID, path);
     }
 }

@@ -17,6 +17,6 @@ public class AbundanceSoundEvents {
 
 
     private static Supplier<SoundEvent> registerSound(String name) {
-        return SOUND_EVENTS.register(name, () -> new SoundEvent(Abundance.generateResourceLocation(name)));
+        return SOUND_EVENTS.register(name, () -> new SoundEvent(Abundance.location(name)));
     }
 }

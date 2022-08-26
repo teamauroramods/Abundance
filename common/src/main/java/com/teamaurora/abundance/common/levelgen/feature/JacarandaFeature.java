@@ -1,10 +1,9 @@
-package com.teamaurora.abundance.common.world.feature;
+package com.teamaurora.abundance.common.levelgen.feature;
 
 import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.teamaurora.abundance.common.util.DirectionalBlockPos;
 import com.teamaurora.abundance.common.util.TreeUtil;
-import com.teamaurora.abundance.core.registry.AbundanceBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
@@ -12,27 +11,25 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
 
 import java.util.*;
 import java.util.function.BiConsumer;
 
-public class RedbudFeature extends Feature<TreeConfiguration> {
+public class JacarandaFeature extends Feature<TreeConfiguration> {
 
-    public RedbudFeature(Codec<TreeConfiguration> config) {
+    public JacarandaFeature(Codec<TreeConfiguration> config) {
         super(config);
     }
 
     @Override
     public boolean place(FeaturePlaceContext<TreeConfiguration> ctx) {
-        int height = ctx.random().nextInt(3) + 2;
+        int height = ctx.random().nextInt(4) + 4;
         if (ctx.origin().getY() <= -64 || ctx.origin().getY() + height > ctx.level().getHeight() - 2) {
             return false;
         }
         if (!TreeUtil.isValidGround(ctx.level(), ctx.origin().below())) {
             return false;
         }
-
         List<DirectionalBlockPos> logs = new ArrayList<>();
         List<BlockPos> leaves = new ArrayList<>();
 
@@ -40,40 +37,18 @@ public class RedbudFeature extends Feature<TreeConfiguration> {
             logs.add(new DirectionalBlockPos(ctx.origin().above(i), Direction.UP));
         }
 
-        int variant = ctx.random().nextInt(3);
-        if (variant == 0) {
-            Direction dir = Direction.from2DDataValue(ctx.random().nextInt(4));
-            int offset1 = ctx.random().nextInt(3) - 1;
-            int offset2 = ctx.random().nextInt(3) - 1;
-            BlockPos bp1 = ctx.origin().above(height).relative(dir).relative(dir.getClockWise(), offset1);
-            BlockPos bp2 = ctx.origin().above(height).relative(dir, -1).relative(dir.getClockWise(), offset2);
-            logs.add(new DirectionalBlockPos(bp1, dir));
-            logs.add(new DirectionalBlockPos(bp2, dir));
-            addCanopy(bp1.relative(dir), leaves, ctx.random());
-            addCanopy(bp2.relative(dir, -1), leaves, ctx.random());
-        } else if (variant == 1) {
-            Direction dir = Direction.from2DDataValue(ctx.random().nextInt(4));
-            BlockPos bp1 = ctx.origin().above(height).relative(dir);
-            BlockPos bp2 = ctx.origin().above(height).relative(dir, -1).relative(dir.getClockWise());
-            BlockPos bp3 = ctx.origin().above(height).relative(dir, -1).relative(dir.getClockWise(), -1);
-            logs.add(new DirectionalBlockPos(bp1, dir));
-            logs.add(new DirectionalBlockPos(bp2, dir));
-            logs.add(new DirectionalBlockPos(bp3, dir));
-            addCanopy(bp1.relative(dir), leaves, ctx.random());
-            addCanopy(bp2.relative(dir, -1), leaves, ctx.random());
-            addCanopy(bp3.relative(dir, -1), leaves, ctx.random());
-        } else {
-            logs.add(new DirectionalBlockPos(ctx.origin().above(height).north(), Direction.NORTH));
-            logs.add(new DirectionalBlockPos(ctx.origin().above(height).east(), Direction.EAST));
-            logs.add(new DirectionalBlockPos(ctx.origin().above(height).south(), Direction.SOUTH));
-            logs.add(new DirectionalBlockPos(ctx.origin().above(height).west(), Direction.WEST));
-            addCanopy(ctx.origin().above(height).north(2), leaves, ctx.random());
-            addCanopy(ctx.origin().above(height).east(2), leaves, ctx.random());
-            addCanopy(ctx.origin().above(height).south(2), leaves, ctx.random());
-            addCanopy(ctx.origin().above(height).west(2), leaves, ctx.random());
-        }
-        addCanopy(ctx.origin().above(height+1), leaves, ctx.random());
+        List<Direction> dirs = new ArrayList<>();
+        dirs.add(Direction.NORTH);
+        dirs.add(Direction.EAST);
+        dirs.add(Direction.SOUTH);
+        dirs.add(Direction.EAST);
 
+        for (int i = 2; i <= height - 2; i++) {
+            Direction dir = dirs.get(ctx.random().nextInt(dirs.size()));
+            dirs.remove(dir);
+            addBranch(ctx.origin().above(i), dir, leaves, logs, ctx.random());
+        }
+        addCanopy(ctx.origin().above(height), leaves, ctx.random());
 
         List<BlockPos> leavesClean = cleanLeavesArray(leaves, logs);
 
@@ -93,16 +68,14 @@ public class RedbudFeature extends Feature<TreeConfiguration> {
         for (BlockPos leaf : leavesClean) {
             TreeUtil.placeLeafAt(ctx.level(), leaf, ctx.random(), ctx.config());
         }
-
         Set<BlockPos> set = Sets.newHashSet();
         BiConsumer<BlockPos, BlockState> decSet = (blockPos, blockState) -> {
             set.add(blockPos.immutable());
             ctx.level().setBlock(blockPos, blockState, 19);
         };
 
-        BoundingBox BoundingBox = new BoundingBox(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE);
-
         List<BlockPos> logsPos = new ArrayList<>();
+
         for (DirectionalBlockPos log : logs) {
             logsPos.add(log.pos);
         }
@@ -115,13 +88,38 @@ public class RedbudFeature extends Feature<TreeConfiguration> {
         return true;
     }
 
+    private void addBranch(BlockPos pos, Direction dir, List<BlockPos> leaves, List<DirectionalBlockPos> logs, Random rand) {
+        logs.add(new DirectionalBlockPos(pos.relative(dir), dir));
+        int i = rand.nextInt(3) - 1;
+        BlockPos b2pos = pos.relative(dir, 2).relative(dir.getClockWise(), i);
+        logs.add(new DirectionalBlockPos(b2pos, dir));
+        addCanopy(b2pos, leaves, rand);
+    }
+
     private void addCanopy(BlockPos pos, List<BlockPos> leaves, Random rand) {
+        cir1(pos.below(), leaves, rand);
+        cir2(pos, leaves, rand);
+        cir2(pos.above(), leaves, rand);
+        cir1(pos.above(2), leaves, rand);
+    }
+
+    private void cir1(BlockPos pos, List<BlockPos> leaves, Random rand) {
         for (int x = -1; x <= 1; x++) {
-            for (int y = -1; y <= 1; y++) {
-                for (int z = -1; z <= 1; z++) {
-                    if (x == 0 || y == 0 || z == 0 || rand.nextInt(3) == 0) {
-                        leaves.add(pos.offset(x, y, z));
-                    }
+            for (int z = -1; z <= 1; z++) {
+                //if (Math.abs(x) != 1 || Math.abs(z) != 1 || rand.nextBoolean()) {
+                if (Math.abs(x) != 1 || Math.abs(z) != 1) {
+                        leaves.add(pos.offset(x, 0, z));
+                }
+            }
+        }
+    }
+
+    private void cir2(BlockPos pos, List<BlockPos> leaves, Random rand) {
+        for (int x = -2; x <= 2; x++) {
+            for (int z = -2; z <= 2; z++) {
+                //if (Math.abs(x) != 2 || Math.abs(z) != 2 || rand.nextBoolean()) {
+                if (Math.abs(x) != 2 || Math.abs(z) != 2) {
+                    leaves.add(pos.offset(x, 0, z));
                 }
             }
         }
@@ -129,7 +127,6 @@ public class RedbudFeature extends Feature<TreeConfiguration> {
 
     private List<BlockPos> cleanLeavesArray(List<BlockPos> leaves, List<DirectionalBlockPos> logs) {
         List<BlockPos> logsPos = new ArrayList<>();
-
         for (DirectionalBlockPos log : logs) {
             logsPos.add(log.pos);
         }

@@ -1,6 +1,10 @@
 package com.teamaurora.abundance.core.registry;
 
 import com.teamaurora.abundance.common.block.*;
+import com.teamaurora.abundance.common.block.trees.BlueJacarandaTreeGrower;
+import com.teamaurora.abundance.common.block.trees.FloweringRedbudTreeGrower;
+import com.teamaurora.abundance.common.block.trees.JacarandaTreeGrower;
+import com.teamaurora.abundance.common.block.trees.RedbudTreeGrower;
 import com.teamaurora.abundance.common.block.woodset.Woodset;
 import com.teamaurora.abundance.common.item.TabInsertBlockItem;
 import gg.moonflower.pollen.api.registry.PollinatedBlockRegistry;
@@ -61,12 +65,12 @@ public class AbundanceBlocks {
     public static final Supplier<Block> JACARANDA_LEAVES = BLOCKS.registerWithItem("jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> BUDDING_JACARANDA_LEAVES = BLOCKS.registerWithItem("budding_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> FLOWERING_JACARANDA_LEAVES = BLOCKS.registerWithItem("flowering_jacaranda_leaves", () -> new LeavesBlock(Properties.JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> JACARANDA_SAPLING = BLOCKS.registerWithItem("jacaranda_sapling", () -> new SaplingBlock(new OakTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> JACARANDA_SAPLING = BLOCKS.registerWithItem("jacaranda_sapling", () -> new SaplingBlock(new JacarandaTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
     public static final Supplier<Block> BLUE_JACARANDA_LEAVES = BLOCKS.registerWithItem("blue_jacaranda_leaves", () -> new LeavesBlock(Properties.BLUE_JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> BUDDING_BLUE_JACARANDA_LEAVES = BLOCKS.registerWithItem("budding_blue_jacaranda_leaves", () -> new LeavesBlock(Properties.BLUE_JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> FLOWERING_BLUE_JACARANDA_LEAVES = BLOCKS.registerWithItem("flowering_blue_jacaranda_leaves", () -> new LeavesBlock(Properties.BLUE_JACARANDA_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> BLUE_JACARANDA_SAPLING = BLOCKS.registerWithItem("blue_jacaranda_sapling", () -> new SaplingBlock(new OakTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> BLUE_JACARANDA_SAPLING = BLOCKS.registerWithItem("blue_jacaranda_sapling", () -> new SaplingBlock(new BlueJacarandaTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
     public static final Supplier<Block> POTTED_JACARANDA_SAPLING = BLOCKS.register("potted_jacaranda_sapling", createFlowerPot(JACARANDA_SAPLING));
     public static final Supplier<Block> POTTED_BLUE_JACARANDA_SAPLING = BLOCKS.register("potted_blue_jacaranda_sapling", createFlowerPot(BLUE_JACARANDA_SAPLING));
@@ -95,8 +99,8 @@ public class AbundanceBlocks {
     public static final Supplier<Block> REDBUD_LEAVES = BLOCKS.registerWithItem("redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> BUDDING_REDBUD_LEAVES = BLOCKS.registerWithItem("budding_redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
     public static final Supplier<Block> FLOWERING_REDBUD_LEAVES = BLOCKS.registerWithItem("flowering_redbud_leaves", () -> new LeavesBlock(Properties.REDBUD_LEAVES), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> REDBUD_SAPLING = BLOCKS.registerWithItem("redbud_sapling", () -> new SaplingBlock(new OakTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
-    public static final Supplier<Block> FLOWERING_REDBUD_SAPLING = BLOCKS.registerWithItem("flowering_redbud_sapling", () -> new SaplingBlock(new OakTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> REDBUD_SAPLING = BLOCKS.registerWithItem("redbud_sapling", () -> new SaplingBlock(new RedbudTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
+    public static final Supplier<Block> FLOWERING_REDBUD_SAPLING = BLOCKS.registerWithItem("flowering_redbud_sapling", () -> new SaplingBlock(new FloweringRedbudTreeGrower(), Properties.SAPLING), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS));
 
     public static final Supplier<Block> POTTED_REDBUD_SAPLING = BLOCKS.register("potted_redbud_sapling", createFlowerPot(REDBUD_SAPLING));
     public static final Supplier<Block> POTTED_FLOWERING_REDBUD_SAPLING = BLOCKS.register("potted_flowering_redbud_sapling", createFlowerPot(FLOWERING_REDBUD_SAPLING));
